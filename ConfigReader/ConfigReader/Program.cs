@@ -34,12 +34,30 @@ namespace ConfigReader
         }
     }
 
+    
+
     interface ConfigStructure:IConfiguration
     {
         [DefaultComment("First section of config")]
         Section1 Sec1 { get; }
         [DefaultComment("Second section of config")]
         Section2 Sec2 { get; }
+    }
+
+    /// <summary>
+    /// Test for non-trivial type conversions
+    /// </summary>
+    interface SpecialTypeSection
+    {
+        IEnumerable<string> Enumerable { get; }
+
+        List<string> List { get; }
+
+        string[] Array { get; }
+
+        EnumTest Enum { get; }
+
+        HashSet<EnumTest> EnumSet { get; }
     }
 
     interface Section1
@@ -58,5 +76,12 @@ namespace ConfigReader
         int x2 { get; }
         [OptionInfo(ID="duplTest")]
         int x1 { get; }
+    }
+
+    enum EnumTest
+    {
+        Value1,
+        Value2,
+        ValueLast=134
     }
 }
