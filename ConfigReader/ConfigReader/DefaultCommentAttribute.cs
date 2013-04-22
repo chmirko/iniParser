@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConfigReader
 {
-    [AttributeUsage(AttributeTargets.Property)]
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
     public class DefaultCommentAttribute:Attribute
     {
         public readonly string CommentText;

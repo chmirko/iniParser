@@ -14,13 +14,13 @@ namespace ConfigReader.ConfigCreation
         public static readonly MethodInfo SetterProvider = typeof(PropertyStorage).GetMethod("Setter", BindingFlags.Instance | BindingFlags.NonPublic);
 
         
-        HashSet<string> _changedProperties = new HashSet<string>();
+        HashSet<string> _changeLog = new HashSet<string>();
 
         internal IEnumerable<string> ChangedProperties
         {
             get
             {
-                return _changedProperties;
+                return _changeLog;
             }
         }
 
@@ -40,13 +40,13 @@ namespace ConfigReader.ConfigCreation
 
         protected void ClearChangeLog()
         {
-            _changedProperties.Clear();
+            _changeLog.Clear();
         }
 
 
         internal void Setter<T>(string propertyName,ref T propertyField, T value)
         {
-            _changedProperties.Add(propertyName);
+            _changeLog.Add(propertyName);
             propertyField = value;
         }
 

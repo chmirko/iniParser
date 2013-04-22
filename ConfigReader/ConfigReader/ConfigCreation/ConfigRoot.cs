@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.IO;
+
 using ConfigReader.Parsing;
 
 namespace ConfigReader.ConfigCreation
 {
     
-    class ConfigRoot:PropertyStorage,IConfig
+    class ConfigRoot:PropertyStorage,IConfiguration
     {
         ConfigParser _parser;
         Dictionary<QualifiedSectionName,ConfigSection> _sections = new Dictionary<QualifiedSectionName,ConfigSection>();
@@ -44,23 +46,34 @@ namespace ConfigReader.ConfigCreation
 
         public void Save(string outputFile)
         {
+            flushChanges();
+            _parser.Save(outputFile);
+        }
+
+        public void WriteTo(StreamWriter output)
+        {
+            flushChanges();
+            _parser.WriteTo(output);
+        }
+
+        private void flushChanges()
+        {
             foreach (var section in _sections.Values)
             {
                 foreach (var changedOption in section.ChangedOptions)
                 {
                     var optionInfo = section.GetOptionInfo(changedOption.Name);
-                    _parser.SetOption(optionInfo,changedOption);
+                    _parser.SetOption(optionInfo, changedOption);
                 }
 
                 section.ClearOptionChangeLog();
             }
-            _parser.WriteTo(outputFile);
         }
 
-
-        public void SetComment(QualifiedName comment)
+        public void SetComment(QualifiedName name,string comment)
         {
-            throw new NotImplementedException();
+            //TODO what if name doesn't exists ?
+            _parser.SetComment(name, comment);
         }
     }
 }

@@ -56,14 +56,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigCreation\StructureValidationUtils.cs" />
     <Compile Include="DefaultCommentAttribute.cs" />
     <Compile Include="ConfigCreation\ClassBuilder.cs" />
     <Compile Include="ConfigCreation\ConfigRoot.cs" />
     <Compile Include="ConfigCreation\ConfigSection.cs" />
     <Compile Include="ConfigCreation\ConfigUtils.cs" />
     <Compile Include="ConfigCreation\InfoUtils.cs" />
-    <Compile Include="IConfig.cs" />
+    <Compile Include="IConfiguration.cs" />
     <Compile Include="Configuration.cs" />
+    <Compile Include="InfoAttribute.cs" />
     <Compile Include="OptionInfoAttribute.cs" />
     <Compile Include="Parsing\OptionInfo.cs" />
     <Compile Include="Parsing\ConfigParser.cs" />

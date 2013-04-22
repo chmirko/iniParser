@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.IO;
+
 namespace ConfigReader
 {
 
@@ -20,11 +22,19 @@ namespace ConfigReader
             config.Sec1.settableNumber = 4;
             config.Sec1.settableNumber = 42;
             
-            config.Save("chagedConfig.cfg");            
+            config.Save("changedConfig.cfg");
+
+
+            var memStream=new MemoryStream();
+            var writer = new StreamWriter(memStream);
+            config.WriteTo(writer);
+
+            Console.WriteLine(Encoding.Default.GetString(memStream.ToArray()));
+               
         }
     }
 
-    interface ConfigStructure:IConfig
+    interface ConfigStructure:IConfiguration
     {
         [DefaultComment("First section of config")]
         Section1 Sec1 { get; }
@@ -43,5 +53,10 @@ namespace ConfigReader
     {
         [OptionInfo(ID="Name with space",IsOptional=true, DefaultValue="default value")]
         string Field_name { get; }
+
+        [OptionInfo(ID="duplTest2")]
+        int x2 { get; }
+        [OptionInfo(ID="duplTest")]
+        int x1 { get; }
     }
 }

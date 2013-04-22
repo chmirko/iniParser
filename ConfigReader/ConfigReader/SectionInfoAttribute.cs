@@ -8,7 +8,7 @@ using System.Reflection;
 
 namespace ConfigReader
 {
-    [AttributeUsage(AttributeTargets.Property)]
+    [AttributeUsage(AttributeTargets.Property,AllowMultiple=false)]
     public class SectionInfoAttribute:Attribute
     {
         public string ID { get; set; }
@@ -17,18 +17,6 @@ namespace ConfigReader
 
         public SectionInfoAttribute()
         {
-        }
-
-        internal string GetSectionID(PropertyInfo sectionProperty)
-        {
-            if (ID == null)
-            {
-                return sectionProperty.Name;
-            }
-            else
-            {
-                return ID;
-            }
         }
     }
 }

@@ -80,7 +80,7 @@ namespace ConfigReader.Parsing
         /// Write parsed and changed options into output file
         /// </summary>
         /// <param name="outputFile"></param>
-        internal void WriteTo(string outputFile)
+        internal void Save(string outputFile)
         {
             throw new NotImplementedException();
         }

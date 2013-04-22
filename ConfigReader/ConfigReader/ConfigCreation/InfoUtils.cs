@@ -33,7 +33,7 @@ namespace ConfigReader.ConfigCreation
             var infoAttr = GetAttribute<SectionInfoAttribute>(propertyAttribs);
             var commentAttr = GetAttribute<DefaultCommentAttribute>(propertyAttribs);
 
-            var sectionID = infoAttr.GetSectionID(sectionProperty);
+            var sectionID = ResolveID(infoAttr.ID, sectionProperty);
             var sectionName = new QualifiedSectionName(sectionID);
 
             foreach (var optionProperty in GetOptionProperties(sectionProperty.PropertyType))
@@ -51,7 +51,7 @@ namespace ConfigReader.ConfigCreation
             var infoAttr = GetAttribute<OptionInfoAttribute>(propertyAttribs);
             var commentAttr = GetAttribute<DefaultCommentAttribute>(propertyAttribs);
 
-            var optionID = infoAttr.GetOptionID(optionProperty);
+            var optionID = ResolveID(infoAttr.ID,optionProperty);
             var optionName = new QualifiedOptionName(sectionName, optionID);
 
             var expectedType = optionProperty.PropertyType;
@@ -61,6 +61,15 @@ namespace ConfigReader.ConfigCreation
                 infoAttr.DefaultValue,infoAttr.IsOptional,
                 commentAttr.CommentText);
         }
+
+        internal static string ResolveID(string id, PropertyInfo info)
+        {
+            if (id == null)
+                return info.Name;
+
+            return id;
+        }
+
 
         internal static AttributeType GetAttribute<AttributeType>(IEnumerable<Attribute> attributes)
             where AttributeType:Attribute
@@ -86,5 +95,17 @@ namespace ConfigReader.ConfigCreation
             return sectionType.GetProperties();
         }
 
+
+        internal static string ResolveSectionID(PropertyInfo property)
+        {
+            var info = GetAttribute<SectionInfoAttribute>(property.GetCustomAttributes());
+            return ResolveID(info.ID, property);
+        }
+
+        internal static string ResolveOptionID(PropertyInfo property)
+        {
+            var info = GetAttribute<OptionInfoAttribute>(property.GetCustomAttributes());
+            return ResolveID(info.ID, property);
+        }
     }
 }

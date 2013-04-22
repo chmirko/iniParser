@@ -8,7 +8,7 @@ using System.Reflection;
 
 namespace ConfigReader
 {
-    [AttributeUsage(AttributeTargets.Property)]
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
     public class OptionInfoAttribute : Attribute
     {
         public string ID { get; set; }
@@ -17,18 +17,6 @@ namespace ConfigReader
 
         public OptionInfoAttribute()
         {
-        }
-
-        internal string GetOptionID(PropertyInfo optionProperty)
-        {
-            if (ID == null)
-            {
-                return optionProperty.Name;
-            }
-            else
-            {
-                return ID;
-            }
         }
     }
 }

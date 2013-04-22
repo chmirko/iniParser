@@ -17,6 +17,9 @@ namespace ConfigReader
 
     public enum ConfigMode { Strict, Relaxed }
 
+
+    internal delegate string IDResolver(PropertyInfo property);
+
     public static class Configuration
     {
         public static Structure CreateFromDefaults<Structure>()
@@ -25,7 +28,7 @@ namespace ConfigReader
         }
 
         public static Structure CreateFromFile<Structure>(string configFilePath, ConfigMode mode)
-            where Structure : IConfig
+            where Structure : IConfiguration
         {
             //       var parser=ConfigParser.FromFile(configFilePath,mode);
             //       return createConfig<Structure>(parser);
@@ -33,7 +36,7 @@ namespace ConfigReader
         }
 
         public static Structure CreateFromStream<Structure>(StreamReader input, ConfigMode mode)
-            where Structure : IConfig
+            where Structure : IConfiguration
         {
             var parser = ConfigParser.FromStream(input, mode);
 
@@ -41,15 +44,15 @@ namespace ConfigReader
         }
 
         private static Structure createConfig<Structure>(ConfigParser parser)
-            where Structure : IConfig
+            where Structure : IConfiguration
         {
             var structureType = typeof(Structure);
 
             //throws exception for invalid structureType
-            throwOnInvalid(structureType);
+            StructureValidationUtils.ThrowOnInvalid(structureType);
 
             var structureInfo = InfoUtils.CreateStructureInfo(structureType);
-           // var optionValues = parser.GetOptionValues(structureInfo);
+            // var optionValues = parser.GetOptionValues(structureInfo);
             var optionValues = getTestValues();
 
             var configRoot = ConfigUtils.CreateConfigRoot(structureInfo);
@@ -63,7 +66,7 @@ namespace ConfigReader
         }
 
 
-#region DEBUG ONLY
+        #region DEBUG ONLY
         private static IEnumerable<OptionValue> getTestValues()
         {
             var values = new List<OptionValue>(){
@@ -79,11 +82,9 @@ namespace ConfigReader
         {
             return new OptionValue(new QualifiedOptionName(new QualifiedSectionName(section), option), value);
         }
-#endregion
+        #endregion
 
-        private static void throwOnInvalid(Type structureType)
-        {
-            //throw new NotImplementedException();
-        }
+
+      
     }
 }

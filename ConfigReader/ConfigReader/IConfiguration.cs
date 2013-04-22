@@ -4,13 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.IO;
+
 using ConfigReader.Parsing;
 
 namespace ConfigReader
 {
-    public interface IConfig
+    public interface IConfiguration
     {
         void Save(string outputFile);
-        void SetComment(QualifiedName comment);
+        void WriteTo(StreamWriter output);
+        void SetComment(QualifiedName name,string comment);
     }
 }
