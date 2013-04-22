@@ -5,7 +5,7 @@ using System.Text;
 
 using System.Reflection;
 
-namespace ConfigReader
+namespace ConfigReader.ConfigCreation
 {
     internal class SectionHandler
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConfigReader
+namespace ConfigReader.ConfigCreation
 {
     class ConfigSection:PropertyStorage
     {

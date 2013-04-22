@@ -8,22 +8,11 @@ namespace ConfigReader.Parsing
 {
     class StructureInfo
     {
-        private readonly List<SectionInfo> _sections;
+        internal readonly IEnumerable<SectionInfo> Sections;
 
-        internal readonly ConfigMode Mode;
-
-        internal IEnumerable<SectionInfo> Sections
+        internal StructureInfo(IEnumerable<SectionInfo> sections)
         {
-            get
-            {
-                return _sections;
-            }
-        }
-
-        internal StructureInfo(IEnumerable<SectionInfo> sections, ConfigMode mode)
-        {
-            Mode = mode;
-            _sections.AddRange(sections);
+            Sections = new List<SectionInfo>(sections);
         }
 
     }

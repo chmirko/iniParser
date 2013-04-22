@@ -11,7 +11,7 @@ namespace ConfigReader
     {
         static void Main(string[] args)
         {
-            var config = ConfigCreator.FromFile<ConfigStructure>("config.cfg",ConfigMode.Strict);
+            var config = Configuration.CreateFromFile<ConfigStructure>("config.cfg",ConfigMode.Strict);
 
             var x = config.Sec1;
             

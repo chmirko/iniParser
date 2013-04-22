@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using System.Reflection;
 
-namespace ConfigReader
+namespace ConfigReader.ConfigCreation
 {
     class PropertyStorage
     {

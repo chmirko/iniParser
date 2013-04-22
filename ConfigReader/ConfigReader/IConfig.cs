@@ -10,6 +10,6 @@ namespace ConfigReader
 {
     public interface IConfig
     {
-        void Save(string outputFile);        
+        void Save(string outputFile);
     }
 }

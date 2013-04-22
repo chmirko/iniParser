@@ -9,7 +9,17 @@ namespace ConfigReader.Parsing
     class OptionInfo
     {
         internal readonly QualifiedOptionName Name;
+        internal readonly Type ExpectedType;    
         internal readonly object DefaultValue;
-        internal readonly Type ExpectedType;        
+        internal readonly string DefaultComment;
+
+
+        internal OptionInfo(QualifiedOptionName name, Type expectedType, object defaultValue, string defaultComment)
+        {
+            Name = name;
+            ExpectedType = expectedType;
+            DefaultValue = defaultValue;
+            DefaultComment = defaultComment;
+        }
     }
 }

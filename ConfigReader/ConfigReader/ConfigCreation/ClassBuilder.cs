@@ -12,7 +12,7 @@ using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("DataBuilderAssembly")]
 
-namespace ConfigReader
+namespace ConfigReader.ConfigCreation
 {
 
 

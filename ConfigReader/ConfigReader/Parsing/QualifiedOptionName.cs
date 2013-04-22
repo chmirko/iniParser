@@ -11,7 +11,7 @@ namespace ConfigReader.Parsing
         public readonly string Option;
         public readonly string Section;
 
-        public QualifiedOptionName(string option, string section) {
+        public QualifiedOptionName(string section,string option) {
             Option = option;
             Section = section;
         }

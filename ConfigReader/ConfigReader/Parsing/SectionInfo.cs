@@ -8,7 +8,15 @@ namespace ConfigReader.Parsing
 {
     class SectionInfo
     {
-        public readonly string Name;
-        public readonly IEnumerable<OptionInfo> Options;
+        internal readonly string Name;
+        internal readonly string DefaultComment;
+        internal readonly IEnumerable<OptionInfo> Options;
+
+        internal SectionInfo(string name, List<OptionInfo> options,string defaultComment)
+        {            
+            Name = name;
+            Options =new List<OptionInfo>(options);
+            DefaultComment = defaultComment;
+        }
     }
 }
