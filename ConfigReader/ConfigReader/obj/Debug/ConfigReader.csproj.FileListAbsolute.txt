@@ -1,0 +1,6 @@
+C:\Users\m9ra\Documents\Visual Studio 2012\Projects\ConfigReader\ConfigReader\bin\Debug\ConfigReader.exe.config
+C:\Users\m9ra\Documents\Visual Studio 2012\Projects\ConfigReader\ConfigReader\obj\Debug\ConfigReader.csprojResolveAssemblyReference.cache
+C:\Users\m9ra\Documents\Visual Studio 2012\Projects\ConfigReader\ConfigReader\bin\Debug\ConfigReader.exe
+C:\Users\m9ra\Documents\Visual Studio 2012\Projects\ConfigReader\ConfigReader\bin\Debug\ConfigReader.pdb
+C:\Users\m9ra\Documents\Visual Studio 2012\Projects\ConfigReader\ConfigReader\obj\Debug\ConfigReader.exe
+C:\Users\m9ra\Documents\Visual Studio 2012\Projects\ConfigReader\ConfigReader\obj\Debug\ConfigReader.pdb
