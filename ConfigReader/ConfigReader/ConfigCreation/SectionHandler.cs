@@ -5,11 +5,13 @@ using System.Text;
 
 using System.Reflection;
 
+using ConfigReader.Parsing;
+
 namespace ConfigReader.ConfigCreation
 {
     internal class SectionHandler
     {
-        public readonly string Name;
+        public readonly QualifiedSectionName Name;
         public readonly ConfigSection Storage;
         public readonly Type SectionType;
         
@@ -17,7 +19,7 @@ namespace ConfigReader.ConfigCreation
         public SectionHandler(PropertyInfo sectionProperty,ConfigSection sectionData)
         {
             SectionType = sectionProperty.PropertyType;
-            Name = sectionProperty.Name;
+            Name = new QualifiedSectionName(sectionProperty.Name);
             Storage = sectionData;
         }
     }

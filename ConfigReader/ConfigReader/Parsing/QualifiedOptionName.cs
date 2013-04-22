@@ -6,29 +6,19 @@ using System.Threading.Tasks;
 
 namespace ConfigReader.Parsing
 {
-    struct QualifiedOptionName
+    sealed class QualifiedOptionName:QualifiedName
     {
-        public readonly string Option;
-        public readonly string Section;
+        public readonly QualifiedSectionName Section;
+        public readonly string ID;
 
-        public QualifiedOptionName(string section,string option) {
-            Option = option;
+        public QualifiedOptionName(QualifiedSectionName section,string optionID) {
+            ID= optionID;
             Section = section;
         }
         
-        public override bool Equals(object obj)
-        {            
-            return ToString()==obj.ToString();
-        }
-
-        public override int GetHashCode()
+        internal override string toString()
         {
-            return ToString().GetHashCode();
-        }
-
-        public override string ToString()
-        {
-            return string.Format("{0}::{1}", Section, Option);
+            return string.Format("{0}::{1}", Section.ID, ID);
         }
     }
 }

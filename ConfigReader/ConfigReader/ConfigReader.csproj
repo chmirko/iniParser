@@ -56,22 +56,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DefaultCommentAttribute.cs" />
     <Compile Include="ConfigCreation\ClassBuilder.cs" />
     <Compile Include="ConfigCreation\ConfigRoot.cs" />
     <Compile Include="ConfigCreation\ConfigSection.cs" />
+    <Compile Include="ConfigCreation\ConfigUtils.cs" />
+    <Compile Include="ConfigCreation\InfoUtils.cs" />
     <Compile Include="IConfig.cs" />
     <Compile Include="Configuration.cs" />
+    <Compile Include="OptionInfoAttribute.cs" />
     <Compile Include="Parsing\OptionInfo.cs" />
     <Compile Include="Parsing\ConfigParser.cs" />
     <Compile Include="Parsing\IValueConverter.cs" />
     <Compile Include="Parsing\OptionValue.cs" />
     <Compile Include="Parsing\QualifiedOptionName.cs" />
+    <Compile Include="Parsing\QualifiedSectionName.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ConfigCreation\PropertyStorage.cs" />
     <Compile Include="ConfigCreation\SectionHandler.cs" />
     <Compile Include="Parsing\SectionInfo.cs" />
     <Compile Include="Parsing\StructureInfo.cs" />
+    <Compile Include="QualifiedName.cs" />
+    <Compile Include="SectionInfoAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

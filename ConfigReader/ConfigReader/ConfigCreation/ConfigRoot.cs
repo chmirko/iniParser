@@ -12,7 +12,7 @@ namespace ConfigReader.ConfigCreation
     class ConfigRoot:PropertyStorage,IConfig
     {
         ConfigParser _parser;
-        Dictionary<string,ConfigSection> _sections = new Dictionary<string,ConfigSection>();
+        Dictionary<QualifiedSectionName,ConfigSection> _sections = new Dictionary<QualifiedSectionName,ConfigSection>();
 
         public IEnumerable<ConfigSection> Sections
         {
@@ -24,7 +24,7 @@ namespace ConfigReader.ConfigCreation
             
         internal void InsertSection(SectionHandler section)
         {
-            this.InitializeStoredProperty(section.Name, section.Storage);
+            this.InitializeStoredProperty(section.Name.ID, section.Storage);
             _sections.Add(section.Name,section.Storage);
         }
 
@@ -36,12 +36,18 @@ namespace ConfigReader.ConfigCreation
         internal void SetOption(OptionValue value)
         {
             var sectionName = value.Name.Section;
-            var optionName = value.Name.Option;
+            var optionName = value.Name.ID;
 
             _sections[sectionName].InitializeStoredProperty(optionName, value.ConvertedValue);
         }
 
         public void Save(string outputFile)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void SetComment(QualifiedName comment)
         {
             throw new NotImplementedException();
         }

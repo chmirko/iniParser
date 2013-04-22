@@ -119,17 +119,7 @@ namespace ConfigReader.Parsing
         /// </summary>
         /// <param name="info"></param>
         /// <param name="comment"></param>
-        internal void SetComment(OptionInfo info, string comment)
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// Overrides default and parsed comment
-        /// </summary>
-        /// <param name="info"></param>
-        /// <param name="comment"></param>
-        internal void SetComment(SectionInfo info, string comment)
+        internal void SetComment(QualifiedName name, string comment)
         {
             throw new NotImplementedException();
         }

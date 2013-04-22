@@ -11,5 +11,6 @@ namespace ConfigReader
     public interface IConfig
     {
         void Save(string outputFile);
+        void SetComment(QualifiedName comment);
     }
 }
