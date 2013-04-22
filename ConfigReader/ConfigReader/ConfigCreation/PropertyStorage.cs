@@ -10,6 +10,10 @@ namespace ConfigReader.ConfigCreation
 {
     class PropertyStorage
     {
+        
+        public static readonly MethodInfo SetterProvider = typeof(PropertyStorage).GetMethod("Setter", BindingFlags.Instance | BindingFlags.NonPublic);
+
+        
         HashSet<string> _changedProperties = new HashSet<string>();
 
         internal IEnumerable<string> ChangedProperties
@@ -33,34 +37,33 @@ namespace ConfigReader.ConfigCreation
                 }
             }
         }
-        internal T Getter<T>(string propertyName, ref T propertyField)
+
+        protected void ClearChangeLog()
         {
-            return propertyField;
+            _changedProperties.Clear();
         }
 
-        internal void Setter<T>(string propertyName, ref T propertyField, T value)
+
+        internal void Setter<T>(string propertyName,ref T propertyField, T value)
         {
             _changedProperties.Add(propertyName);
             propertyField = value;
         }
 
-        internal void InitializeStoredProperty(string propertyName, object value)
+        protected void DirectPropertySet(string propertyName, object value)
         {
-            getStoredField(propertyName).SetValue(this, value);
+            getPropertyField(propertyName).SetValue(this, value);
         }
 
-        internal object ReadStoredProperty(string propertyName)
+        protected object ReadStoredProperty(string propertyName)
         {
-            return getStoredField(propertyName).GetValue(this);
+            return getPropertyField(propertyName).GetValue(this);
         }
 
-
-        private FieldInfo getStoredField(string fieldName)
+        private FieldInfo getPropertyField(string fieldName)
         {
             var result= this.GetType().GetField("property_" + fieldName,BindingFlags.NonPublic|BindingFlags.Instance);
             return result;
         }
-
-
     }
 }

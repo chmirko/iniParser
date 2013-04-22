@@ -4,28 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+using ConfigReader.Parsing;
+
 namespace ConfigReader.ConfigCreation
 {
     static class ConfigUtils
     {
 
-        internal static ConfigRoot CreateConfigRoot(Type structureType)
+        internal static ConfigRoot CreateConfigRoot(StructureInfo structure)
         {
-            var configRoot = createConfigRootRaw(structureType);
+            var configRoot = createConfigRootRaw(structure);
 
-            foreach (var section in createSectionHandlers(structureType))
+            foreach (var section in structure.Sections)
             {
-                configRoot.InsertSection(section);
+                var configSection = createConfigSection(section);
+                configRoot.InsertSection(configSection);
             }
             return configRoot;
         }
 
-        private static ConfigRoot createConfigRootRaw(Type structureType)
+        private static ConfigRoot createConfigRootRaw(StructureInfo structure)
         {
-            var rootBuilder = new ClassBuilder<ConfigRoot>(structureType);
-            foreach (var prop in structureType.GetProperties())
+            var rootBuilder = new ClassBuilder<ConfigRoot>(structure.StructureType);
+            foreach (var section in structure.Sections)
             {
-                rootBuilder.AddProperty(prop.Name, prop.PropertyType);
+                rootBuilder.AddProperty(section.AssociatedProperty, section.SectionType);
             }
             var type = rootBuilder.Build();
 
@@ -33,26 +37,19 @@ namespace ConfigReader.ConfigCreation
             return configRoot;
         }
 
-        private static IEnumerable<SectionHandler> createSectionHandlers(Type structureType)
+        private static ConfigSection createConfigSection(SectionInfo info)
         {
-            foreach (var sectionProperty in InfoUtils.GetSectionProperties(structureType))
+            var sectionBuilder = new ClassBuilder<ConfigSection>(info.SectionType);
+            foreach (var option in info.Options)
             {
-                var sectionData = createConfigSection(sectionProperty.PropertyType);
-                yield return new SectionHandler(sectionProperty, sectionData);
-            }
-        }
-
-        private static ConfigSection createConfigSection(Type sectionType)
-        {
-            var sectionBuilder = new ClassBuilder<ConfigSection>(sectionType);
-            foreach (var optionProperty in InfoUtils.GetOptionProperties(sectionType))
-            {
-                sectionBuilder.AddProperty(optionProperty.Name, optionProperty.PropertyType);
+                sectionBuilder.AddProperty(option.AssociatedProperty, option.ExpectedType);
             }
 
             var type = sectionBuilder.Build();
+            var section= (ConfigSection)Activator.CreateInstance(type);
+            section.SetSectionInfo(info);
 
-            return (ConfigSection)Activator.CreateInstance(type);
+            return section;
         }
     }
 }

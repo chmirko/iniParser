@@ -22,7 +22,7 @@ namespace ConfigReader.ConfigCreation
                 sections.Add(sectionInfo);
             }
 
-            return new StructureInfo(sections);
+            return new StructureInfo(structureType, sections);
         }
 
         internal static SectionInfo CreateSectionInfo(PropertyInfo sectionProperty)
@@ -42,7 +42,7 @@ namespace ConfigReader.ConfigCreation
                 options.Add(optionInfo);
             }
 
-            return new SectionInfo(sectionName, options, commentAttr.CommentText);
+            return new SectionInfo(sectionName,sectionProperty, options, commentAttr.CommentText);
         }
 
         internal static OptionInfo CreateOptionInfo(QualifiedSectionName sectionName, PropertyInfo optionProperty)
@@ -56,7 +56,8 @@ namespace ConfigReader.ConfigCreation
 
             var expectedType = optionProperty.PropertyType;
 
-            return new OptionInfo(optionName, expectedType, 
+            return new OptionInfo(
+                optionName, expectedType, optionProperty.Name,
                 infoAttr.DefaultValue,infoAttr.IsOptional,
                 commentAttr.CommentText);
         }

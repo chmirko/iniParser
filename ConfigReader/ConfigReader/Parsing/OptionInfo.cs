@@ -13,15 +13,18 @@ namespace ConfigReader.Parsing
         internal readonly bool IsOptional;
         internal readonly object DefaultValue;
         internal readonly string DefaultComment;
+        internal readonly string AssociatedProperty;
 
-
-        internal OptionInfo(QualifiedOptionName name, Type expectedType, object defaultValue,bool isOptional, string defaultComment)
+        internal OptionInfo(QualifiedOptionName name, Type expectedType,string associatedProperty, object defaultValue,bool isOptional, string defaultComment)
         {
             Name = name;
             ExpectedType = expectedType;
             DefaultValue = defaultValue;
             IsOptional = isOptional;
             DefaultComment = defaultComment;
+            AssociatedProperty = associatedProperty;
         }
+
+        
     }
 }

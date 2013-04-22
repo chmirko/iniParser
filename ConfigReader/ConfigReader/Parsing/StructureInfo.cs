@@ -9,11 +9,12 @@ namespace ConfigReader.Parsing
     class StructureInfo
     {
         internal readonly IEnumerable<SectionInfo> Sections;
+        internal readonly Type StructureType;
 
-        internal StructureInfo(IEnumerable<SectionInfo> sections)
+        internal StructureInfo(Type structureType, IEnumerable<SectionInfo> sections)
         {
+            StructureType=structureType;
             Sections = new List<SectionInfo>(sections);
-        }
-
+        }        
     }
 }

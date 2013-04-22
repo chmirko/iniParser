@@ -15,16 +15,10 @@ using System.Runtime.CompilerServices;
 namespace ConfigReader.ConfigCreation
 {
 
-
-
     internal class ClassBuilder<ParentClass>
         where ParentClass : PropertyStorage
     {
-
-
-        private static readonly MethodInfo GetterProvider = typeof(PropertyStorage).GetMethod("Getter", BindingFlags.Instance | BindingFlags.NonPublic);
-        private static readonly MethodInfo SetterProvider = typeof(PropertyStorage).GetMethod("Setter", BindingFlags.Instance | BindingFlags.NonPublic);
-
+      
         TypeBuilder _typeBuilder;
 
         public ClassBuilder(Type implementedInterface)
@@ -34,7 +28,7 @@ namespace ConfigReader.ConfigCreation
 
             ModuleBuilder moduleBuilder = assemBuilder.DefineDynamicModule("DataBuilderModule");
 
-            _typeBuilder = moduleBuilder.DefineType("NewClass", TypeAttributes.Class, typeof(ParentClass));
+            _typeBuilder = moduleBuilder.DefineType("config_"+implementedInterface.Name,TypeAttributes.Class, typeof(ParentClass));
             _typeBuilder.AddInterfaceImplementation(implementedInterface);
         }
 
@@ -56,25 +50,25 @@ namespace ConfigReader.ConfigCreation
 
             var genericParams = new Type[] { type };
             ILGenerator getIL = getter.GetILGenerator();
-            getIL.Emit(OpCodes.Ldarg_0);
-/*            getIL.Emit(OpCodes.Ldstr, name);
-            getIL.EmitCall(OpCodes.Call, GetterProvider.MakeGenericMethod(genericParams), null);*/
-            getIL.Emit(OpCodes.Ldfld,field);
-            getIL.Emit(OpCodes.Ret);
+            getIL.Emit(OpCodes.Ldarg_0);        //load this
+            getIL.Emit(OpCodes.Ldfld,field);    //get storage field
+            getIL.Emit(OpCodes.Ret);            //return value from storage field
 
             var setter = _typeBuilder.DefineMethod("set_" + name, getSetAttr, null, new Type[] { type });
 
             ILGenerator setIL = setter.GetILGenerator();
-        
    
-            setIL.Emit(OpCodes.Ldarg_0);
-            setIL.Emit(OpCodes.Ldarg_1);
-            setIL.Emit(OpCodes.Stfld, field);
-   //       setIL.Emit(OpCodes.Stind_Ref);
-   //       setIL.EmitCall(OpCodes.Call, SetterProvider.MakeGenericMethod(genericParams), null);
-            setIL.Emit(OpCodes.Ret);
+            setIL.Emit(OpCodes.Ldarg_0);        //load this for call
+            setIL.Emit(OpCodes.Ldstr, name);    //load property name
 
-
+            setIL.Emit(OpCodes.Ldarg_0);        //load this for field load
+            setIL.Emit(OpCodes.Ldflda, field);  //load address of storage field
+       
+            setIL.Emit(OpCodes.Ldarg_1);        //load value to be stored
+       
+            //call to storage provider
+            setIL.EmitCall(OpCodes.Call, PropertyStorage.SetterProvider.MakeGenericMethod(genericParams), null);
+            setIL.Emit(OpCodes.Ret);            //return from setter
 
             propertyBuilder.SetSetMethod(setter);
             propertyBuilder.SetGetMethod(getter);

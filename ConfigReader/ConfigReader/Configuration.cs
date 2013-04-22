@@ -49,9 +49,10 @@ namespace ConfigReader
             throwOnInvalid(structureType);
 
             var structureInfo = InfoUtils.CreateStructureInfo(structureType);
-            var optionValues = parser.GetOptionValues(structureInfo);
+           // var optionValues = parser.GetOptionValues(structureInfo);
+            var optionValues = getTestValues();
 
-            var configRoot = ConfigUtils.CreateConfigRoot(structureType);
+            var configRoot = ConfigUtils.CreateConfigRoot(structureInfo);
             //fill config with parsed values
             foreach (var value in optionValues)
             {
@@ -61,6 +62,24 @@ namespace ConfigReader
             return (Structure)(object)configRoot;
         }
 
+
+#region DEBUG ONLY
+        private static IEnumerable<OptionValue> getTestValues()
+        {
+            var values = new List<OptionValue>(){
+                createValue("Sec1","number",12345),
+                createValue("Sec1","settableNumber",4389),
+                createValue("Sec2","Name with space","setted value by config")
+            };
+
+            return values;
+        }
+
+        private static OptionValue createValue(string section, string option, object value)
+        {
+            return new OptionValue(new QualifiedOptionName(new QualifiedSectionName(section), option), value);
+        }
+#endregion
 
         private static void throwOnInvalid(Type structureType)
         {

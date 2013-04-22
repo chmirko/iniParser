@@ -22,10 +22,10 @@ namespace ConfigReader.ConfigCreation
             }
         }
             
-        internal void InsertSection(SectionHandler section)
+        internal void InsertSection(ConfigSection section)
         {
-            this.InitializeStoredProperty(section.Name.ID, section.Storage);
-            _sections.Add(section.Name,section.Storage);
+            this.DirectPropertySet(section.AssociatedProperty,section);
+            _sections.Add(section.Name,section);
         }
 
         internal void SetParser(ConfigParser parser)
@@ -35,15 +35,26 @@ namespace ConfigReader.ConfigCreation
 
         internal void SetOption(OptionValue value)
         {
-            var sectionName = value.Name.Section;
-            var optionName = value.Name.ID;
+            var optionName = value.Name;
+            var sectionName = optionName.Section;
+            
 
-            _sections[sectionName].InitializeStoredProperty(optionName, value.ConvertedValue);
+            _sections[sectionName].SetOption(optionName, value.ConvertedValue);
         }
 
         public void Save(string outputFile)
         {
-            throw new NotImplementedException();
+            foreach (var section in _sections.Values)
+            {
+                foreach (var changedOption in section.ChangedOptions)
+                {
+                    var optionInfo = section.GetOptionInfo(changedOption.Name);
+                    _parser.SetOption(optionInfo,changedOption);
+                }
+
+                section.ClearOptionChangeLog();
+            }
+            _parser.WriteTo(outputFile);
         }
 
 

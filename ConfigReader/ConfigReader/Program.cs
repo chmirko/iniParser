@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 namespace ConfigReader
 {
 
+    delegate void IntSetter(int value);
+
     class Program
     {
         static void Main(string[] args)
@@ -14,8 +16,10 @@ namespace ConfigReader
             var config = Configuration.CreateFromFile<ConfigStructure>("config.cfg",ConfigMode.Strict);
 
             var x = config.Sec1;
-            
+
             config.Sec1.settableNumber = 4;
+            config.Sec1.settableNumber = 42;
+            
             config.Save("chagedConfig.cfg");            
         }
     }

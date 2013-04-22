@@ -67,7 +67,10 @@ namespace ConfigReader.Parsing
             throw new NotImplementedException();
         }
 
-
+        /// <summary>
+        /// Stream can be read only here.
+        /// </summary>
+        /// <param name="input"></param>
         private void readConfig(StreamReader input)
         {
             throw new NotImplementedException();
@@ -93,7 +96,7 @@ namespace ConfigReader.Parsing
 
 
         /// <summary>
-        /// Get current option values.
+        /// Get current option values. Options validity is checked here.
         /// </summary>
         /// <param name="structure"></param>        
         /// <returns></returns>
