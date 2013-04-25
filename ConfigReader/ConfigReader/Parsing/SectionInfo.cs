@@ -8,15 +8,35 @@ using System.Reflection;
 
 namespace ConfigReader.Parsing
 {
+    /// <summary>
+    /// Info describing section structure.
+    /// </summary>
     class SectionInfo
     {
+        /// <summary>
+        /// Config scope unique name for section.
+        /// </summary>
         internal readonly QualifiedSectionName Name;
-        internal readonly Type SectionType;
-        internal readonly string AssociatedProperty;
+        /// <summary>
+        /// Type which describes section structure.
+        /// </summary>
+        internal readonly Type DescribingType;     
+        /// <summary>
+        /// Default comment associated with section.
+        /// </summary>
         internal readonly string DefaultComment;
+        /// <summary>
+        /// Options that are present in section.
+        /// </summary>
         internal readonly IEnumerable<OptionInfo> Options;
+        /// <summary>
+        /// Name of property that is associated with section.
+        /// </summary>
+        internal readonly string AssociatedProperty;
 
-
+        /// <summary>
+        /// Here are stored options in section.
+        /// </summary>
         private readonly Dictionary<QualifiedOptionName, OptionInfo> _options = new Dictionary<QualifiedOptionName, OptionInfo>();
 
         internal SectionInfo(QualifiedSectionName name,PropertyInfo associatedProperty, List<OptionInfo> options,string defaultComment)
@@ -24,7 +44,7 @@ namespace ConfigReader.Parsing
             Name = name;
 
             AssociatedProperty = associatedProperty.Name;
-            SectionType = associatedProperty.PropertyType;
+            DescribingType = associatedProperty.PropertyType;
 
             foreach (var option in options)
             {
@@ -36,6 +56,11 @@ namespace ConfigReader.Parsing
             DefaultComment = defaultComment;
         }
 
+        /// <summary>
+        /// Get option info for option with given name.
+        /// </summary>
+        /// <param name="name">Name of wanted option.</param>
+        /// <returns>Option info for given name.</returns>
         internal OptionInfo GetOptionInfo(QualifiedOptionName name)
         {
             return _options[name];

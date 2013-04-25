@@ -9,13 +9,12 @@ using System.IO;
 namespace ConfigReader
 {
 
-    delegate void IntSetter(int value);
-
+    
     class Program
     {
         static void Main(string[] args)
         {
-            var config = Configuration.CreateFromFile<ConfigStructure>("config.cfg",ConfigMode.Strict);
+     /*       var config = Configuration.CreateFromFile<ConfigStructure>("config.cfg",ConfigMode.Strict);
 
             var x = config.Sec1;
 
@@ -29,7 +28,12 @@ namespace ConfigReader
             var writer = new StreamWriter(memStream);
             config.WriteTo(writer);
 
-            Console.WriteLine(Encoding.Default.GetString(memStream.ToArray()));
+            Console.WriteLine(Encoding.Default.GetString(memStream.ToArray()));*/
+
+            var config2 = Configuration.CreateFromDefaults<ConfigStructure>();
+            
+    
+            config2.Save("defaultValues.cfg");
                
         }
     }
@@ -38,6 +42,8 @@ namespace ConfigReader
 
     interface ConfigStructure:IConfiguration
     {
+        SpecialTypeSection Special { get; }
+
         [DefaultComment("First section of config")]
         Section1 Sec1 { get; }
         [DefaultComment("Second section of config")]
@@ -51,17 +57,20 @@ namespace ConfigReader
     {
         IEnumerable<string> Enumerable { get; }
 
+        [OptionInfo(DefaultValue = new string[] { "value1", "value2","valu3"})]
         List<string> List { get; }
 
         string[] Array { get; }
 
         EnumTest Enum { get; }
 
-        HashSet<EnumTest> EnumSet { get; }
+        [OptionInfo(IsOptional = true, DefaultValue = new EnumTest[]{EnumTest.Value1,EnumTest.Value2})]
+        List<EnumTest> EnumSet { get; }
     }
 
     interface Section1
     {        
+        [Range(LowerBound=0)]
         int number { get; }
         [DefaultComment("Value that can be set at runtime")]
         int settableNumber { get; set; }

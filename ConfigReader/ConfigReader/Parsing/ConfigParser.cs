@@ -13,32 +13,23 @@ namespace ConfigReader.Parsing
         /// <summary>
         /// Configuration mode.
         /// </summary>
-        private readonly ConfigMode _mode;
+        private readonly ParsingMode _mode;
 
         /// <summary>
         /// Creates parser for configuration at given path.
-        /// NOTE: Is good to copy available converters (they can be changed, but it should'nt affect created instance)
         /// </summary>
         /// <param name="configFilePath"></param>
-        private ConfigParser(ConfigMode mode)
+        private ConfigParser(ParsingMode mode)
         {            
             _mode = mode;
         }
 
         /// <summary>
-        /// Set value converter for given type. (Can override default value converter)
+        /// Create parser which will be used only for writing default values.
+        /// All values that should be written will be set via SetOption
         /// </summary>
-        /// <param name="converter"></param>
-        /// <param name="type"></param>
-        static internal void SetConverter(Type type,IValueConverter converter){
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// Remove converter associted with given type. (Can remove default value converter)
-        /// </summary>
-        /// <param name="type"></param>
-        static internal void RemoveConverter(Type type)
+        /// <returns></returns>
+        static internal ConfigParser ForWritingOnly()
         {
             throw new NotImplementedException();
         }
@@ -49,7 +40,7 @@ namespace ConfigReader.Parsing
         /// <param name="input"></param>
         /// <param name="mode"></param>
         /// <returns></returns>
-        static internal ConfigParser FromStream(StreamReader input, ConfigMode mode)
+        static internal ConfigParser FromStream(StreamReader input, ParsingMode mode)
         {
             if (input == null)
             {
@@ -62,7 +53,7 @@ namespace ConfigReader.Parsing
             return parser;
         }
 
-        static internal ConfigParser FromFile(string configFilePath,ConfigMode mode)
+        static internal ConfigParser FromFile(string configFilePath,ParsingMode mode)
         {
             throw new NotImplementedException();
         }
@@ -96,7 +87,7 @@ namespace ConfigReader.Parsing
 
 
         /// <summary>
-        /// Get current option values. Options validity is checked here.
+        /// Get current option values. Options validity is checked here. Returns only options which were present in file or options that were passed through SetOption.
         /// </summary>
         /// <param name="structure"></param>        
         /// <returns></returns>
@@ -116,6 +107,7 @@ namespace ConfigReader.Parsing
             throw new NotImplementedException();
         }
 
+        Dictionary<QualifiedName, string> _comments = new Dictionary<QualifiedName, string>();
 
         /// <summary>
         /// Overrides default and parsed comment.
@@ -124,7 +116,10 @@ namespace ConfigReader.Parsing
         /// <param name="comment"></param>
         internal void SetComment(QualifiedName name, string comment)
         {
+            _comments[name] = comment;
             throw new NotImplementedException();
         }
+
+        
     }
 }

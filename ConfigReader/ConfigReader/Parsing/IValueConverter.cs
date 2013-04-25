@@ -8,5 +8,7 @@ namespace ConfigReader.Parsing
 {
     interface IValueConverter
     {
+        object Deserialize(string data);
+        string Serialize(object obj);
     }
 }
