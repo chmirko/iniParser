@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+
 
 namespace ConfigReader.Parsing
 {
@@ -35,6 +35,7 @@ namespace ConfigReader.Parsing
         /// Name of property that is associated with option.
         /// </summary>
         internal readonly string AssociatedProperty;
+
 
         /// <summary>
         /// Lower bound for numerical values.
