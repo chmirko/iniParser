@@ -8,7 +8,7 @@ namespace ConfigReader.ConfigCreation
     /// <summary>
     /// Interface that is used for creating containers.
     /// </summary>
-    interface IContainerBuilder
+    internal interface IContainerBuilder
     {
         /// <summary>
         /// Resolve type of element that can be stored in container.

@@ -5,6 +5,9 @@ using System.Text;
 
 namespace ConfigReader.ConfigCreation.ContainerBuilders
 {
+    /// <summary>
+    /// Build array containers.
+    /// </summary>
     class ArrayBuilder:IContainerBuilder
     {
         public Type ResolveElementType(Type containerType)

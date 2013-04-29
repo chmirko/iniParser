@@ -7,6 +7,9 @@ using System.Collections;
 
 namespace ConfigReader.ConfigCreation.ContainerBuilders
 {
+    /// <summary>
+    /// Build containers which implement generic ICollection interface.
+    /// </summary>
     class CollectionBuilder:IContainerBuilder
     {
         public Type ResolveElementType(Type containerType)
@@ -24,7 +27,7 @@ namespace ConfigReader.ConfigCreation.ContainerBuilders
 
             foreach (var implemented in containerType.GetInterfaces())
             {
-                if(!StructureFactory.InterfaceMatch(implemented,typeof(ICollection<>)))
+                if(!ReflectionUtils.NonGenericMatch(implemented,typeof(ICollection<>)))
                     continue;
                                 
                 return implemented.GetGenericArguments()[0];
@@ -35,10 +38,11 @@ namespace ConfigReader.ConfigCreation.ContainerBuilders
         public object CreateContainer(Type containerType, IEnumerable<object> elements)
         {
             var container = Activator.CreateInstance(containerType);
-
+            var elementType = StructureFactory.GetElementType(containerType);
+            
             foreach (var el in elements)
             {
-                containerType.GetMethod("Add").Invoke(container, new object[]{el});
+               ReflectionUtils.CollectionAdd(elementType,container,el);
             }
 
             return container;

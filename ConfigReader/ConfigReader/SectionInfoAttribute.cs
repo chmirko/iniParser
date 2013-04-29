@@ -8,13 +8,25 @@ using System.Reflection;
 
 namespace ConfigReader
 {
+    /// <summary>
+    /// Attribute for specifying additional information on sections.
+    /// </summary>
     [AttributeUsage(AttributeTargets.Property,AllowMultiple=false)]
     public class SectionInfoAttribute:Attribute
     {
+        /// <summary>
+        /// ID of section. This ID overrides default ID from property name.
+        /// </summary>
         public string ID { get; set; }
-        public object DefaultValue { get; set; }
+        
+        /// <summary>
+        /// Determine that section has to be present in configuration file.
+        /// </summary>
         public bool IsOptional { get; set; }
 
+        /// <summary>
+        /// Create section info attribute.
+        /// </summary>
         public SectionInfoAttribute()
         {
         }

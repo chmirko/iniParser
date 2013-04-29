@@ -8,13 +8,24 @@ using System.Reflection;
 
 namespace ConfigReader.ConfigCreation
 {
-
+    /// <summary>
+    /// Method that provide ID resolving.
+    /// </summary>
+    /// <param name="property">Property which describes ID.</param>
+    /// <returns>Resolved ID.</returns>
     internal delegate string IDResolver(PropertyInfo property);
 
+    /// <summary>
+    /// Structure validation services.
+    /// </summary>
     static class StructureValidation
     {
-        static internal void ThrowOnInvalid(Type structureType)
-        {            
+        /// <summary>
+        /// Check validity of structureType. If error is found, appropriate exception is thrown.
+        /// </summary>
+        /// <param name="structureType">Type describing validated structure.</param>
+        internal static void ThrowOnInvalid(Type structureType)
+        {
             //TODO attribute semantic correctness
 
             checkSectionUniqueness(structureType);
@@ -26,22 +37,35 @@ namespace ConfigReader.ConfigCreation
                     throw new NotSupportedException("Sections cannot have setters");
                 }
 
-                var optionType = property.PropertyType;                           
+                var optionType = property.PropertyType;
                 checkSignature(optionType);
-                checkOptionUniqueness(optionType);                
+                checkOptionUniqueness(optionType);
             }
         }
 
-        private static void checkOptionUniqueness(Type optionType)
+        /// <summary>
+        /// Check that every section in structure has unique ID.
+        /// </summary>
+        /// <param name="structureType">Type describing structure.</param>
+        private static void checkSectionUniqueness(Type structureType)
         {
-            checkIDUniqueness(optionType, StructureFactory.ResolveOptionID);
+            checkIDUniqueness(structureType, StructureFactory.ResolveSectionID);
         }
 
-        private static void checkSectionUniqueness(Type sectionType)
+        /// <summary>
+        /// Check that every option in section has unique ID.
+        /// </summary>
+        /// <param name="sectionType">Type describing section.</param>
+        private static void checkOptionUniqueness(Type sectionType)
         {
-            checkIDUniqueness(sectionType, StructureFactory.ResolveSectionID);
+            checkIDUniqueness(sectionType, StructureFactory.ResolveOptionID);
         }
 
+        /// <summary>
+        /// Check that ids produced by resolver are unique.
+        /// </summary>
+        /// <param name="type">Type which properties are traversed.</param>
+        /// <param name="resolver">Resolver which produce id from traversed properties.</param>
         private static void checkIDUniqueness(Type type, IDResolver resolver)
         {
             var ids = new HashSet<string>();
@@ -55,6 +79,10 @@ namespace ConfigReader.ConfigCreation
             }
         }
 
+        /// <summary>
+        /// Check that type contains valid constructs only.
+        /// </summary>
+        /// <param name="type">Type which signature will be checked.</param>
         private static void checkSignature(Type type)
         {
             if (!type.IsInterface)

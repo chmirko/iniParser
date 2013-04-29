@@ -10,12 +10,28 @@ namespace ConfigReader.ConfigCreation
 {
     class PropertyStorage
     {
-        
-        public static readonly MethodInfo SetterProvider = typeof(PropertyStorage).GetMethod("Setter", BindingFlags.Instance | BindingFlags.NonPublic);
-
-        
+        /// <summary>
+        /// Names of changed properties are stored here.
+        /// </summary>
         HashSet<string> _changeLog = new HashSet<string>();
 
+        /// <summary>
+        /// Setter provider. Is used for registering setter calls.
+        /// WARNING: Don't change signature. Is called from IL emited code.
+        /// </summary>
+        /// <typeparam name="T">Type of setted property.</typeparam>
+        /// <param name="propertyName">Name of setted property.</param>
+        /// <param name="propertyField">Storage field for property. (Is used for getter)</param>
+        /// <param name="value">Value that is passed to setter.</param>
+        internal void Setter<T>(string propertyName, ref T propertyField, T value)
+        {
+            _changeLog.Add(propertyName);
+            propertyField = value;
+        }
+
+        /// <summary>
+        /// Enumeration of changed properties.
+        /// </summary>
         internal IEnumerable<string> ChangedProperties
         {
             get
@@ -23,46 +39,46 @@ namespace ConfigReader.ConfigCreation
                 return _changeLog;
             }
         }
-
-        public IEnumerable<string> StoredProperties
-        {
-            get
-            {
-                foreach (var field in this.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance))
-                {
-                    if (field.Name.StartsWith("property_"))
-                    {
-                        yield return field.Name.Substring("property_".Length);
-                    }
-                }
-            }
-        }
-
+             
+        /// <summary>
+        /// Clear log of changed properties.
+        /// </summary>
         protected void ClearChangeLog()
         {
             _changeLog.Clear();
         }
 
 
-        internal void Setter<T>(string propertyName,ref T propertyField, T value)
-        {
-            _changeLog.Add(propertyName);
-            propertyField = value;
-        }
 
+        /// <summary>
+        /// Directly set value of given property (without adding it to change log).
+        /// </summary>
+        /// <param name="propertyName">Name of property to be set.</param>
+        /// <param name="value">Value that will be set.</param>
         protected void DirectPropertySet(string propertyName, object value)
         {
             getPropertyField(propertyName).SetValue(this, value);
         }
 
+        /// <summary>
+        /// Read value from stored property.
+        /// </summary>
+        /// <param name="propertyName">Name of property.</param>
+        /// <returns>Value from property.</returns>
         protected object ReadStoredProperty(string propertyName)
         {
             return getPropertyField(propertyName).GetValue(this);
         }
 
-        private FieldInfo getPropertyField(string fieldName)
+        /// <summary>
+        /// Get field used as storage for given property.
+        /// </summary>
+        /// <param name="propertyName">Name of property.</param>
+        /// <returns>Field info of storage for given property.</returns>
+        private FieldInfo getPropertyField(string propertyName)
         {
-            var result= this.GetType().GetField("property_" + fieldName,BindingFlags.NonPublic|BindingFlags.Instance);
+            var fieldName = ReflectionUtils.DynamicField_Prefix + propertyName;
+            var result= this.GetType().GetField(fieldName,BindingFlags.NonPublic|BindingFlags.Instance);
             return result;
         }
     }

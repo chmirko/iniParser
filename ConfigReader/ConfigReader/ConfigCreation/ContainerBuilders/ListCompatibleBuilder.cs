@@ -8,7 +8,7 @@ using System.Collections;
 namespace ConfigReader.ConfigCreation.ContainerBuilders
 {
     /// <summary>
-    /// Satisfy IEnumerable, ICollection interfaces with list.
+    /// Build containers for interfaces IEnumerable, ICollection, because they can be satisfied via List.
     /// </summary>
     class ListCompatibleBuilder : IContainerBuilder
     {
@@ -19,8 +19,8 @@ namespace ConfigReader.ConfigCreation.ContainerBuilders
                 return null;
             }
 
-            var isEnumerable = StructureFactory.InterfaceMatch(containerType, typeof(IEnumerable<>));
-            var isCollection = StructureFactory.InterfaceMatch(containerType, typeof(ICollection<>));
+            var isEnumerable = ReflectionUtils.NonGenericMatch(containerType, typeof(IEnumerable<>));
+            var isCollection = ReflectionUtils.NonGenericMatch(containerType, typeof(ICollection<>));
 
             if (!isEnumerable && !isCollection)
             {

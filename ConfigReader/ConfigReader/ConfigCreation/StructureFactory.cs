@@ -11,8 +11,14 @@ using ConfigReader.ConfigCreation.ContainerBuilders;
 
 namespace ConfigReader.ConfigCreation
 {
+    /// <summary>
+    /// Factory for structure
+    /// </summary>
     static class StructureFactory
     {
+        /// <summary>
+        /// Container builders which are available for instantiating containers. 
+        /// </summary>
         static IEnumerable<IContainerBuilder> _containerBuilders = new List<IContainerBuilder>()
             {
                 new ArrayBuilder(),
@@ -21,6 +27,11 @@ namespace ConfigReader.ConfigCreation
             };
 
 
+        /// <summary>
+        /// Create structure info described by structureType.
+        /// </summary>
+        /// <param name="structureType">Type describing structure.</param>
+        /// <returns>Structure info.</returns>
         internal static StructureInfo CreateStructureInfo(Type structureType)
         {
             var sections = new List<SectionInfo>();
@@ -33,15 +44,20 @@ namespace ConfigReader.ConfigCreation
             return new StructureInfo(structureType, sections);
         }
 
+        /// <summary>
+        /// Create section info described by sectionProperty.
+        /// </summary>
+        /// <param name="sectionProperty">Property describing section.</param>
+        /// <returns>Section info.</returns>
         internal static SectionInfo CreateSectionInfo(PropertyInfo sectionProperty)
         {
             var options = new List<OptionInfo>();
 
             var propertyAttribs = sectionProperty.GetCustomAttributes(false);
-            var infoAttr = GetAttribute<SectionInfoAttribute>(propertyAttribs);
-            var commentAttr = GetAttribute<DefaultCommentAttribute>(propertyAttribs);
+            var infoAttr = ReflectionUtils.GetAttribute<SectionInfoAttribute>(propertyAttribs);
+            var commentAttr = ReflectionUtils.GetAttribute<DefaultCommentAttribute>(propertyAttribs);
 
-            var sectionID = ResolveID(infoAttr.ID, sectionProperty);
+            var sectionID = resolveID(infoAttr.ID, sectionProperty);
             var sectionName = new QualifiedSectionName(sectionID);
 
             foreach (var optionProperty in GetOptionProperties(sectionProperty.PropertyType))
@@ -53,15 +69,21 @@ namespace ConfigReader.ConfigCreation
             return new SectionInfo(sectionName, sectionProperty, options, commentAttr.CommentText);
         }
 
+        /// <summary>
+        /// Create option info described by optionProperty. Option is placed in section with sectionName.
+        /// </summary>
+        /// <param name="sectionName">Name of parent section.</param>
+        /// <param name="optionProperty">Property describing option.</param>
+        /// <returns>Option info.</returns>
         internal static OptionInfo CreateOptionInfo(QualifiedSectionName sectionName, PropertyInfo optionProperty)
         {
             var propertyAttribs = optionProperty.GetCustomAttributes(false);
-            var infoAttr = GetAttribute<OptionInfoAttribute>(propertyAttribs);
-            var commentAttr = GetAttribute<DefaultCommentAttribute>(propertyAttribs);
-            var rangeAttr = GetAttribute<RangeAttribute>(propertyAttribs);
+            var infoAttr = ReflectionUtils.GetAttribute<OptionInfoAttribute>(propertyAttribs);
+            var commentAttr = ReflectionUtils.GetAttribute<DefaultCommentAttribute>(propertyAttribs);
+            var rangeAttr = ReflectionUtils.GetAttribute<RangeAttribute>(propertyAttribs);
 
 
-            var optionID = ResolveID(infoAttr.ID, optionProperty);
+            var optionID = resolveID(infoAttr.ID, optionProperty);
             var optionName = new QualifiedOptionName(sectionName, optionID);
 
             var expectedType = optionProperty.PropertyType;
@@ -101,6 +123,101 @@ namespace ConfigReader.ConfigCreation
             return builder.GetElements(container);
         }
 
+
+
+        /// <summary>
+        /// Get type of elements which can be stored in containerType
+        /// </summary>
+        /// <param name="containerType">Type of container.</param>
+        /// <returns>Type of elements if containerType is valid known container, null otherwise.</returns>
+        internal static Type GetElementType(Type containerType)
+        {
+            var builder = GetContainerBuilder(containerType);
+            if (builder == null)
+                return null;
+
+            return builder.ResolveElementType(containerType);
+        }
+
+        /// <summary>
+        /// Get container builder for given containerType.
+        /// </summary>
+        /// <param name="containerType">Type of container which will be created.</param>
+        /// <returns>Container builder for given containerType. If none exists returns null.</returns>
+        internal static IContainerBuilder GetContainerBuilder(Type containerType)
+        {
+            foreach (var builder in _containerBuilders)
+            {
+                if (builder.ResolveElementType(containerType) != null)
+                {
+                    return builder;
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Get properties that describe sections. 
+        /// </summary>
+        /// <param name="structureType">Type describing configuration structure.</param>
+        /// <returns>Section describing properties.</returns>
+        internal static IEnumerable<PropertyInfo> GetSectionProperties(Type structureType)
+        {
+            return structureType.GetProperties();
+        }
+
+        /// <summary>
+        /// Get properties that describe options.
+        /// </summary>
+        /// <param name="sectionType">Type describing section.</param>
+        /// <returns>Option describing properties.</returns>
+        internal static IEnumerable<PropertyInfo> GetOptionProperties(Type sectionType)
+        {
+            return sectionType.GetProperties();
+        }
+
+        /// <summary>
+        /// Resolve id of section.
+        /// </summary>
+        /// <param name="sectionProperty">Property describing section.</param>
+        /// <returns>Id of section.</returns>
+        internal static string ResolveSectionID(PropertyInfo sectionProperty)
+        {
+            var info = ReflectionUtils.GetAttribute<SectionInfoAttribute>(sectionProperty.GetCustomAttributes(false));
+            return resolveID(info.ID, sectionProperty);
+        }
+
+        /// <summary>
+        /// Resolve id of option.
+        /// </summary>
+        /// <param name="optionProperty">Property describing option.</param>
+        /// <returns>Id of option.</returns>
+        internal static string ResolveOptionID(PropertyInfo optionProperty)
+        {
+            var info = ReflectionUtils.GetAttribute<OptionInfoAttribute>(optionProperty.GetCustomAttributes(false));
+            return resolveID(info.ID, optionProperty);
+        }
+
+        /// <summary>
+        /// Resolve id from given property.
+        /// </summary>
+        /// <param name="preferedID">Id which is prefered.</param>
+        /// <param name="property">Which name can be used as Id.</param>
+        /// <returns>Prefered id if possible, id from property otherwise.</returns>
+        private static string resolveID(string preferedID, PropertyInfo property)
+        {
+            if (preferedID == null)
+                return property.Name;
+
+            return preferedID;
+        }
+
+        /// <summary>
+        /// Create object that can be used as option default.
+        /// </summary>
+        /// <param name="defaultValue">Default value specified by user.</param>
+        /// <param name="expectedType">Type that option expects.</param>
+        /// <returns>Default value object.</returns>
         private static object createDefaultObject(object defaultValue, Type expectedType)
         {
             if (defaultValue == null)
@@ -122,99 +239,9 @@ namespace ConfigReader.ConfigCreation
                 throw new NotSupportedException("Missing builder for container type");
             }
 
-            var defaultElements = (defaultValue as Array).Cast<object>();            
+            var defaultElements = (defaultValue as Array).Cast<object>();
             return builder.CreateContainer(expectedType, defaultElements);
         }
 
-        /// <summary>
-        /// Get type of elements which can be stored in type
-        /// </summary>
-        /// <param name="type"></param>
-        /// <returns></returns>
-        internal static Type GetElementType(Type type)
-        {
-            var builder = GetContainerBuilder(type);
-            if (builder == null)
-                return null;
-
-            return builder.ResolveElementType(type);
-        }
-
-        /// <summary>
-        /// Get container builder for given containerType.
-        /// </summary>
-        /// <param name="containerType">Type of container which will be created.</param>
-        /// <returns>Container builder for given containerType. If none exists returns null.</returns>
-        internal static IContainerBuilder GetContainerBuilder(Type containerType)
-        {
-            foreach (var builder in _containerBuilders)
-            {
-                if (builder.ResolveElementType(containerType) != null)
-                {
-                    return builder;
-                }
-            }
-            return null;
-        }
-
-
-        internal static string ResolveID(string id, PropertyInfo info)
-        {
-            if (id == null)
-                return info.Name;
-
-            return id;
-        }
-
-
-        internal static AttributeType GetAttribute<AttributeType>(IEnumerable<object> attributes)
-            where AttributeType : Attribute
-        {
-            foreach (var attribute in attributes)
-            {
-                if (attribute is AttributeType)
-                {
-                    return attribute as AttributeType;
-                }
-            }
-
-            return Activator.CreateInstance<AttributeType>();
-        }
-
-        internal static IEnumerable<PropertyInfo> GetSectionProperties(Type structureType)
-        {
-            return structureType.GetProperties();
-        }
-
-        internal static IEnumerable<PropertyInfo> GetOptionProperties(Type sectionType)
-        {
-            return sectionType.GetProperties();
-        }
-
-
-        internal static string ResolveSectionID(PropertyInfo property)
-        {
-            var info = GetAttribute<SectionInfoAttribute>(property.GetCustomAttributes(false));
-            return ResolveID(info.ID, property);
-        }
-
-        internal static string ResolveOptionID(PropertyInfo property)
-        {
-            var info = GetAttribute<OptionInfoAttribute>(property.GetCustomAttributes(false));
-            return ResolveID(info.ID, property);
-        }
-
-
-        internal static string GetNonGenericName(Type type)
-        {
-            return type.Namespace + "." + type.Name;
-        }
-
-        internal static bool InterfaceMatch(Type type1, Type type2)
-        {
-            var n1 = GetNonGenericName(type1);
-            var n2 = GetNonGenericName(type2);
-            return n1 == n2;            
-        }
     }
 }
