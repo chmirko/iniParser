@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ConfigReader</RootNamespace>
     <AssemblyName>ConfigReader</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -68,10 +68,13 @@
     <Compile Include="IConfiguration.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="OptionInfoAttribute.cs" />
-    <Compile Include="Parsing\IntConverter.cs" />
+    <Compile Include="Parsing\Converters\IntConverter.cs" />
+    <Compile Include="Parsing\InnerOption.cs" />
+    <Compile Include="Parsing\InnerSection.cs" />
+    <Compile Include="Parsing\Lexer.cs" />
     <Compile Include="Parsing\OptionInfo.cs" />
     <Compile Include="Parsing\ConfigParser.cs" />
-    <Compile Include="Parsing\IValueConverter.cs" />
+    <Compile Include="Parsing\Converters\IValueConverter.cs" />
     <Compile Include="Parsing\OptionValue.cs" />
     <Compile Include="Parsing\ParserException.cs" />
     <Compile Include="Parsing\QualifiedOptionName.cs" />
