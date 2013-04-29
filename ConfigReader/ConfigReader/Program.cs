@@ -55,12 +55,15 @@ namespace ConfigReader
     /// </summary>
     interface SpecialTypeSection
     {
+        [OptionInfo(DefaultValue=new string[]{"test1","test2"})]
+        string[] Array { get; }
+        [OptionInfo(DefaultValue = new string[] { "test2", "test3" })]
         IEnumerable<string> Enumerable { get; }
 
         [OptionInfo(DefaultValue = new string[] { "value1", "value2","valu3"})]
         List<string> List { get; }
 
-        string[] Array { get; }
+        
 
         EnumTest Enum { get; }
 
