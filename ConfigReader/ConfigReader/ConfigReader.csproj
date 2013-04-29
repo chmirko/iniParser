@@ -29,7 +29,7 @@
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -58,6 +58,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigCreation\ContainerBuilders\ArrayBuilder.cs" />
+    <Compile Include="ConfigCreation\ContainerBuilders\CollectionBuilder.cs" />
+    <Compile Include="ConfigCreation\ContainerBuilders\ListCompatibleBuilder.cs" />
+    <Compile Include="ConfigCreation\IContainerBuilder.cs" />
     <Compile Include="ConfigCreation\StructureValidation.cs" />
     <Compile Include="DefaultCommentAttribute.cs" />
     <Compile Include="ConfigCreation\ClassBuilder.cs" />

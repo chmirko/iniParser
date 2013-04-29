@@ -7,14 +7,22 @@ using System.Text;
 using System.Reflection;
 
 using ConfigReader.Parsing;
+using ConfigReader.ConfigCreation.ContainerBuilders;
 
 namespace ConfigReader.ConfigCreation
 {
     static class StructureFactory
     {
+        static IEnumerable<IContainerBuilder> _containerBuilders = new List<IContainerBuilder>()
+            {
+                new ArrayBuilder(),
+                new ListCompatibleBuilder(),                
+                new CollectionBuilder()
+            };
+
+
         internal static StructureInfo CreateStructureInfo(Type structureType)
         {
-
             var sections = new List<SectionInfo>();
             foreach (var sectionProperty in GetSectionProperties(structureType))
             {
@@ -29,7 +37,7 @@ namespace ConfigReader.ConfigCreation
         {
             var options = new List<OptionInfo>();
 
-            var propertyAttribs=sectionProperty.GetCustomAttributes(false);
+            var propertyAttribs = sectionProperty.GetCustomAttributes(false);
             var infoAttr = GetAttribute<SectionInfoAttribute>(propertyAttribs);
             var commentAttr = GetAttribute<DefaultCommentAttribute>(propertyAttribs);
 
@@ -42,18 +50,18 @@ namespace ConfigReader.ConfigCreation
                 options.Add(optionInfo);
             }
 
-            return new SectionInfo(sectionName,sectionProperty, options, commentAttr.CommentText);
+            return new SectionInfo(sectionName, sectionProperty, options, commentAttr.CommentText);
         }
 
         internal static OptionInfo CreateOptionInfo(QualifiedSectionName sectionName, PropertyInfo optionProperty)
         {
-            var propertyAttribs=optionProperty.GetCustomAttributes(false);
+            var propertyAttribs = optionProperty.GetCustomAttributes(false);
             var infoAttr = GetAttribute<OptionInfoAttribute>(propertyAttribs);
             var commentAttr = GetAttribute<DefaultCommentAttribute>(propertyAttribs);
             var rangeAttr = GetAttribute<RangeAttribute>(propertyAttribs);
 
 
-            var optionID = ResolveID(infoAttr.ID,optionProperty);
+            var optionID = ResolveID(infoAttr.ID, optionProperty);
             var optionName = new QualifiedOptionName(sectionName, optionID);
 
             var expectedType = optionProperty.PropertyType;
@@ -62,49 +70,60 @@ namespace ConfigReader.ConfigCreation
 
             return new OptionInfo(
                 optionName, expectedType, optionProperty.Name,
-                defaultValue,infoAttr.IsOptional,
+                defaultValue, infoAttr.IsOptional,
                 commentAttr.CommentText,
-                rangeAttr.LowerBound,rangeAttr.UpperBound
+                rangeAttr.LowerBound, rangeAttr.UpperBound
                 );
         }
 
         /// <summary>
         /// Creates container with appropriate type for option. Container will contains given elements.
         /// </summary>
-        /// <param name="option"></param>
-        /// <param name="elements"></param>
-        /// <returns></returns>
+        /// <param name="option">Option where container will be stored.</param>
+        /// <param name="elements">Elements that will be stored in container.</param>
+        /// <returns>Container which is valid for given option.</returns>
         internal static object CreateContainer(OptionInfo option, IEnumerable<object> elements)
         {
-            throw new NotImplementedException();
+            var builder = GetContainerBuilder(option.ExpectedType);
+
+            return builder.CreateContainer(option.ExpectedType, elements);
+        }
+
+        /// <summary>
+        /// Get elements which are contained in container.
+        /// </summary>
+        /// <param name="container">Container which elements will be returned.</param>
+        /// <returns>Elements that are contained in container.</returns>
+        internal static IEnumerable<object> GetContainerElements(object container)
+        {
+            var builder = GetContainerBuilder(container.GetType());
+
+            return builder.GetElements(container);
         }
 
         private static object createDefaultObject(object defaultValue, Type expectedType)
         {
-            if (defaultValue == null){
+            if (defaultValue == null)
+            {
+                //there is no default value
                 return null;
             }
 
             var defaultValueType = defaultValue.GetType();
-
             if (!defaultValueType.IsArray)
             {
-                //only arrays can be expanded into collections
+                //only arrays will be expanded into containers
                 return defaultValue;
             }
 
-            var elementType=defaultValueType.GetElementType();
-
-            if(expectedType.IsArray){
-                //copy array
-                var defaultArray = defaultValue as Array;
-
-                return defaultArray.Clone();                
+            var builder = GetContainerBuilder(expectedType);
+            if (builder == null)
+            {
+                throw new NotSupportedException("Missing builder for container type");
             }
 
-        //    var collectionType = typeof(ICollection<>).MakeGenericType(defaultValueType.GetElementType());
-
-            return Activator.CreateInstance(expectedType, new object[] { defaultValue});
+            var defaultElements = (defaultValue as Array).Cast<object>();            
+            return builder.CreateContainer(expectedType, defaultElements);
         }
 
         /// <summary>
@@ -114,16 +133,30 @@ namespace ConfigReader.ConfigCreation
         /// <returns></returns>
         internal static Type GetElementType(Type type)
         {
-            if (type.IsArray)
-            {
-                return type.GetElementType();
-            }
+            var builder = GetContainerBuilder(type);
+            if (builder == null)
+                return null;
 
-            throw new NotImplementedException();
-        /*    if (type.IsInterface && type.Name == "IEnumerable")
-            {
-            }*/
+            return builder.ResolveElementType(type);
         }
+
+        /// <summary>
+        /// Get container builder for given containerType.
+        /// </summary>
+        /// <param name="containerType">Type of container which will be created.</param>
+        /// <returns>Container builder for given containerType. If none exists returns null.</returns>
+        internal static IContainerBuilder GetContainerBuilder(Type containerType)
+        {
+            foreach (var builder in _containerBuilders)
+            {
+                if (builder.ResolveElementType(containerType) != null)
+                {
+                    return builder;
+                }
+            }
+            return null;
+        }
+
 
         internal static string ResolveID(string id, PropertyInfo info)
         {
@@ -135,7 +168,7 @@ namespace ConfigReader.ConfigCreation
 
 
         internal static AttributeType GetAttribute<AttributeType>(IEnumerable<object> attributes)
-            where AttributeType:Attribute
+            where AttributeType : Attribute
         {
             foreach (var attribute in attributes)
             {
@@ -171,6 +204,17 @@ namespace ConfigReader.ConfigCreation
             return ResolveID(info.ID, property);
         }
 
-  
+
+        internal static string GetNonGenericName(Type type)
+        {
+            return type.Namespace + "." + type.Name;
+        }
+
+        internal static bool InterfaceMatch(Type type1, Type type2)
+        {
+            var n1 = GetNonGenericName(type1);
+            var n2 = GetNonGenericName(type2);
+            return n1 == n2;            
+        }
     }
 }
