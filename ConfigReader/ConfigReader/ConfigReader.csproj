@@ -73,6 +73,7 @@
     <Compile Include="Parsing\ConfigParser.cs" />
     <Compile Include="Parsing\IValueConverter.cs" />
     <Compile Include="Parsing\OptionValue.cs" />
+    <Compile Include="Parsing\ParserException.cs" />
     <Compile Include="Parsing\QualifiedOptionName.cs" />
     <Compile Include="Parsing\QualifiedSectionName.cs" />
     <Compile Include="Program.cs" />
