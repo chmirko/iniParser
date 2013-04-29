@@ -97,7 +97,7 @@ namespace ConfigReader.Parsing
         }
 
         /// <summary>
-        /// Set option info and it's value.
+        /// Set option info and it's value.       
         /// NOTE: Only options which are set via this call can be ADDED into output (readed options are included automatically).
         /// </summary>
         /// <param name="info"></param>

@@ -98,13 +98,19 @@ namespace ConfigReader
 
             var structureInfo = StructureFactory.CreateStructureInfo(structureType);
             var optionValues =  readFromParser?parser.GetOptionValues(structureInfo):getDefaults(structureInfo);
-            
 
+        
             var configRoot = ConfigFactory.CreateConfigRoot(structureInfo);
-            //fill config with parsed values
+            //fill config with option values
             foreach (var value in optionValues)
             {
                 configRoot.SetOption(value);
+                if (!readFromParser)
+                {
+                    //parser doesn't know about default values - notify him
+                    var info = configRoot.GetOptionInfo(value.Name);
+                    parser.SetOption(info, value);
+                }
             }
 
             return (Structure)(object)configRoot;

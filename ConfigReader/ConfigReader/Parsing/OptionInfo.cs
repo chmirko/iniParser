@@ -36,6 +36,15 @@ namespace ConfigReader.Parsing
         /// </summary>
         internal readonly string AssociatedProperty;
 
+        /// <summary>
+        /// Determine that option is container for elements.
+        /// </summary>
+        internal readonly bool IsContainer;
+        /// <summary>
+        /// If option IsContainer, ElementType determine type of each element.
+        /// If option isn't container, is null.
+        /// </summary>
+        internal readonly Type ElementType;
 
         /// <summary>
         /// Lower bound for numerical values.
@@ -48,7 +57,13 @@ namespace ConfigReader.Parsing
         /// </summary>
         internal readonly object UpperBound;
 
-        internal OptionInfo(QualifiedOptionName name, Type expectedType,string associatedProperty, object defaultValue,bool isOptional, string defaultComment,object lowBound,object upBound)
+        internal OptionInfo(
+            QualifiedOptionName name, Type expectedType,
+            string associatedProperty,
+            object defaultValue, bool isOptional,
+            string defaultComment,
+            object lowBound, object upBound
+            )
         {
             Name = name;
             ExpectedType = expectedType;
@@ -58,6 +73,12 @@ namespace ConfigReader.Parsing
             AssociatedProperty = associatedProperty;
             LowerBound = lowBound;
             UpperBound = upBound;
+
+            ElementType = ConfigCreation.StructureFactory.GetElementType(expectedType);
+            if (ElementType != null)
+            {
+                IsContainer = true;
+            }
         }
     }
 }

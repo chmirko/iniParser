@@ -107,6 +107,24 @@ namespace ConfigReader.ConfigCreation
             return Activator.CreateInstance(expectedType, new object[] { defaultValue});
         }
 
+        /// <summary>
+        /// Get type of elements which can be stored in type
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        internal static Type GetElementType(Type type)
+        {
+            if (type.IsArray)
+            {
+                return type.GetElementType();
+            }
+
+            throw new NotImplementedException();
+        /*    if (type.IsInterface && type.Name == "IEnumerable")
+            {
+            }*/
+        }
+
         internal static string ResolveID(string id, PropertyInfo info)
         {
             if (id == null)
@@ -152,5 +170,7 @@ namespace ConfigReader.ConfigCreation
             var info = GetAttribute<OptionInfoAttribute>(property.GetCustomAttributes(false));
             return ResolveID(info.ID, property);
         }
+
+  
     }
 }

@@ -56,13 +56,18 @@ namespace ConfigReader.ConfigCreation
             _parser.WriteTo(output);
         }
 
+        internal OptionInfo GetOptionInfo(QualifiedOptionName name)
+        {
+            return _sections[name.Section].GetOptionInfo(name);
+        }
+
         private void flushChanges()
         {
             foreach (var section in _sections.Values)
             {
                 foreach (var changedOption in section.ChangedOptions)
                 {
-                    var optionInfo = section.GetOptionInfo(changedOption.Name);
+                    var optionInfo = GetOptionInfo(changedOption.Name);
                     _parser.SetOption(optionInfo, changedOption);
                 }
 
