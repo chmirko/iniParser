@@ -1,5 +1,0 @@
-Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučené postupy\iniParser\ConfigReader\ConfigReader\bin\Debug\ConfigReader.exe.config
-Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučené postupy\iniParser\ConfigReader\ConfigReader\bin\Debug\ConfigReader.exe
-Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučené postupy\iniParser\ConfigReader\ConfigReader\bin\Debug\ConfigReader.pdb
-Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučené postupy\iniParser\ConfigReader\ConfigReader\obj\Debug\ConfigReader.exe
-Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučené postupy\iniParser\ConfigReader\ConfigReader\obj\Debug\ConfigReader.pdb
