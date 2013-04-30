@@ -8,7 +8,7 @@ namespace ConfigReader.Parsing
 {
 
    /// <summary>
-   /// Convertor for integer
+   /// Convertor for unsigned integer 64
    /// </summary>
    class UInt64Converter : IValueConverter
    {
@@ -27,7 +27,7 @@ namespace ConfigReader.Parsing
          {
             throw new ParserException(
                userMsg: "Parser failed due to wrong usage",
-               developerMsg: "IntConverter::Serialize given object can not be parsed into desired type",
+               developerMsg: "UInt64Converter::Serialize given object can not be parsed into desired type",
                inner: ex);
          }
       }
@@ -43,7 +43,7 @@ namespace ConfigReader.Parsing
          {
             throw new ParserException(
                userMsg: "Parser failed due to wrong usage",
-               developerMsg: "IntConverter::Serialize called with null argument in place of object to b eparsed",
+               developerMsg: "UInt64Converter::Serialize called with null argument in place of object to b eparsed",
                inner: new ArgumentNullException("obj"));
          }
 

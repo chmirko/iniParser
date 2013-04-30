@@ -74,6 +74,7 @@
     <Compile Include="Configuration.cs" />
     <Compile Include="OptionInfoAttribute.cs" />
     <Compile Include="Parsing\Converters\ConfigConverters.cs" />
+    <Compile Include="Parsing\Converters\BoolConverter.cs" />
     <Compile Include="Parsing\Converters\UInt64Converter.cs" />
     <Compile Include="Parsing\Converters\Int64Converter.cs" />
     <Compile Include="Parsing\Converters\UInt32Converter.cs" />
