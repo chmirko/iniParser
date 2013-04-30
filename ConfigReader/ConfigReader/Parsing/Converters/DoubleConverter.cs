@@ -10,7 +10,7 @@ namespace ConfigReader.Parsing
    /// <summary>
    /// Convertor for integer
    /// </summary>
-   class IntConverter : IValueConverter
+   class DoubleConverter : IValueConverter
    {
       /// <summary>
       /// Deserializes given string into Int object
@@ -21,7 +21,7 @@ namespace ConfigReader.Parsing
       {
          try
          {
-            return int.Parse(data);
+            return double.Parse(data);
          }
          catch (Exception ex)
          {

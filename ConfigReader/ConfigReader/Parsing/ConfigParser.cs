@@ -202,7 +202,55 @@ namespace ConfigReader.Parsing
       /// <param name="output">Stream into which to output config textual representation</param>
       internal void WriteTo(StreamWriter output)
       {
-         throw new NotImplementedException();
+         const string defaultDelimiter = ", ";
+         try
+         {
+            foreach (var sect in knownSections)
+            {
+               output.WriteLine("[" + sect.Key.ID + "]");
+
+               foreach (var opt in sect.Value.Options)
+               {
+                  WriteCoreTo(output, opt, defaultDelimiter);
+               }
+            }
+         }
+         catch (Exception ex)
+         {
+            throw new ParserException(userMsg: "Error ocurred when writing config file", developerMsg: "Unexpected error ocurred whe writing into stream", inner: ex);
+         }
+      }
+
+      /// <summary>
+      /// Guts of WriteTo method
+      /// </summary>
+      private static void WriteCoreTo(StreamWriter output, KeyValuePair<QualifiedOptionName,InnerOption> opt, string defaultDelimiter)
+      {
+         output.Write(opt.Key.ID);
+         output.Write('=');
+
+         bool firstStep = true;
+         foreach (var optVal in opt.Value.strValues)
+         {
+            if (firstStep)
+            {
+               firstStep = false;
+            }
+            else
+            {
+               output.Write(defaultDelimiter);
+            }
+
+            output.Write(optVal);
+         }
+
+         if (opt.Value.Comment != null)
+         {
+            output.Write(';');
+            output.Write(opt.Value.Comment);
+         }
+
+         output.WriteLine();
       }
 
       /// <summary>
@@ -219,11 +267,87 @@ namespace ConfigReader.Parsing
       /// Set option info and it's value.
       /// NOTE: Only options which are set via this call can be ADDED into output (readed options are included automatically).
       /// </summary>
-      /// <param name="info"></param>
-      /// <param name="value"></param>
+      /// <param name="info">Structure describing option format</param>
+      /// <param name="value">Structure wearing option value</param>
       internal void SetOption(OptionInfo info, OptionValue value)
       {
-         throw new NotImplementedException();
+         // Check inner constraints
+         checkValidity(info, value);
+         
+         // obtain qNames
+         QualifiedSectionName qSect = value.Name.Section;
+         QualifiedOptionName qOpt = value.Name;
+
+         // Ensure section exists
+         if (!knownSections.ContainsKey(qSect))
+            knownSections.Add(qSect, new InnerSection(qSect));
+
+         // Ensure option exists
+         if (!knownSections[qSect].Options.ContainsKey(qOpt))
+         {
+            InnerOption newOpt = new InnerOption(qOpt);
+            knownSections[qSect].Options.Add(qOpt, newOpt);
+            newOpt.Comment = info.DefaultComment;
+         }
+
+         // Pass value into option
+         InnerOption curOpt = knownSections[qSect].Options[qOpt];
+         IValueConverter converter;
+         try
+         {
+            if (info.IsContainer)
+               converter = Converters.ConfigConverters.convertors[info.ElementType];
+            else
+               converter = Converters.ConfigConverters.convertors[info.ExpectedType];
+         }
+         catch (Exception ex)
+         {
+            throw new ParserException(userMsg: "Error when deserializing value", developerMsg: "Unsupported value tried to be deserialized", inner: ex);
+         }
+
+         if (info.IsContainer)
+         {
+            curOpt.strValues.Clear();
+            foreach (var elem in ConfigReader.ConfigCreation.StructureFactory.GetContainerElements(value.ConvertedValue))
+               curOpt.strValues.Add(converter.Serialize(elem));
+         }
+         else
+         {
+            curOpt.strValues.Clear();
+            curOpt.strValues.Add(converter.Serialize(value.ConvertedValue));
+         }
+      }
+      
+      /// <summary>
+      /// Checks whether given otpion value satisfies given option constraints
+      /// </summary>
+      /// <param name="info">Structure describing option format</param>
+      /// <param name="value">Structure wearing option value</param>
+      internal void checkValidity(OptionInfo info, OptionValue value)
+      {
+         if (
+            (info.LowerBound != null && wrongOrder(info.LowerBound, value.ConvertedValue))
+            ||
+            (info.UpperBound != null && wrongOrder(value.ConvertedValue, info.UpperBound))
+            )
+         {
+            throw new ParserExceptionWithinConfig(
+               userMsg: "Value out of obunds",
+               developerMsg: "Given value is out of predefined bounds",
+               section: value.Name.Section.ID,
+               option: value.Name.ID);
+         }
+      }
+
+      /// <summary>
+      /// Returns true when lower object is actually bigger
+      /// </summary>
+      /// <param name="lower">Value that should be lower</param>
+      /// <param name="bigger">Value that should be bigger</param>
+      /// <returns></returns>
+      private static bool wrongOrder(object lower, object bigger)
+      {
+         return ((IComparable)lower).CompareTo(bigger) > 0;
       }
 
       /// <summary>

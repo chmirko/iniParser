@@ -10,10 +10,10 @@ namespace ConfigReader.Parsing
    /// <summary>
    /// Convertor for integer
    /// </summary>
-   class IntConverter : IValueConverter
+   class UIntConverter : IValueConverter
    {
       /// <summary>
-      /// Deserializes given string into Int object
+      /// Deserializes given string into UInt object
       /// </summary>
       /// <param name="data">String to be deserialized</param>
       /// <returns>Desired object</returns>
@@ -21,7 +21,7 @@ namespace ConfigReader.Parsing
       {
          try
          {
-            return int.Parse(data);
+            return uint.Parse(data);
          }
          catch (Exception ex)
          {
@@ -33,7 +33,7 @@ namespace ConfigReader.Parsing
       }
 
       /// <summary>
-      /// Serializes Int object into string representation
+      /// Serializes UInt object into string representation
       /// </summary>
       /// <param name="obj">Int object to be serialized</param>
       /// <returns>String representation of given object</returns>
