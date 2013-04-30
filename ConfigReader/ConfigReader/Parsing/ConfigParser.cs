@@ -264,7 +264,133 @@ namespace ConfigReader.Parsing
       /// <returns></returns>
       internal IEnumerable<OptionValue> GetOptionValues(StructureInfo structure)
       {
-         throw new NotImplementedException();
+         if (_mode == ParsingMode.Strict)
+            markInternalAsUnseen();
+
+         // crawl all sections
+         foreach (var section in structure.Sections)
+         {
+            // crawl all options
+            foreach (var option in section.Options)
+            {
+               object value = extractValue(option);
+               yield return new OptionValue(option.Name, value);
+            }
+         }
+
+         if (_mode == ParsingMode.Strict)
+            checkInternalAsSeen();
+      }
+
+      /// <summary>
+      /// Extracts value from internal representation into final form
+      /// </summary>
+      /// <param name="info">Option for which to extract the value</param>
+      /// <returns>Value in expected format</returns>
+      private object extractValue(OptionInfo info)
+      {
+         // Match inner option to desired one
+         InnerOption opt;
+         try
+         {
+            opt = knownSections[info.Name.Section].Options[info.Name];
+         }
+         catch (Exception ex)
+         {
+            throw new ParserException(
+               userMsg: "Error when retrieving expected value", 
+               developerMsg: "Error when finding internal representation of desired option, possibility of it being missing", 
+               inner: ex);
+         }
+
+         // Check container/singleUnit consistenci
+         if (!info.IsContainer && opt.strValues.Count > 1)
+            throw new ParserExceptionWithinConfig(
+               userMsg: "Error when retrieving expected value",
+               developerMsg: "internal representation contains more values, while desired is only one",
+               line: opt.Line.Value);
+
+         // Obtain converter
+         IValueConverter convertor;
+         try
+         {
+            convertor = Converters.ConfigConverters.getConverter(info);
+         }
+         catch (Exception ex)
+         {
+            throw new ParserExceptionWithinConfig(userMsg: "Cannot find convertor", developerMsg: "Convertor terieving method thrown an exception", line: opt.Line, inner: ex);
+         }
+
+         // Value extraction
+         try
+         {
+            // Default to be returned
+            if (opt.strValues.Count == 0)
+            {
+               return info.DefaultValue;
+            }
+            // Container
+            if (info.IsContainer)
+            {
+               List<object> outElements = new List<object>();
+               foreach (string value in opt.strValues)
+               {
+                  outElements.Add(convertor.Deserialize(value));
+               }
+
+               return ConfigReader.ConfigCreation.StructureFactory.CreateContainer(info, outElements);
+            }
+            // Single value
+            else
+            {
+               return convertor.Deserialize(opt.strValues[0]);
+            }
+         }
+         catch (Exception ex)
+         {
+            throw new ParserExceptionWithinConfig(userMsg: "Type conversion failed", developerMsg: "An exception occurred during extraction of value from inner representaion", line: opt.Line, inner: ex);
+         }
+      }
+
+      /// <summary>
+      /// Marks internal elements as not seen (used with strict mode)
+      /// </summary>
+      private void markInternalAsUnseen()
+      {
+         foreach (var sect in knownSections)
+         {
+            sect.Value.Seen = false;
+            foreach (var opt in sect.Value.Options)
+            {
+               opt.Value.Seen = false;
+            }
+         }
+      }
+
+      /// <summary>
+      /// Checks internal elements for being seen (used with strict mode)
+      /// </summary>
+      private void checkInternalAsSeen()
+      {
+         bool throwing = false;
+         foreach (var sect in knownSections)
+         {
+            if (!sect.Value.Seen)
+            {
+               throwing = true;
+            }
+
+            foreach (var opt in sect.Value.Options)
+            {
+               if (!opt.Value.Seen)
+               {
+                  throwing = true;
+               }
+            }
+         }
+
+         if (throwing)
+            throw new ParserException(userMsg: "Config does not comply with the strict mode", developerMsg: "Undefined elements found in the config");
       }
 
       /// <summary>
@@ -358,6 +484,7 @@ namespace ConfigReader.Parsing
       /// <param name="comment">The comment</param>
       internal void SetComment(QualifiedName name, string comment)
       {
+         // Option
          if (name is QualifiedOptionName)
          {
             try
@@ -369,8 +496,23 @@ namespace ConfigReader.Parsing
                throw new ParserException(userMsg: "Error setting comment", developerMsg: "Setting of comment failed, possibly due to non-existent option", inner: ex);
             }
          }
+         // Section
+         else if (name is QualifiedSectionName)
+         {
+            try
+            {
+               knownSections[(QualifiedSectionName)name].Comment = comment;
+            }
+            catch (Exception ex)
+            {
+               throw new ParserException(userMsg: "Error setting comment", developerMsg: "Setting of comment failed, possibly due to non-existent section", inner: ex);
+            }
+         }
+         // Unsupported
          else
+         {
             throw new ParserException(userMsg: "Error setting comment", developerMsg: "Setting of comment for this element is not supported");
+         }
       }
    }
 }

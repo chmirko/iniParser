@@ -31,6 +31,11 @@ namespace ConfigReader.Parsing
       internal string Comment = null;
 
       /// <summary>
+      /// Mark, for strict mode
+      /// </summary>
+      internal bool Seen;
+
+      /// <summary>
       /// Constructor
       /// </summary>
       /// <param name="name">Qualified name</param>

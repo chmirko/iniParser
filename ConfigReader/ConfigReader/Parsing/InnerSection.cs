@@ -24,7 +24,12 @@ namespace ConfigReader.Parsing
       /// <summary>
       /// Section comment
       /// </summary>
-      internal string Comment = null;
+      internal string Comment;
+
+      /// <summary>
+      /// Mark, for strict mode
+      /// </summary>
+      internal bool Seen;
 
       /// <summary>
       /// Name of section as seen in config
