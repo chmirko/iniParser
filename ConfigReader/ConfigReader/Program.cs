@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using ConfigReader.Parsing;
+using ConfigReader.Parsing.Converters;
 
 using System.IO;
 
@@ -29,6 +31,13 @@ namespace ConfigReader
             config.WriteTo(writer);
 
             Console.WriteLine(Encoding.Default.GetString(memStream.ToArray()));*/
+
+            //=====TEST FOR ENUM CONVERTER============
+            var optInfo=new OptionInfo(null,typeof(EnumTest),null,null,true,null,null,null);
+            EnumConverter converter;
+            EnumConverter.TryCreate(optInfo, out converter);
+            var test=(EnumTest)converter.Deserialize("ValueLast");
+            //========================================
 
             var config2 = Configuration.CreateFromDefaults<ConfigStructure>();
 
