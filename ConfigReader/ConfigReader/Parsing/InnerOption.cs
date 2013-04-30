@@ -16,6 +16,11 @@ namespace ConfigReader.Parsing
       internal readonly QualifiedOptionName Name;
 
       /// <summary>
+      /// Line in configuration file (if available)
+      /// </summary>
+      internal readonly uint? Line;
+
+      /// <summary>
       /// List of all values retrieved from config file
       /// </summary>
       internal List<string> strValues = new List<string>();
@@ -29,10 +34,11 @@ namespace ConfigReader.Parsing
       /// Constructor
       /// </summary>
       /// <param name="name">Qualified name</param>
-      /// <param name="comment">Option comment</param>
-      internal InnerOption(QualifiedOptionName name)
+      /// <param name="line">Line in configuration file</param>
+      internal InnerOption(QualifiedOptionName name, uint? line)
       {
          Name = name;
+         Line = line;
       }
    }
 }

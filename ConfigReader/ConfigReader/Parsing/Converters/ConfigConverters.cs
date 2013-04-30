@@ -21,7 +21,37 @@ namespace ConfigReader.Parsing.Converters
          {typeof(UInt64),new UInt64Converter()},
          {typeof(double),new DoubleConverter()},
          {typeof(float),new FloatConverter()},
-         {typeof(bool),new BoolConverter()}
+         {typeof(bool),new BoolConverter()},
+         {typeof(string),new StringConverter()},
       };
+
+      /// <summary>
+      /// Provides appropriate convertor for given type
+      /// </summary>
+      /// <param name="info">Option info with needed type information</param>
+      /// <returns></returns>
+      internal static IValueConverter getConverter(OptionInfo info)
+      {
+         Type tp;
+         if (info.IsContainer)
+            tp = info.ElementType;
+         else
+            tp = info.ExpectedType;
+         
+         if (!convertors.ContainsKey(tp))
+         {
+            EnumConverter conv;
+            if (EnumConverter.TryCreate(info, out conv))
+            {
+               convertors.Add(tp, conv);
+            }
+            else
+            {
+               throw new ParserException(userMsg: "Error with convertors", developerMsg: "Unable to create convertor for given type Converters::getConverter");
+            }
+         }
+
+         return convertors[tp];
+      }
    }
 }

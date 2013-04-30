@@ -87,7 +87,7 @@ namespace ConfigReader.Parsing
                   section: curSection.ID,
                   option: qName.ID);
 
-            InnerOption newOpt = new InnerOption(qName);
+            InnerOption newOpt = new InnerOption(qName, curLine);
             knownSections[curSection].Options.Add(qName, newOpt);
 
             foreach (var lexeme in lexes)

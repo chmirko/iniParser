@@ -285,7 +285,7 @@ namespace ConfigReader.Parsing
          // Ensure option exists
          if (!knownSections[qSect].Options.ContainsKey(qOpt))
          {
-            InnerOption newOpt = new InnerOption(qOpt);
+            InnerOption newOpt = new InnerOption(qOpt, null);
             knownSections[qSect].Options.Add(qOpt, newOpt);
             newOpt.Comment = info.DefaultComment;
          }
@@ -295,10 +295,7 @@ namespace ConfigReader.Parsing
          IValueConverter converter;
          try
          {
-            if (info.IsContainer)
-               converter = Converters.ConfigConverters.convertors[info.ElementType];
-            else
-               converter = Converters.ConfigConverters.convertors[info.ExpectedType];
+            converter = Converters.ConfigConverters.getConverter(info);
          }
          catch (Exception ex)
          {
