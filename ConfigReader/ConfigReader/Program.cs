@@ -31,7 +31,7 @@ namespace ConfigReader
             Console.WriteLine(Encoding.Default.GetString(memStream.ToArray()));*/
 
             var config2 = Configuration.CreateFromDefaults<ConfigStructure>();
-            
+
     
             config2.Save("defaultValues.cfg");
                
