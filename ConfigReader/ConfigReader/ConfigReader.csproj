@@ -77,15 +77,12 @@
     <Compile Include="Parsing\Converters\EnumConverter.cs" />
     <Compile Include="Parsing\Converters\BoolConverter.cs" />
     <Compile Include="Parsing\Converters\StringConverter.cs" />
-    <Compile Include="Parsing\Converters\EnumConverter.cs" />
     <Compile Include="Parsing\Converters\UInt64Converter.cs" />
     <Compile Include="Parsing\Converters\Int64Converter.cs" />
     <Compile Include="Parsing\Converters\UInt32Converter.cs" />
     <Compile Include="Parsing\Converters\Int32Converter.cs" />
     <Compile Include="Parsing\Converters\DoubleConverter.cs" />
     <Compile Include="Parsing\Converters\FloatConverter.cs" />
-    <Compile Include="Parsing\Converters\UIntConverter.cs" />
-    <Compile Include="Parsing\Converters\IntConverter.cs" />
     <Compile Include="Parsing\InnerOption.cs" />
     <Compile Include="Parsing\InnerSection.cs" />
     <Compile Include="Parsing\Lexer.cs" />

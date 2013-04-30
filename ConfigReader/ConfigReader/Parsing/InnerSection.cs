@@ -22,13 +22,19 @@ namespace ConfigReader.Parsing
       internal Dictionary<QualifiedOptionName, InnerOption> Options = new Dictionary<QualifiedOptionName, InnerOption>();
 
       /// <summary>
+      /// Section comment
+      /// </summary>
+      internal string Comment = null;
+
+      /// <summary>
       /// Name of section as seen in config
       /// </summary>
       /// <param name="name">Qualified name</param>
       /// <param name="comment">Section comment</param>
-      internal InnerSection(QualifiedSectionName name)
+      internal InnerSection(QualifiedSectionName name, string comment)
       {
          Name = name;
+         Comment = comment;
       }
    }
 }

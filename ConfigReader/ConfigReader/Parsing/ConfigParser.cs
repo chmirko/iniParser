@@ -122,6 +122,7 @@ namespace ConfigReader.Parsing
          try
          {
             string oneLine;
+            string fullLineComment = null;
             while ((oneLine = input.ReadLine()) != null)
             {
                // Trim & update state variables
@@ -136,15 +137,17 @@ namespace ConfigReader.Parsing
                switch (oneLine[0])
                {
                   case '[':
-                     curSection = Parser.processSingleLineAsSectionStart(oneLine, curLine, knownSections);
+                     curSection = Parser.processSingleLineAsSectionStart(oneLine, fullLineComment, curLine, knownSections);
+                     fullLineComment = null;
                      break;
 
                   case ';':
-                     /*fulline comment*/
+                     fullLineComment = oneLine.Substring(1);
                      break;
 
                   default:
                      Parser.processSingleLineAsOption(oneLine, curLine, curSection, knownSections);
+                     fullLineComment = null;
                      break;
                }
             }
@@ -207,6 +210,7 @@ namespace ConfigReader.Parsing
          {
             foreach (var sect in knownSections)
             {
+               output.WriteLine(";" + sect.Value.Comment);
                output.WriteLine("[" + sect.Key.ID + "]");
 
                foreach (var opt in sect.Value.Options)
@@ -280,7 +284,7 @@ namespace ConfigReader.Parsing
 
          // Ensure section exists
          if (!knownSections.ContainsKey(qSect))
-            knownSections.Add(qSect, new InnerSection(qSect));
+            knownSections.Add(qSect, new InnerSection(qSect, null));
 
          // Ensure option exists
          if (!knownSections[qSect].Options.ContainsKey(qOpt))

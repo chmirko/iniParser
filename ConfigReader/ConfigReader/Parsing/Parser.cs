@@ -14,10 +14,11 @@ namespace ConfigReader.Parsing
       /// Parsing process, processing single trimmed FULL-line as new section start
       /// </summary>
       /// <param name="oneLine">Line to be processed</param>
+      /// <param name="fullLineComment">Comment to given section</param>
       /// <param name="curLine">Current line number, for when exception occurs</param>
       /// <param name="knownSections">Dictionary of all pre-parsed sections</param>
       /// <returns>Newly entered section</returns>
-      internal static QualifiedSectionName processSingleLineAsSectionStart(string oneLine, uint curLine, Dictionary<QualifiedSectionName, InnerSection> knownSections)
+      internal static QualifiedSectionName processSingleLineAsSectionStart(string oneLine, string fullLineComment, uint curLine, Dictionary<QualifiedSectionName, InnerSection> knownSections)
       {
          //{ a-z, A-Z, 0-9, _, ~, -, ., :, $, mezera } začínající znakem z množiny { a-z, A-Z, . , $, : }
          bool matchesSection = System.Text.RegularExpressions.Regex.IsMatch(oneLine, "\\[[a-zA-Z,\\.$:][a-zA-Z0-9_~\\.:$ -]*\\]");
@@ -43,7 +44,7 @@ namespace ConfigReader.Parsing
                section: sectionName);
 
          // Create new section & return it
-         knownSections.Add(qName, new InnerSection(qName));
+         knownSections.Add(qName, new InnerSection(qName,fullLineComment));
          return qName;
       }
 
