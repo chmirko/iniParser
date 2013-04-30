@@ -136,7 +136,7 @@ namespace ConfigReader.Parsing
                switch (oneLine[0])
                {
                   case '[':
-                     curSection = processSingleLineAsSectionStart(oneLine, curLine, knownSections);
+                     curSection = Parser.processSingleLineAsSectionStart(oneLine, curLine, knownSections);
                      break;
 
                   case ';':
@@ -144,7 +144,7 @@ namespace ConfigReader.Parsing
                      break;
 
                   default:
-                     processSingleLineAsOption(oneLine, curLine, curSection, knownSections);
+                     Parser.processSingleLineAsOption(oneLine, curLine, curSection, knownSections);
                      break;
                }
             }
@@ -162,87 +162,7 @@ namespace ConfigReader.Parsing
                section: curSection.ID,
                inner: ex);
          }
-      }
-
-      /// <summary>
-      /// Parsing process, processing single trimmed FULL-line as new section start
-      /// </summary>
-      /// <param name="oneLine">Line to be processed</param>
-      /// <param name="curLine">Current line number, for when exception occurs</param>
-      /// <param name="knownSections">Dictionary of all pre-parsed sections</param>
-      /// <returns>Newly entered section</returns>
-      private static QualifiedSectionName processSingleLineAsSectionStart(string oneLine, uint curLine, Dictionary<QualifiedSectionName, InnerSection> knownSections)
-      {
-         //{ a-z, A-Z, 0-9, _, ~, -, ., :, $, mezera } začínající znakem z množiny { a-z, A-Z, . , $, : }
-         bool matchesSection = System.Text.RegularExpressions.Regex.IsMatch(oneLine, "\\[[a-zA-Z,\\.$:][a-zA-Z0-9_~\\.:$ -]*\\]");
-
-         // Mismatching format
-         if (!matchesSection)
-            throw new ParserExceptionWithinConfig(
-               userMsg: "Error when parsing file on line " + curLine + " unexpected section start",
-               developerMsg: "Unexpected start of the file on line " + curLine + ", section start does not match desired format",
-               line: curLine);
-
-         // extract values
-         int rightBracket = oneLine.IndexOf(']');
-         string sectionName = oneLine.Substring(1, rightBracket - 1);
-         QualifiedSectionName qName = new QualifiedSectionName(sectionName);
-
-         // Section redefinition
-         if (knownSections.ContainsKey(qName))
-            throw new ParserExceptionWithinConfig(
-               userMsg: "Error when parsing file on line " + curLine + " redefinition of section " + sectionName,
-               developerMsg: "Error when parsing file on line " + curLine + " redefinition of section " + sectionName,
-               line: curLine,
-               section: sectionName);
-
-         // Create new section & return it
-         knownSections.Add(qName, new InnerSection(qName));
-         return qName;
-      }
-
-      /// <summary>
-      /// Parsing process, processing single trimmed FULL-line as option
-      /// </summary>
-      /// <param name="oneLine">Line to be processed</param>
-      /// <param name="curLine">Current line number, for when exception occurs</param>
-      /// <param name="curSection">Currently processed section</param>
-      /// <param name="knownSections">Dictionary of all pre-parsed sections</param>
-      private static void processSingleLineAsOption(string oneLine, uint curLine, QualifiedSectionName curSection, Dictionary<QualifiedSectionName, InnerSection> knownSections)
-      {
-         // no section started yet
-         if (curSection == null)
-            throw new ParserExceptionWithinConfig(
-               userMsg: "Error when parsing file on line " + curLine + " unexpected element outside of section",
-               developerMsg: "Unexpected start of the file on line " + curLine + ", option with no section",
-               line: curLine,
-               section: curSection.ID);
-
-         ////// TODO CALL LEXER
-
-      }
-
-      /// <summary>
-      /// Simulates trim function with respect to escaped spaces
-      /// </summary>
-      /// <param name="value">Untrimmed value with possiblity of escaped spaces</param>
-      /// <returns>Final trimmed value, with unescaped spaces</returns>
-      static string TrimEscaped(string value)
-      {
-         string lTrim = value.TrimStart();
-         string toOut = lTrim.TrimEnd();
-
-         // push back trimmed last space
-         if (!toOut.Equals(lTrim) && toOut[toOut.Length - 1] == '\\')
-         {
-            toOut = toOut + " ";
-         }
-
-         // Unescape other spaces
-         toOut = toOut.Replace("\\ "," ");
-
-         return toOut;
-      }
+      }  
 
       /// <summary>
       /// Write parsed and changed options into output file
@@ -306,17 +226,26 @@ namespace ConfigReader.Parsing
          throw new NotImplementedException();
       }
 
-      Dictionary<QualifiedName, string> _comments = new Dictionary<QualifiedName, string>();
-
       /// <summary>
       /// Overrides default and parsed comment.
       /// </summary>
-      /// <param name="info"></param>
-      /// <param name="comment"></param>
+      /// <param name="name">option to which to set the comment</param>
+      /// <param name="comment">The comment</param>
       internal void SetComment(QualifiedName name, string comment)
       {
-         _comments[name] = comment;
-         throw new NotImplementedException();
+         if (name is QualifiedOptionName)
+         {
+            try
+            {
+               knownSections[((QualifiedOptionName)name).Section].Options[(QualifiedOptionName)name].Comment = comment;
+            }
+            catch (Exception ex)
+            {
+               throw new ParserException(userMsg: "Error setting comment", developerMsg: "Setting of comment failed, possibly due to non-existent option", inner: ex);
+            }
+         }
+         else
+            throw new ParserException(userMsg: "Error setting comment", developerMsg: "Setting of comment for this element is not supported");
       }
    }
 }
