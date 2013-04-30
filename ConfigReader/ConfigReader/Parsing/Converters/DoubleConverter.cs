@@ -8,12 +8,12 @@ namespace ConfigReader.Parsing
 {
 
    /// <summary>
-   /// Convertor for integer
+   /// Convertor for double
    /// </summary>
    class DoubleConverter : IValueConverter
    {
       /// <summary>
-      /// Deserializes given string into Int object
+      /// Deserializes given string into Double object
       /// </summary>
       /// <param name="data">String to be deserialized</param>
       /// <returns>Desired object</returns>
@@ -27,15 +27,15 @@ namespace ConfigReader.Parsing
          {
             throw new ParserException(
                userMsg: "Parser failed due to wrong usage",
-               developerMsg: "IntConverter::Serialize given object can not be parsed into desired type",
+               developerMsg: "DoubleConverter::Serialize given object can not be parsed into desired type",
                inner: ex);
          }
       }
 
       /// <summary>
-      /// Serializes Int object into string representation
+      /// Serializes Double object into string representation
       /// </summary>
-      /// <param name="obj">Int object to be serialized</param>
+      /// <param name="obj">Double object to be serialized</param>
       /// <returns>String representation of given object</returns>
       public string Serialize(object obj)
       {
@@ -43,7 +43,7 @@ namespace ConfigReader.Parsing
          {
             throw new ParserException(
                userMsg: "Parser failed due to wrong usage",
-               developerMsg: "IntConverter::Serialize called with null argument in place of object to b eparsed",
+               developerMsg: "DoubleConverter::Serialize called with null argument in place of object to b eparsed",
                inner: new ArgumentNullException("obj"));
          }
 

@@ -20,7 +20,8 @@ namespace ConfigReader.Parsing.Converters
          {typeof(UInt32),new UInt32Converter()},
          {typeof(UInt64),new UInt64Converter()},
          {typeof(double),new DoubleConverter()},
-         {typeof(float),new FloatConverter()}
+         {typeof(float),new FloatConverter()},
+         {typeof(bool),new BoolConverter()}
       };
    }
 }
