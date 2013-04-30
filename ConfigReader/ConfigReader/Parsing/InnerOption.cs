@@ -18,22 +18,21 @@ namespace ConfigReader.Parsing
       /// <summary>
       /// List of all values retrieved from config file
       /// </summary>
-      private List<string> strValues = new List<string>();
+      internal List<string> strValues = new List<string>();
 
       /// <summary>
       /// Option comment
       /// </summary>
-      internal string Comment;
+      internal string Comment = null;
 
       /// <summary>
       /// Constructor
       /// </summary>
       /// <param name="name">Qualified name</param>
       /// <param name="comment">Option comment</param>
-      internal InnerOption(QualifiedOptionName name, string comment = null)
+      internal InnerOption(QualifiedOptionName name)
       {
          Name = name;
-         Comment = comment;
       }
    }
 }
