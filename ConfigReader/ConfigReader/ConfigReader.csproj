@@ -74,11 +74,8 @@
     <Compile Include="Configuration.cs" />
     <Compile Include="OptionInfoAttribute.cs" />
     <Compile Include="Parsing\Converters\ConfigConverters.cs" />
-<<<<<<< HEAD
     <Compile Include="Parsing\Converters\EnumConverter.cs" />
-=======
     <Compile Include="Parsing\Converters\BoolConverter.cs" />
->>>>>>> b17f04ccebe743e65e1ac74bb021f513cdb220cd
     <Compile Include="Parsing\Converters\UInt64Converter.cs" />
     <Compile Include="Parsing\Converters\Int64Converter.cs" />
     <Compile Include="Parsing\Converters\UInt32Converter.cs" />
