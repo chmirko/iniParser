@@ -10,10 +10,10 @@ namespace ConfigReader.Parsing
    /// <summary>
    /// Convertor for integer
    /// </summary>
-   class IntConverter : IValueConverter
+   class Int64Converter : IValueConverter
    {
       /// <summary>
-      /// Deserializes given string into Int object
+      /// Deserializes given string into Int64 object
       /// </summary>
       /// <param name="data">String to be deserialized</param>
       /// <returns>Desired object</returns>
@@ -21,7 +21,7 @@ namespace ConfigReader.Parsing
       {
          try
          {
-            return int.Parse(data);
+            return Int64.Parse(data);
          }
          catch (Exception ex)
          {
@@ -33,9 +33,9 @@ namespace ConfigReader.Parsing
       }
 
       /// <summary>
-      /// Serializes Int object into string representation
+      /// Serializes Int64 object into string representation
       /// </summary>
-      /// <param name="obj">Int object to be serialized</param>
+      /// <param name="obj">Int64 object to be serialized</param>
       /// <returns>String representation of given object</returns>
       public string Serialize(object obj)
       {

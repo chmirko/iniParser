@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 
-namespace ConfigReader.Parsing
+namespace ConfigReader
 {
    /// <summary>
    /// Exceptions thrown out of parser
