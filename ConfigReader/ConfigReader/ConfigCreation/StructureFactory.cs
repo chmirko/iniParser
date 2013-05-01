@@ -107,7 +107,6 @@ namespace ConfigReader.ConfigCreation
         internal static object CreateContainer(OptionInfo option, IEnumerable<object> elements)
         {
             var builder = GetContainerBuilder(option.ExpectedType);
-
             return builder.CreateContainer(option.ExpectedType, elements);
         }
 
@@ -236,7 +235,12 @@ namespace ConfigReader.ConfigCreation
             var builder = GetContainerBuilder(expectedType);
             if (builder == null)
             {
-                throw new NotSupportedException("Missing builder for container type");
+                throw new ContainerBuildException(
+                    userMsg: "Cannot create default object for container option",
+                    developerMsg: "StructureFactory::createDefaultObject missing builder for container type",
+                    containerType: expectedType
+
+                    );
             }
 
             var defaultElements = (defaultValue as Array).Cast<object>();

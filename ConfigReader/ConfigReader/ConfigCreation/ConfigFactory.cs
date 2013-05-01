@@ -41,10 +41,22 @@ namespace ConfigReader.ConfigCreation
             {
                 rootBuilder.AddProperty(section.AssociatedProperty, section.DescribingType);
             }
-            var type = rootBuilder.Build();
 
-            var configRoot = (ConfigRoot)Activator.CreateInstance(type);
-            return configRoot;
+            try
+            {
+                var type = rootBuilder.Build();
+                var configRoot = (ConfigRoot)Activator.CreateInstance(type);
+                return configRoot;
+            }
+            catch (Exception exception)
+            {
+                throw new CreateInstanceException(
+                    userMsg: "Cannot create config root object",
+                    developerMsg: "ConfigFactory::createConfigRoot failed due to problem while creating config root instance",
+                    inner: exception
+                    );
+            }
+
         }
         /// <summary>
         /// Create configuration section object.
@@ -59,11 +71,21 @@ namespace ConfigReader.ConfigCreation
                 sectionBuilder.AddProperty(option.AssociatedProperty, option.ExpectedType);
             }
 
-            var type = sectionBuilder.Build();
-            var section = (ConfigSection)Activator.CreateInstance(type);
-            section.InitializeSectionInfo(info);
-
-            return section;
+            try
+            {
+                var type = sectionBuilder.Build();
+                var section = (ConfigSection)Activator.CreateInstance(type);
+                section.InitializeSectionInfo(info);
+                return section;
+            }
+            catch (Exception exception)
+            {
+                throw new CreateInstanceException(
+                    userMsg: "Cannot create config section object",
+                    developerMsg: "ConfigFactory::createConfigSection failed due to problem while creating config section instance",
+                    inner: exception
+                    );
+            }
         }
     }
 }

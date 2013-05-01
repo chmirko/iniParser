@@ -39,7 +39,7 @@ namespace ConfigReader.ConfigCreation
                 return _changeLog;
             }
         }
-             
+
         /// <summary>
         /// Clear log of changed properties.
         /// </summary>
@@ -78,8 +78,8 @@ namespace ConfigReader.ConfigCreation
         private FieldInfo getPropertyField(string propertyName)
         {
             var fieldName = ReflectionUtils.DynamicField_Prefix + propertyName;
-            var result= this.GetType().GetField(fieldName,BindingFlags.NonPublic|BindingFlags.Instance);
-            return result;
+            var field = this.GetType().GetField(fieldName, BindingFlags.NonPublic | BindingFlags.Instance);
+            return field;
         }
     }
 }

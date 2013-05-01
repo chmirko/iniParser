@@ -53,8 +53,7 @@ namespace ConfigReader.ConfigCreation
         /// <param name="name">Name of element.</param>
         /// <param name="comment">Comment that will be set to element.</param>
         public void SetComment(QualifiedName name, string comment)
-        {
-            //TODO what if name doesn't exists ?
+        {            
             _parser.SetComment(name, comment);
         }
 

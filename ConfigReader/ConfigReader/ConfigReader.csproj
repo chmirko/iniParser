@@ -58,12 +58,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigCreation\ConfigCreationExceptions.cs" />
     <Compile Include="ConfigCreation\ContainerBuilders\ArrayBuilder.cs" />
     <Compile Include="ConfigCreation\ContainerBuilders\CollectionBuilder.cs" />
     <Compile Include="ConfigCreation\ContainerBuilders\ListCompatibleBuilder.cs" />
     <Compile Include="ConfigCreation\IContainerBuilder.cs" />
     <Compile Include="ConfigCreation\ReflectionUtils.cs" />
     <Compile Include="ConfigCreation\StructureValidation.cs" />
+    <Compile Include="ConfigRWException.cs" />
     <Compile Include="DefaultCommentAttribute.cs" />
     <Compile Include="ConfigCreation\ClassBuilder.cs" />
     <Compile Include="ConfigCreation\ConfigRoot.cs" />
