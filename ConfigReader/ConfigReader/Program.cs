@@ -73,7 +73,7 @@ namespace ConfigReader
         List<string> List { get; }
 
         
-
+        [OptionInfo(DefaultValue=EnumTest.ValueLast)]
         EnumTest Enum { get; }
 
         [OptionInfo(IsOptional = true, DefaultValue = new EnumTest[]{EnumTest.Value1,EnumTest.Value2})]

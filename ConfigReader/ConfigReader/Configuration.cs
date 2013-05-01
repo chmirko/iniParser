@@ -101,6 +101,7 @@ namespace ConfigReader
 
         
             var configRoot = ConfigFactory.CreateConfigRoot(structureInfo);
+            configRoot.AssociateParser(parser);
             //fill config with option values
             foreach (var value in optionValues)
             {
