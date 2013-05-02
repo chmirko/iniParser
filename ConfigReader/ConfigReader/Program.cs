@@ -39,21 +39,40 @@ namespace ConfigReader
             var test=(EnumTest)converter.Deserialize("ValueLast");
             //========================================
 
-            var config2 = Configuration.CreateFromDefaults<ConfigStructure>();
+            var config = Configuration.CreateFromDefaults<ConfigStructure>();
+            config.Special.List.Add("test added");
+            config.Sec1.settableNumber = 98765;
+            config.Save("defaultValues.cfg");
 
-    
-            config2.Save("defaultValues.cfg");
-               
+
+
+            var config2 = Configuration.CreateFromFile<ConfigStructure>("defaultValues.cfg",ParsingMode.Strict);
+            config2.SetComment(QualifiedName.ForSection("Sec1"), "Comment override");
+            config2.SetComment(QualifiedName.ForSection("Special"), "Comment added");
+            config2.Special.List.Add("test changed");
+
+            config2.Save("changedConfig.cfg");
         }
     }
 
-    
+
+
+    interface MyStructure : IConfiguration
+    {
+        [DefaultComment("Some section comment")]
+        MySection Sec { get; }
+    }
+
+    interface MySection
+    {
+        int MyOption { get; }
+    }
 
     interface ConfigStructure:IConfiguration
     {
         SpecialTypeSection Special { get; }
 
-        [DefaultComment("First section of config")]
+        [DefaultComment("First section of config, default comment")]
         Section1 Sec1 { get; }
         [DefaultComment("Second section of config")]
         Section2 Sec2 { get; }

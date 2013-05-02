@@ -130,7 +130,6 @@ namespace ConfigReader
                 {
                     if (option.DefaultValue==null)
                     {
-                        //TODO what is default for non optional value ?
                         continue;
                     }
                     yield return new OptionValue(option.Name, option.DefaultValue);

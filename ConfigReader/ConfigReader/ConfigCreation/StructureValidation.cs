@@ -27,14 +27,18 @@ namespace ConfigReader.ConfigCreation
         internal static void ThrowOnInvalid(Type structureType)
         {
             //TODO attribute semantic correctness
-
+            checkSignature(structureType);
             checkSectionUniqueness(structureType);
 
             foreach (var property in structureType.GetProperties())
             {
                 if (property.GetSetMethod() != null)
                 {
-                    throw new NotSupportedException("Sections cannot have setters");
+                    throw new PropertyValidationException(
+                        userMsg: "Section properties cannot have setters",
+                        developerMsg: "StructureValidation::ThrowOnInvalid failed because setter has been found on section property",
+                        validatedProperty: property
+                        );
                 }
 
                 var optionType = property.PropertyType;
@@ -74,7 +78,11 @@ namespace ConfigReader.ConfigCreation
                 var id = resolver(property);
                 if (!ids.Add(id))
                 {
-                    throw new NotSupportedException("Duplicit ID on property '" + property + "' was detected.");
+                    throw new PropertyValidationException(
+                       userMsg: "Duplicit ID has been found",
+                       developerMsg: "StructureValidation::checkIDUniqueness failed because duplicit ID has been found on property",
+                       validatedProperty: property
+                       );
                 }
             }
         }
@@ -82,25 +90,37 @@ namespace ConfigReader.ConfigCreation
         /// <summary>
         /// Check that type contains valid constructs only.
         /// </summary>
-        /// <param name="type">Type which signature will be checked.</param>
-        private static void checkSignature(Type type)
+        /// <param name="structureType">Type which signature will be checked.</param>
+        private static void checkSignature(Type structureType)
         {
-            if (!type.IsInterface)
+            if (!structureType.IsInterface)
             {
-                throw new NotSupportedException("Given type is not supported structure type. Expects interface only.");
+                throw new TypeValidationException(
+                       userMsg: "Type describing configuration structure has to be interface",
+                       developerMsg: "StructureValidation::checkSignature failed because structure type isn't interface",
+                       validatedType: structureType
+                       );
             }
 
             //note: all methods are public because we are in interface
-            foreach (var method in type.GetMethods())
+            foreach (var method in structureType.GetMethods())
             {
                 if (method.IsStatic)
                 {
-                    throw new NotSupportedException("Only instance methods are expected in structure type.");
+                    throw new TypeValidationException(
+                          userMsg: "Type describing configuration structure can't have static methods",
+                          developerMsg: "StructureValidation::checkSignature failed because static method has been found in structure type",
+                          validatedType: structureType
+                          );
                 }
 
                 if (!method.IsSpecialName)
                 {
-                    throw new NotSupportedException("Only properties are expected in structure type.");
+                    throw new TypeValidationException(
+                     userMsg: "Type describing configuration structure can only have property methods (getters and setters)",
+                     developerMsg: "StructureValidation::checkSignature failed because method without assigned property has been found in structure type",
+                     validatedType: structureType
+                     );
                 }
             }
         }
