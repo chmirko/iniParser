@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shfbBuild product="Sandcastle Help File Builder" version="1.9.7.0" projectFile="Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučené postupy\iniParser\Sandcastle\configRW.shfbproj" started="3. 5. 2013 22:13:38">
+<buildStep step="Initializing">
+Finding tools...
+Found Sandcastle tools in &#39;C:\Program Files\Sandcastle\&#39;
+</buildStep>
+<buildStep step="ClearWorkFolder">
+Clearing working folder...
+</buildStep>
+<buildStep step="ValidatingDocumentationSources">
+Validating and copying documentation source information
+Source: Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\ConfigRW\ConfigRW\bin\Debug\ConfigRW.dll
+    Found assembly &#39;Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\ConfigRW\ConfigRW\bin\Debug\ConfigRW.dll&#39;
+Source: Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\ConfigRW\ConfigRW\bin\Debug\ConfigRW.XML
+
+Copying XML comments files
+    Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\ConfigRW\ConfigRW\bin\Debug\ConfigRW.XML -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\ConfigRW.XML
+</buildStep>
+<buildStep step="GenerateSharedContent">
+Generating shared content files (en-US, English (United States))...
+    Last step completed in 00:00:00.4230
+</buildStep>
+<buildStep step="GenerateApiFilter">
+Generating API filter for MRefBuilder...
+    Last step completed in 00:00:00.0150
+</buildStep>
+<buildStep step="GenerateReflectionInfo">
+Generating reflection information...
+[C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe]
+  MRefBuilder (v2.7.3.0)
+  Copyright c 2006-2013, Microsoft Corporation, All Rights Reserved.
+  Portions Copyright c 2006-2013, Eric Woodruff, All Rights Reserved.
+  Info: Loaded 1 assemblies for reflection and 0 dependency assemblies.
+  Info: Wrote information on 5 namespaces, 55 types, and 310 members
+  XslTransform (v2.7.3.0)
+  Copyright c 2006-2013, Microsoft Corporation, All Rights Reserved.
+  Portions Copyright c 2006-2013, Eric Woodruff, All Rights Reserved.
+  Info: Applying XSL transformation &#39;C:\Program Files\Sandcastle\ProductionTransforms\MergeDuplicates.xsl&#39;.
+    Last step completed in 00:00:01.1590
+</buildStep>
+<buildStep step="GenerateNamespaceSummaries">
+Generating namespace summary information...
+    Last step completed in 00:00:00.0060
+</buildStep>
+<buildStep step="ApplyVisibilityProperties">
+Applying visibility properties to reflection information file
+    0 event backer fields noted for removal
+    Last step completed in 00:00:00.0560
+</buildStep>
+<buildStep step="TransformReflectionInfo">
+Transforming reflection output...
+[C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe]
+  XslTransform (v2.7.3.0)
+  Copyright c 2006-2013, Microsoft Corporation, All Rights Reserved.
+  Portions Copyright c 2006-2013, Eric Woodruff, All Rights Reserved.
+  Info: Applying XSL transformation &#39;C:\Program Files\Sandcastle\\ProductionTransforms\ApplyVSDocModel.xsl&#39;.
+  Info: Applying XSL transformation &#39;C:\Program Files\Sandcastle\ProductionTransforms\AddGuidFilenames.xsl&#39;.
+  XslTransform (v2.7.3.0)
+  Copyright c 2006-2013, Microsoft Corporation, All Rights Reserved.
+  Portions Copyright c 2006-2013, Eric Woodruff, All Rights Reserved.
+  Info: Applying XSL transformation &#39;C:\Program Files\Sandcastle\ProductionTransforms\ReflectionToManifest.xsl&#39;.
+    Last step completed in 00:00:00.9930
+</buildStep>
+<buildStep step="ModifyHelpTopicFilenames">
+Modifying help topic filenames in reflection information file
+    No changes required
+    Last step completed in 00:00:00.0480
+</buildStep>
+<buildStep step="CopyStandardContent">
+Copying standard help content...
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\adm.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\adm.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\adm_arch.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\adm_arch.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\adm_dev.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\adm_dev.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\adm_dev_arch.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\adm_dev_arch.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\alert_caution.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\alert_caution.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\alert_note.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\alert_note.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\alert_security.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\alert_security.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\arch.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\arch.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\big_adm.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\big_adm.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\big_arch.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\big_arch.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\big_dev.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\big_dev.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\big_kw.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\big_kw.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\box.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\box.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\Caution.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\Caution.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\CFW.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\CFW.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\collall.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\collall.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\collapse.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\collapse.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\collapse_all.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\collapse_all.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\copycode.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\copycode.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\copycodeHighlight.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\copycodeHighlight.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\dev.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\dev.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\dev_arch.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\dev_arch.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\dropdown.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\dropdown.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\dropdownHover.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\dropdownHover.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\drpdown.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\drpdown.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\drpdown_orange.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\drpdown_orange.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\drpdown_orange_up.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\drpdown_orange_up.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\drpup.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\drpup.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\exp.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\exp.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\expall.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\expall.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\expand_all.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\expand_all.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\filter1a.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\filter1a.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\filter1c.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\filter1c.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\footer.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\footer.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\gradient.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\gradient.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\greencheck.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\greencheck.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\greychck.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\greychck.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\header_prev_next.jpg -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\header_prev_next.jpg
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\header_sql_tutorial_blank.jpg -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\header_sql_tutorial_blank.jpg
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\header_sql_tutorial_logo.GIF -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\header_sql_tutorial_logo.GIF
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\kw.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\kw.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\kw_adm.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\kw_adm.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\kw_adm_arch.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\kw_adm_arch.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\kw_adm_dev.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\kw_adm_dev.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\kw_adm_dev_arch.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\kw_adm_dev_arch.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\kw_arch.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\kw_arch.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\kw_dev.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\kw_dev.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\kw_dev_arch.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\kw_dev_arch.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\LastChild.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\LastChild.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\load.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\load.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\load_hover.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\load_hover.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\note.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\note.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\pencil.GIF -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\pencil.GIF
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\privclass.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\privclass.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\privdelegate.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\privdelegate.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\privenum.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\privenum.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\privenumeration.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\privenumeration.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\privevent.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\privevent.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\privextension.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\privextension.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\privfield.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\privfield.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\privinterface.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\privinterface.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\privmethod.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\privmethod.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\privproperty.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\privproperty.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\privstructure.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\privstructure.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\protclass.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\protclass.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\protdelegate.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\protdelegate.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\protenum.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\protenum.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\protenumeration.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\protenumeration.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\protevent.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\protevent.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\protextension.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\protextension.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\protfield.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\protfield.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\protinterface.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\protinterface.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\protmethod.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\protmethod.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\protoperator.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\protoperator.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\protproperty.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\protproperty.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\protstructure.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\protstructure.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\pubclass.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\pubclass.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\pubdelegate.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\pubdelegate.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\pubenum.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\pubenum.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\pubenumeration.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\pubenumeration.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\pubevent.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\pubevent.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\pubextension.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\pubextension.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\pubfield.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\pubfield.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\pubinterface.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\pubinterface.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\pubmethod.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\pubmethod.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\puboperator.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\puboperator.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\pubproperty.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\pubproperty.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\pubstructure.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\pubstructure.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\requirements1a.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\requirements1a.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\requirements1c.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\requirements1c.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\save.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\save.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\save_hover.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\save_hover.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\security.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\security.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\seealso1a.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\seealso1a.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\seealso1c.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\seealso1c.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\slMobile.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\slMobile.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\static.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\static.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\icons\xna.gif -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\icons\xna.gif
+C:\Program Files\Sandcastle\\Presentation\VS2005\scripts\CheckboxMenu.js -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\scripts\CheckboxMenu.js
+C:\Program Files\Sandcastle\\Presentation\VS2005\scripts\CommonUtilities.js -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\scripts\CommonUtilities.js
+C:\Program Files\Sandcastle\\Presentation\VS2005\scripts\Dropdown.js -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\scripts\Dropdown.js
+C:\Program Files\Sandcastle\\Presentation\VS2005\scripts\EventUtilities.js -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\scripts\EventUtilities.js
+C:\Program Files\Sandcastle\\Presentation\VS2005\scripts\script_feedBack.js -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\scripts\script_feedBack.js
+C:\Program Files\Sandcastle\\Presentation\VS2005\scripts\script_manifold.js -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\scripts\script_manifold.js
+C:\Program Files\Sandcastle\\Presentation\VS2005\scripts\SplitScreen.js -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\scripts\SplitScreen.js
+C:\Program Files\Sandcastle\\Presentation\VS2005\styles\Presentation.css -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\styles\Presentation.css
+C:\Program Files\Sandcastle\\Presentation\VS2005\styles\Whidbey\Presentation.css -&gt; Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\Output\Website\styles\Whidbey\Presentation.css
+    Last step completed in 00:00:01.6010
+</buildStep>
+<buildStep step="CopyAdditionalContent">
+Copying additional content files...
+No additional content to copy
+    Last step completed in 00:00:00.0090
+</buildStep>
+<buildStep step="MergeTablesOfContents">
+Merging conceptual and additional tables of contents...
+    Last step completed in 00:00:00.0040
+</buildStep>
+<buildStep step="GenerateIntermediateTableOfContents">
+Generating intermediate table of contents file...
+[C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe]
+  XslTransform (v2.7.3.0)
+  Copyright c 2006-2013, Microsoft Corporation, All Rights Reserved.
+  Portions Copyright c 2006-2013, Eric Woodruff, All Rights Reserved.
+  Info: Applying XSL transformation &#39;C:\Program Files\Sandcastle\\ProductionTransforms\CreateVSToc.xsl&#39;.
+Generating conceptual content intermediate TOC file...
+    Last step completed in 00:00:00.3070
+</buildStep>
+<buildStep step="CreateBuildAssemblerConfigs">
+Creating Sandcastle configuration files...
+    sandcastle.config
+    Last step completed in 00:00:00.2790
+</buildStep>
+<buildStep step="MergeCustomConfigs">
+Merging custom build component configurations
+Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporučen&#233; postupy\iniParser\Sandcastle\Intermediate\sandcastle.config
+    Last step completed in 00:00:00.0610
+</buildStep>
+<buildStep step="BuildReferenceTopics">
+Building reference help topics...
+[C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe]
+  BuildAssembler (v2.7.3.0)
+  Copyright c 2006-2013, Microsoft Corporation, All Rights Reserved.
+  Portions Copyright c 2006-2013, Eric Woodruff, All Rights Reserved.
+  Info: Loading configuration...
+  Diagnostic: ResolveReferenceLinksComponent2: The MSDN content ID cache &#39;C:\Users\chmirko\AppData\Local\EWSoftware\Sandcastle Help File Builder\Cache\MsdnContentId.cache&#39; does not exist yet.  All IDs will be looked up in this build which will slow it down.
+  Info: Processing topics...
+  Warn: ShowMissingComponent: [N:ConfigRW] Missing &lt;summary&gt; documentation
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.ConfigRWException] Unknown reference link target &#39;M:System.Exception.InternalPreserveStackTrace&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.ConfigRWException] Unknown reference link target &#39;M:System.Exception.InternalToString&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.ConfigRWException] Unknown reference link target &#39;M:System.Exception.PrepForRemoting&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.ConfigRWException] Unknown reference link target &#39;M:System.Exception.SetErrorCode(System.Int32)&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.ConfigRWException] Unknown reference link target &#39;F:System.Exception._HResult&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.ConfigRWException] Unknown reference link target &#39;F:System.Exception._message&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.ConfigRWException] Unknown reference link target &#39;P:System.Exception.IsTransient&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Methods.T:ConfigRW.ConfigRWException] Unknown reference link target &#39;M:System.Exception.InternalPreserveStackTrace&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Methods.T:ConfigRW.ConfigRWException] Unknown reference link target &#39;M:System.Exception.InternalToString&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Methods.T:ConfigRW.ConfigRWException] Unknown reference link target &#39;M:System.Exception.PrepForRemoting&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Methods.T:ConfigRW.ConfigRWException] Unknown reference link target &#39;M:System.Exception.SetErrorCode(System.Int32)&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Properties.T:ConfigRW.ConfigRWException] Unknown reference link target &#39;P:System.Exception.IsTransient&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Fields.T:ConfigRW.ConfigRWException] Unknown reference link target &#39;F:System.Exception._HResult&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Fields.T:ConfigRW.ConfigRWException] Unknown reference link target &#39;F:System.Exception._message&#39;.
+  Warn: ShowMissingComponent: [T:ConfigRW.ContainerBuildException] Missing &lt;summary&gt; documentation
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.ContainerBuildException] Unknown reference link target &#39;M:System.Exception.InternalPreserveStackTrace&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.ContainerBuildException] Unknown reference link target &#39;M:System.Exception.InternalToString&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.ContainerBuildException] Unknown reference link target &#39;M:System.Exception.PrepForRemoting&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.ContainerBuildException] Unknown reference link target &#39;M:System.Exception.SetErrorCode(System.Int32)&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.ContainerBuildException] Unknown reference link target &#39;F:System.Exception._HResult&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.ContainerBuildException] Unknown reference link target &#39;F:System.Exception._message&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.ContainerBuildException] Unknown reference link target &#39;P:System.Exception.IsTransient&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Methods.T:ConfigRW.ContainerBuildException] Unknown reference link target &#39;M:System.Exception.InternalPreserveStackTrace&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Methods.T:ConfigRW.ContainerBuildException] Unknown reference link target &#39;M:System.Exception.InternalToString&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Methods.T:ConfigRW.ContainerBuildException] Unknown reference link target &#39;M:System.Exception.PrepForRemoting&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Methods.T:ConfigRW.ContainerBuildException] Unknown reference link target &#39;M:System.Exception.SetErrorCode(System.Int32)&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Properties.T:ConfigRW.ContainerBuildException] Unknown reference link target &#39;P:System.Exception.IsTransient&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Fields.T:ConfigRW.ContainerBuildException] Unknown reference link target &#39;F:System.Exception._HResult&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Fields.T:ConfigRW.ContainerBuildException] Unknown reference link target &#39;F:System.Exception._message&#39;.
+  Warn: ShowMissingComponent: [M:ConfigRW.ContainerBuildException.#ctor(System.String,System.String,System.Type)] Missing &lt;param name=&quot;userMsg&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ContainerBuildException.#ctor(System.String,System.String,System.Type)] Missing &lt;param name=&quot;developerMsg&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ContainerBuildException.#ctor(System.String,System.String,System.Type)] Missing &lt;param name=&quot;containerType&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [F:ConfigRW.ContainerBuildException.ContainerType] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [T:ConfigRW.CreateInstanceException] Missing &lt;summary&gt; documentation
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.CreateInstanceException] Unknown reference link target &#39;M:System.Exception.InternalPreserveStackTrace&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.CreateInstanceException] Unknown reference link target &#39;M:System.Exception.InternalToString&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.CreateInstanceException] Unknown reference link target &#39;M:System.Exception.PrepForRemoting&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.CreateInstanceException] Unknown reference link target &#39;M:System.Exception.SetErrorCode(System.Int32)&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.CreateInstanceException] Unknown reference link target &#39;F:System.Exception._HResult&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.CreateInstanceException] Unknown reference link target &#39;F:System.Exception._message&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.CreateInstanceException] Unknown reference link target &#39;P:System.Exception.IsTransient&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Methods.T:ConfigRW.CreateInstanceException] Unknown reference link target &#39;M:System.Exception.InternalPreserveStackTrace&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Methods.T:ConfigRW.CreateInstanceException] Unknown reference link target &#39;M:System.Exception.InternalToString&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Methods.T:ConfigRW.CreateInstanceException] Unknown reference link target &#39;M:System.Exception.PrepForRemoting&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Methods.T:ConfigRW.CreateInstanceException] Unknown reference link target &#39;M:System.Exception.SetErrorCode(System.Int32)&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Properties.T:ConfigRW.CreateInstanceException] Unknown reference link target &#39;P:System.Exception.IsTransient&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Fields.T:ConfigRW.CreateInstanceException] Unknown reference link target &#39;F:System.Exception._HResult&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Fields.T:ConfigRW.CreateInstanceException] Unknown reference link target &#39;F:System.Exception._message&#39;.
+  Warn: ShowMissingComponent: [M:ConfigRW.CreateInstanceException.#ctor(System.String,System.String,System.Exception)] Missing &lt;param name=&quot;userMsg&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.CreateInstanceException.#ctor(System.String,System.String,System.Exception)] Missing &lt;param name=&quot;developerMsg&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.CreateInstanceException.#ctor(System.String,System.String,System.Exception)] Missing &lt;param name=&quot;inner&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Extensions.Last``1(System.Collections.Generic.List{{``0}})] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Extensions.Last``1(System.Collections.Generic.List{{``0}})] Missing &lt;typeparam name=&quot;T&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Extensions.Last``1(System.Collections.Generic.List{{``0}})] Missing &lt;returns&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Extensions.Last``1(System.Collections.Generic.List{{``0}})] Missing &lt;param name=&quot;list&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [T:ConfigRW.IDValidationException] Missing &lt;summary&gt; documentation
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.IDValidationException] Unknown reference link target &#39;M:System.Exception.InternalPreserveStackTrace&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.IDValidationException] Unknown reference link target &#39;M:System.Exception.InternalToString&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.IDValidationException] Unknown reference link target &#39;M:System.Exception.PrepForRemoting&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.IDValidationException] Unknown reference link target &#39;M:System.Exception.SetErrorCode(System.Int32)&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.IDValidationException] Unknown reference link target &#39;F:System.Exception._HResult&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.IDValidationException] Unknown reference link target &#39;F:System.Exception._message&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.IDValidationException] Unknown reference link target &#39;P:System.Exception.IsTransient&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Methods.T:ConfigRW.IDValidationException] Unknown reference link target &#39;M:System.Exception.InternalPreserveStackTrace&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Methods.T:ConfigRW.IDValidationException] Unknown reference link target &#39;M:System.Exception.InternalToString&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Methods.T:ConfigRW.IDValidationException] Unknown reference link target &#39;M:System.Exception.PrepForRemoting&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Methods.T:ConfigRW.IDValidationException] Unknown reference link target &#39;M:System.Exception.SetErrorCode(System.Int32)&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Properties.T:ConfigRW.IDValidationException] Unknown reference link target &#39;P:System.Exception.IsTransient&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Fields.T:ConfigRW.IDValidationException] Unknown reference link target &#39;F:System.Exception._HResult&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Fields.T:ConfigRW.IDValidationException] Unknown reference link target &#39;F:System.Exception._message&#39;.
+  Warn: ShowMissingComponent: [M:ConfigRW.IDValidationException.#ctor(System.String,System.String,System.String,System.Reflection.PropertyInfo)] Missing &lt;param name=&quot;userMsg&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.IDValidationException.#ctor(System.String,System.String,System.String,System.Reflection.PropertyInfo)] Missing &lt;param name=&quot;developerMsg&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.IDValidationException.#ctor(System.String,System.String,System.String,System.Reflection.PropertyInfo)] Missing &lt;param name=&quot;validatedID&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.IDValidationException.#ctor(System.String,System.String,System.String,System.Reflection.PropertyInfo)] Missing &lt;param name=&quot;validatedProperty&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [F:ConfigRW.IDValidationException.ValidatedID] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [F:ConfigRW.IDValidationException.ValidatedProperty] Missing &lt;summary&gt; documentation
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.ParserException] Unknown reference link target &#39;M:System.Exception.InternalPreserveStackTrace&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.ParserException] Unknown reference link target &#39;M:System.Exception.InternalToString&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.ParserException] Unknown reference link target &#39;M:System.Exception.PrepForRemoting&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.ParserException] Unknown reference link target &#39;M:System.Exception.SetErrorCode(System.Int32)&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.ParserException] Unknown reference link target &#39;F:System.Exception._HResult&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.ParserException] Unknown reference link target &#39;F:System.Exception._message&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.ParserException] Unknown reference link target &#39;P:System.Exception.IsTransient&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Methods.T:ConfigRW.ParserException] Unknown reference link target &#39;M:System.Exception.InternalPreserveStackTrace&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Methods.T:ConfigRW.ParserException] Unknown reference link target &#39;M:System.Exception.InternalToString&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Methods.T:ConfigRW.ParserException] Unknown reference link target &#39;M:System.Exception.PrepForRemoting&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Methods.T:ConfigRW.ParserException] Unknown reference link target &#39;M:System.Exception.SetErrorCode(System.Int32)&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Properties.T:ConfigRW.ParserException] Unknown reference link target &#39;P:System.Exception.IsTransient&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Fields.T:ConfigRW.ParserException] Unknown reference link target &#39;F:System.Exception._HResult&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Fields.T:ConfigRW.ParserException] Unknown reference link target &#39;F:System.Exception._message&#39;.
+  Warn: ShowMissingComponent: [T:ConfigRW.ParserExceptionWithinConfig] Missing &lt;summary&gt; documentation
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.ParserExceptionWithinConfig] Unknown reference link target &#39;M:System.Exception.InternalPreserveStackTrace&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.ParserExceptionWithinConfig] Unknown reference link target &#39;M:System.Exception.InternalToString&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.ParserExceptionWithinConfig] Unknown reference link target &#39;M:System.Exception.PrepForRemoting&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.ParserExceptionWithinConfig] Unknown reference link target &#39;M:System.Exception.SetErrorCode(System.Int32)&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.ParserExceptionWithinConfig] Unknown reference link target &#39;F:System.Exception._HResult&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.ParserExceptionWithinConfig] Unknown reference link target &#39;F:System.Exception._message&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.ParserExceptionWithinConfig] Unknown reference link target &#39;P:System.Exception.IsTransient&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Methods.T:ConfigRW.ParserExceptionWithinConfig] Unknown reference link target &#39;M:System.Exception.InternalPreserveStackTrace&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Methods.T:ConfigRW.ParserExceptionWithinConfig] Unknown reference link target &#39;M:System.Exception.InternalToString&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Methods.T:ConfigRW.ParserExceptionWithinConfig] Unknown reference link target &#39;M:System.Exception.PrepForRemoting&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Methods.T:ConfigRW.ParserExceptionWithinConfig] Unknown reference link target &#39;M:System.Exception.SetErrorCode(System.Int32)&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Properties.T:ConfigRW.ParserExceptionWithinConfig] Unknown reference link target &#39;P:System.Exception.IsTransient&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Fields.T:ConfigRW.ParserExceptionWithinConfig] Unknown reference link target &#39;F:System.Exception._HResult&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Fields.T:ConfigRW.ParserExceptionWithinConfig] Unknown reference link target &#39;F:System.Exception._message&#39;.
+  Warn: ShowMissingComponent: [M:ConfigRW.ParserExceptionWithinConfig.#ctor(System.String,System.String,System.String,System.Nullable{{System.UInt32}},System.String,System.String,System.Exception)] Missing &lt;param name=&quot;section&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ParserExceptionWithinConfig.#ctor(System.String,System.String,System.String,System.Nullable{{System.UInt32}},System.String,System.String,System.Exception)] Missing &lt;param name=&quot;option&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [T:ConfigRW.PropertyValidationException] Missing &lt;summary&gt; documentation
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.PropertyValidationException] Unknown reference link target &#39;M:System.Exception.InternalPreserveStackTrace&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.PropertyValidationException] Unknown reference link target &#39;M:System.Exception.InternalToString&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.PropertyValidationException] Unknown reference link target &#39;M:System.Exception.PrepForRemoting&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.PropertyValidationException] Unknown reference link target &#39;M:System.Exception.SetErrorCode(System.Int32)&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.PropertyValidationException] Unknown reference link target &#39;F:System.Exception._HResult&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.PropertyValidationException] Unknown reference link target &#39;F:System.Exception._message&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.PropertyValidationException] Unknown reference link target &#39;P:System.Exception.IsTransient&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Methods.T:ConfigRW.PropertyValidationException] Unknown reference link target &#39;M:System.Exception.InternalPreserveStackTrace&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Methods.T:ConfigRW.PropertyValidationException] Unknown reference link target &#39;M:System.Exception.InternalToString&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Methods.T:ConfigRW.PropertyValidationException] Unknown reference link target &#39;M:System.Exception.PrepForRemoting&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Methods.T:ConfigRW.PropertyValidationException] Unknown reference link target &#39;M:System.Exception.SetErrorCode(System.Int32)&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Properties.T:ConfigRW.PropertyValidationException] Unknown reference link target &#39;P:System.Exception.IsTransient&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Fields.T:ConfigRW.PropertyValidationException] Unknown reference link target &#39;F:System.Exception._HResult&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Fields.T:ConfigRW.PropertyValidationException] Unknown reference link target &#39;F:System.Exception._message&#39;.
+  Warn: ShowMissingComponent: [M:ConfigRW.PropertyValidationException.#ctor(System.String,System.String,System.Reflection.PropertyInfo,System.Exception)] Missing &lt;param name=&quot;validatedProperty&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.QualifiedName.Equals(System.Object)] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.QualifiedName.Equals(System.Object)] Missing &lt;returns&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.QualifiedName.Equals(System.Object)] Missing &lt;param name=&quot;obj&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.QualifiedName.GetHashCode] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.QualifiedName.GetHashCode] Missing &lt;returns&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.QualifiedName.ToString] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.QualifiedName.ToString] Missing &lt;returns&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Tuple`2.Equals(System.Object)] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Tuple`2.Equals(System.Object)] Missing &lt;returns&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Tuple`2.Equals(System.Object)] Missing &lt;param name=&quot;obj&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Tuple`2.GetHashCode] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Tuple`2.GetHashCode] Missing &lt;returns&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Tuple`2.op_Equality(ConfigRW.Tuple{{`0,`1}},ConfigRW.Tuple{{`0,`1}})] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Tuple`2.op_Equality(ConfigRW.Tuple{{`0,`1}},ConfigRW.Tuple{{`0,`1}})] Missing &lt;returns&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Tuple`2.op_Equality(ConfigRW.Tuple{{`0,`1}},ConfigRW.Tuple{{`0,`1}})] Missing &lt;param name=&quot;t1&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Tuple`2.op_Equality(ConfigRW.Tuple{{`0,`1}},ConfigRW.Tuple{{`0,`1}})] Missing &lt;param name=&quot;t2&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Tuple`2.op_Inequality(ConfigRW.Tuple{{`0,`1}},ConfigRW.Tuple{{`0,`1}})] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Tuple`2.op_Inequality(ConfigRW.Tuple{{`0,`1}},ConfigRW.Tuple{{`0,`1}})] Missing &lt;returns&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Tuple`2.op_Inequality(ConfigRW.Tuple{{`0,`1}},ConfigRW.Tuple{{`0,`1}})] Missing &lt;param name=&quot;t1&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Tuple`2.op_Inequality(ConfigRW.Tuple{{`0,`1}},ConfigRW.Tuple{{`0,`1}})] Missing &lt;param name=&quot;t2&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [T:ConfigRW.TypeValidationException] Missing &lt;summary&gt; documentation
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.TypeValidationException] Unknown reference link target &#39;M:System.Exception.InternalPreserveStackTrace&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.TypeValidationException] Unknown reference link target &#39;M:System.Exception.InternalToString&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.TypeValidationException] Unknown reference link target &#39;M:System.Exception.PrepForRemoting&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.TypeValidationException] Unknown reference link target &#39;M:System.Exception.SetErrorCode(System.Int32)&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.TypeValidationException] Unknown reference link target &#39;F:System.Exception._HResult&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.TypeValidationException] Unknown reference link target &#39;F:System.Exception._message&#39;.
+  Warn: ResolveReferenceLinksComponent2: [AllMembers.T:ConfigRW.TypeValidationException] Unknown reference link target &#39;P:System.Exception.IsTransient&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Methods.T:ConfigRW.TypeValidationException] Unknown reference link target &#39;M:System.Exception.InternalPreserveStackTrace&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Methods.T:ConfigRW.TypeValidationException] Unknown reference link target &#39;M:System.Exception.InternalToString&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Methods.T:ConfigRW.TypeValidationException] Unknown reference link target &#39;M:System.Exception.PrepForRemoting&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Methods.T:ConfigRW.TypeValidationException] Unknown reference link target &#39;M:System.Exception.SetErrorCode(System.Int32)&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Properties.T:ConfigRW.TypeValidationException] Unknown reference link target &#39;P:System.Exception.IsTransient&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Fields.T:ConfigRW.TypeValidationException] Unknown reference link target &#39;F:System.Exception._HResult&#39;.
+  Warn: ResolveReferenceLinksComponent2: [Fields.T:ConfigRW.TypeValidationException] Unknown reference link target &#39;F:System.Exception._message&#39;.
+  Warn: ShowMissingComponent: [M:ConfigRW.TypeValidationException.#ctor(System.String,System.String,System.Type,System.Exception)] Missing &lt;param name=&quot;validatedType&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [N:ConfigRW.ConfigCreation] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [T:ConfigRW.ConfigCreation.PropertyStorage] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [T:ConfigRW.ConfigCreation.ReflectionUtils] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [F:ConfigRW.ConfigCreation.StructureValidation.IDValidator] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [N:ConfigRW.ConfigCreation.ContainerBuilders] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ConfigCreation.ContainerBuilders.ArrayBuilder.convert(System.Object,System.Type)] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ConfigCreation.ContainerBuilders.ArrayBuilder.convert(System.Object,System.Type)] Missing &lt;returns&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ConfigCreation.ContainerBuilders.ArrayBuilder.convert(System.Object,System.Type)] Missing &lt;param name=&quot;element&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ConfigCreation.ContainerBuilders.ArrayBuilder.convert(System.Object,System.Type)] Missing &lt;param name=&quot;expectedType&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ConfigCreation.ContainerBuilders.ArrayBuilder.CreateContainer(System.Type,System.Collections.Generic.IEnumerable{{System.Object}})] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ConfigCreation.ContainerBuilders.ArrayBuilder.CreateContainer(System.Type,System.Collections.Generic.IEnumerable{{System.Object}})] Missing &lt;returns&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ConfigCreation.ContainerBuilders.ArrayBuilder.CreateContainer(System.Type,System.Collections.Generic.IEnumerable{{System.Object}})] Missing &lt;param name=&quot;containerType&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ConfigCreation.ContainerBuilders.ArrayBuilder.CreateContainer(System.Type,System.Collections.Generic.IEnumerable{{System.Object}})] Missing &lt;param name=&quot;elements&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ConfigCreation.ContainerBuilders.ArrayBuilder.GetElements(System.Object)] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ConfigCreation.ContainerBuilders.ArrayBuilder.GetElements(System.Object)] Missing &lt;returns&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ConfigCreation.ContainerBuilders.ArrayBuilder.GetElements(System.Object)] Missing &lt;param name=&quot;container&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ConfigCreation.ContainerBuilders.ArrayBuilder.ResolveElementType(System.Type)] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ConfigCreation.ContainerBuilders.ArrayBuilder.ResolveElementType(System.Type)] Missing &lt;returns&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ConfigCreation.ContainerBuilders.ArrayBuilder.ResolveElementType(System.Type)] Missing &lt;param name=&quot;containerType&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ConfigCreation.ContainerBuilders.CollectionBuilder.CreateContainer(System.Type,System.Collections.Generic.IEnumerable{{System.Object}})] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ConfigCreation.ContainerBuilders.CollectionBuilder.CreateContainer(System.Type,System.Collections.Generic.IEnumerable{{System.Object}})] Missing &lt;returns&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ConfigCreation.ContainerBuilders.CollectionBuilder.CreateContainer(System.Type,System.Collections.Generic.IEnumerable{{System.Object}})] Missing &lt;param name=&quot;containerType&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ConfigCreation.ContainerBuilders.CollectionBuilder.CreateContainer(System.Type,System.Collections.Generic.IEnumerable{{System.Object}})] Missing &lt;param name=&quot;elements&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ConfigCreation.ContainerBuilders.CollectionBuilder.GetElements(System.Object)] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ConfigCreation.ContainerBuilders.CollectionBuilder.GetElements(System.Object)] Missing &lt;returns&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ConfigCreation.ContainerBuilders.CollectionBuilder.GetElements(System.Object)] Missing &lt;param name=&quot;container&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ConfigCreation.ContainerBuilders.CollectionBuilder.ResolveElementType(System.Type)] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ConfigCreation.ContainerBuilders.CollectionBuilder.ResolveElementType(System.Type)] Missing &lt;returns&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ConfigCreation.ContainerBuilders.CollectionBuilder.ResolveElementType(System.Type)] Missing &lt;param name=&quot;containerType&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ConfigCreation.ContainerBuilders.ListCompatibleBuilder.CreateContainer(System.Type,System.Collections.Generic.IEnumerable{{System.Object}})] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ConfigCreation.ContainerBuilders.ListCompatibleBuilder.CreateContainer(System.Type,System.Collections.Generic.IEnumerable{{System.Object}})] Missing &lt;returns&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ConfigCreation.ContainerBuilders.ListCompatibleBuilder.CreateContainer(System.Type,System.Collections.Generic.IEnumerable{{System.Object}})] Missing &lt;param name=&quot;containerType&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ConfigCreation.ContainerBuilders.ListCompatibleBuilder.CreateContainer(System.Type,System.Collections.Generic.IEnumerable{{System.Object}})] Missing &lt;param name=&quot;elements&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ConfigCreation.ContainerBuilders.ListCompatibleBuilder.GetElements(System.Object)] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ConfigCreation.ContainerBuilders.ListCompatibleBuilder.GetElements(System.Object)] Missing &lt;returns&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ConfigCreation.ContainerBuilders.ListCompatibleBuilder.GetElements(System.Object)] Missing &lt;param name=&quot;container&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ConfigCreation.ContainerBuilders.ListCompatibleBuilder.ResolveElementType(System.Type)] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ConfigCreation.ContainerBuilders.ListCompatibleBuilder.ResolveElementType(System.Type)] Missing &lt;returns&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.ConfigCreation.ContainerBuilders.ListCompatibleBuilder.ResolveElementType(System.Type)] Missing &lt;param name=&quot;containerType&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [N:ConfigRW.Parsing] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.ConfigParser.FromFile(System.String,ConfigRW.ParsingMode)] Missing &lt;returns&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.ConfigParser.FromFile(System.String,ConfigRW.ParsingMode)] Missing &lt;param name=&quot;mode&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.ConfigParser.GetOptionValues(ConfigRW.Parsing.StructureInfo)] Missing &lt;returns&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.ConfigParser.GetOptionValues(ConfigRW.Parsing.StructureInfo)] Missing &lt;param name=&quot;structure&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.ConfigParser.WriteCoreTo(System.IO.StreamWriter,System.Collections.Generic.KeyValuePair{{ConfigRW.Parsing.QualifiedOptionName,ConfigRW.Parsing.InnerOption}},System.String)] Missing &lt;param name=&quot;output&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.ConfigParser.WriteCoreTo(System.IO.StreamWriter,System.Collections.Generic.KeyValuePair{{ConfigRW.Parsing.QualifiedOptionName,ConfigRW.Parsing.InnerOption}},System.String)] Missing &lt;param name=&quot;opt&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.ConfigParser.WriteCoreTo(System.IO.StreamWriter,System.Collections.Generic.KeyValuePair{{ConfigRW.Parsing.QualifiedOptionName,ConfigRW.Parsing.InnerOption}},System.String)] Missing &lt;param name=&quot;defaultDelimiter&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.ConfigParser.wrongOrder(System.Object,System.Object)] Missing &lt;returns&gt; documentation
+  Warn: ShowMissingComponent: [T:ConfigRW.Parsing.Lexer] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.Lexer.action_comment] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.Lexer.action_gatherElementBody] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.Lexer.action_gatherElementBody_escaped] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.Lexer.action_gatherElementBody_spaces] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.Lexer.action_gatherIdentifierBody] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.Lexer.action_gatherIdentifierBody_escaped] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.Lexer.action_gatherIdentifierBody_spaces] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.Lexer.action_gatherIdentifierStart] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.Lexer.action_gatherIdentifierStart_escaped] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.Lexer.action_gatherLinkOption] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.Lexer.action_gatherLinkOption_escaped] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.Lexer.action_gatherLinkSection] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.Lexer.action_gatherLinkSection_escaped] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.Lexer.action_newLexemeStart] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.OptionInfo.#ctor(ConfigRW.Parsing.QualifiedOptionName,System.Type,System.String,System.Object,System.Boolean,System.String,System.Object,System.Object)] Missing &lt;param name=&quot;name&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.OptionInfo.#ctor(ConfigRW.Parsing.QualifiedOptionName,System.Type,System.String,System.Object,System.Boolean,System.String,System.Object,System.Object)] Missing &lt;param name=&quot;expectedType&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.OptionInfo.#ctor(ConfigRW.Parsing.QualifiedOptionName,System.Type,System.String,System.Object,System.Boolean,System.String,System.Object,System.Object)] Missing &lt;param name=&quot;associatedProperty&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.OptionInfo.#ctor(ConfigRW.Parsing.QualifiedOptionName,System.Type,System.String,System.Object,System.Boolean,System.String,System.Object,System.Object)] Missing &lt;param name=&quot;defaultValue&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.OptionInfo.#ctor(ConfigRW.Parsing.QualifiedOptionName,System.Type,System.String,System.Object,System.Boolean,System.String,System.Object,System.Object)] Missing &lt;param name=&quot;isOptional&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.OptionInfo.#ctor(ConfigRW.Parsing.QualifiedOptionName,System.Type,System.String,System.Object,System.Boolean,System.String,System.Object,System.Object)] Missing &lt;param name=&quot;defaultComment&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.OptionInfo.#ctor(ConfigRW.Parsing.QualifiedOptionName,System.Type,System.String,System.Object,System.Boolean,System.String,System.Object,System.Object)] Missing &lt;param name=&quot;lowBound&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.OptionInfo.#ctor(ConfigRW.Parsing.QualifiedOptionName,System.Type,System.String,System.Object,System.Boolean,System.String,System.Object,System.Object)] Missing &lt;param name=&quot;upBound&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.OptionValue.#ctor(ConfigRW.Parsing.QualifiedOptionName,System.Object)] Missing &lt;param name=&quot;name&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.OptionValue.#ctor(ConfigRW.Parsing.QualifiedOptionName,System.Object)] Missing &lt;param name=&quot;value&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.QualifiedOptionName.#ctor(ConfigRW.Parsing.QualifiedSectionName,System.String)] Missing &lt;param name=&quot;section&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.QualifiedOptionName.#ctor(ConfigRW.Parsing.QualifiedSectionName,System.String)] Missing &lt;param name=&quot;optionID&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.QualifiedOptionName.toString] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.QualifiedOptionName.toString] Missing &lt;returns&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.QualifiedSectionName.#ctor(System.String)] Missing &lt;param name=&quot;name&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.QualifiedSectionName.toString] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.QualifiedSectionName.toString] Missing &lt;returns&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.SectionInfo.#ctor(ConfigRW.Parsing.QualifiedSectionName,System.Reflection.PropertyInfo,System.Collections.Generic.List{{ConfigRW.Parsing.OptionInfo}},System.String)] Missing &lt;param name=&quot;name&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.SectionInfo.#ctor(ConfigRW.Parsing.QualifiedSectionName,System.Reflection.PropertyInfo,System.Collections.Generic.List{{ConfigRW.Parsing.OptionInfo}},System.String)] Missing &lt;param name=&quot;associatedProperty&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.SectionInfo.#ctor(ConfigRW.Parsing.QualifiedSectionName,System.Reflection.PropertyInfo,System.Collections.Generic.List{{ConfigRW.Parsing.OptionInfo}},System.String)] Missing &lt;param name=&quot;options&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.SectionInfo.#ctor(ConfigRW.Parsing.QualifiedSectionName,System.Reflection.PropertyInfo,System.Collections.Generic.List{{ConfigRW.Parsing.OptionInfo}},System.String)] Missing &lt;param name=&quot;defaultComment&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.StructureInfo.#ctor(System.Type,System.Collections.Generic.IEnumerable{{ConfigRW.Parsing.SectionInfo}})] Missing &lt;param name=&quot;describingType&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.StructureInfo.#ctor(System.Type,System.Collections.Generic.IEnumerable{{ConfigRW.Parsing.SectionInfo}})] Missing &lt;param name=&quot;sections&quot;/&gt; documentation
+  Warn: ShowMissingComponent: [N:ConfigRW.Parsing.Converters] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.Converters.ConfigConverters.getConverter(ConfigRW.Parsing.OptionInfo)] Missing &lt;returns&gt; documentation
+  Warn: ShowMissingComponent: [T:ConfigRW.Parsing.Converters.EnumConverter] Missing &lt;summary&gt; documentation
+  Warn: ShowMissingComponent: [M:ConfigRW.Parsing.Converters.EnumConverter.#ctor(System.Type)] Missing &lt;param name=&quot;enumType&quot;/&gt; documentation
+  Info: Processed 506 topic(s)
+  Info: 250 warning(s)
+  Diagnostic: CopyFromIndexComponent: &quot;reflection&quot; in-memory cache entries used: 8 of 15.
+  Diagnostic: CopyFromIndexComponent: &quot;comments&quot; in-memory cache entries used: 2 of 30.
+  Diagnostic: ResolveReferenceLinksComponent2: New MSDN content ID cache size: 56 entries
+    Last step completed in 00:00:51.8332
+</buildStep>
+<buildStep step="CombiningIntermediateTocFiles">
+Combining conceptual and API intermediate TOC files...
+
+Clearing any prior web output
+    Last step completed in 00:00:00.1910
+</buildStep>
+<buildStep step="ExtractingHtmlInfo">
+Extracting HTML info for HTML Help 1 and/or website...
+[C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe]
+Sandcastle Help File Builder, version 1.9.7.0
+Copyright c 2006-2013, Eric Woodruff, All Rights Reserved
+E-Mail: Eric@EWoodruff.us
+
+Using LCID &#39;1033&#39;, code page &#39;65001&#39;, encoding charset &#39;UTF-8&#39;.
+
+Processing website files in Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporuźen‚ postupy\iniParser\Sandcastle\Intermediate\Output\Website
+Processed 506 HTML files
+Sorting keywords and generating See Also indices
+Saving website keyword index to Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporuźen‚ postupy\iniParser\Sandcastle\Intermediate\WebKI.xml
+Saving website table of contents to Z:\Dokumenty\CUNI NMgr\2LS\NPRG043 - Doporuźen‚ postupy\iniParser\Sandcastle\Intermediate\WebTOC.xml
+    Last step completed in 00:00:04.1744
+</buildStep>
+<buildStep step="GenerateHelpFormatTableOfContents">
+Generating website table of contents file...
+    Last step completed in 00:00:00.0020
+</buildStep>
+<buildStep step="GenerateFullTextIndex">
+Generating full-text index for the website...
+
+    Last step completed in 00:00:02.6353
+</buildStep>
+<buildStep step="CopyingWebsiteFiles">
+Copying website files to output folder...
+
+Copied 100 files
+Copied 200 files
+Copied 300 files
+Copied 400 files
+Copied 500 files
+Copied 600 files
+Copied 638 files for the website content
+    Last step completed in 00:00:08.2968
+</buildStep>
+<buildStep step="CleanIntermediates">
+Removing intermediate files...
+    Last step completed in 00:00:01.3741
+</buildStep>
+<buildStep step="Completed">
+
+Build completed successfully at 05. 03. 2013 10:14 .  Total time: 00:01:13,8409
+
+</buildStep>
+</shfbBuild>
