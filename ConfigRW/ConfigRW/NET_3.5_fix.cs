@@ -48,12 +48,13 @@ namespace ConfigRW
         #region Standard method overrides
         public override bool Equals(object obj)
         {
-            var oTuple = obj as Tuple<T1, T2>;
-            if (oTuple == null)
+            if (!(obj is Tuple<T1,T2>))
             {
+                //NOTE: don't use == comparison, because of recursion cycle
                 return false;
             }
 
+            var oTuple = obj as Tuple<T1, T2>;
             return object.Equals(this.Item1, oTuple.Item1) && object.Equals(this.Item2, oTuple.Item2);
         }
 

@@ -14,13 +14,14 @@ namespace UsageExamples
             var config = Configuration.CreateFromDefaults<ConfigStructure>();
             config.Special.List.Add("test added");
             config.Sec1.settableNumber = 98765;
+            config.SetComment(QualifiedName.ForSection("Sec2"), "Comment on section 2");
             config.Save("defaultValues.cfg");
 
 
 
             var config2 = Configuration.CreateFromFile<ConfigStructure>("defaultValues.cfg", ParsingMode.Strict);
-            config2.SetComment(QualifiedName.ForSection("Sec1"), "Comment override");
-            config2.SetComment(QualifiedName.ForSection("Special"), "Comment added");
+            config2.SetComment(QualifiedName.ForSection("Sec2"), "Comment override");
+            config2.SetComment(QualifiedName.ForSection("SpecialTest"), "Comment added");
             config2.Special.List.Add("test changed");
 
             config2.Save("changedConfig.cfg");
@@ -33,10 +34,11 @@ namespace UsageExamples
     /// </summary>
     public interface ConfigStructure : IConfiguration
     {        
-        [SectionInfo(ID="A-$hoj")]
+        [SectionInfo(ID="SpecialTest")]
         SpecialTypeSection Special { get; }
 
-        [DefaultComment("First section of config, default comment")]        
+        [DefaultComment("Second section of config, default comment")]
+        [SectionInfo(ID = "A-$hoj")]
         Section1 Sec1 { get; }
         [DefaultComment("Second section of config")]
         Section2 Sec2 { get; }
@@ -66,6 +68,7 @@ namespace UsageExamples
     public interface Section1
     {
         [Range(LowerBound = 20)]
+        [OptionInfo(DefaultValue=30)]
         int number { get; }
         [DefaultComment("Value that can be set at runtime")]
         int settableNumber { get; set; }
@@ -76,9 +79,9 @@ namespace UsageExamples
         [OptionInfo(ID = "Name with space", IsOptional = true, DefaultValue = "default value")]
         string Field_name { get; }
 
-        [OptionInfo(ID = "duplTest2")]
+        [OptionInfo(ID = "duplTest2",DefaultValue=4)]
         int x2 { get; }
-        [OptionInfo(ID = "duplTest")]
+        [OptionInfo(ID = "duplTest",DefaultValue=7)]
         int x1 { get; }
     }
 

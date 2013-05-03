@@ -36,7 +36,17 @@ namespace ConfigRW.ConfigCreation.ContainerBuilders
             var elementType = ResolveElementType(containerType);
 
             var listType= typeof(List<>).MakeGenericType(new Type[] { elementType });
-            return Activator.CreateInstance(listType, elements);
+
+            var inputArray = Array.CreateInstance(elementType, elements.Count());
+
+            int index=0;
+            foreach (var element in elements)
+            {
+                inputArray.SetValue(element, index);
+                ++index;
+            }
+
+            return Activator.CreateInstance(listType,inputArray);
         }
 
         public IEnumerable<object> GetElements(object container)

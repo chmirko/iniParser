@@ -249,7 +249,7 @@ namespace ConfigRW.Parsing
 
          if (opt.Value.Comment != null)
          {
-            output.Write(" ;");
+            output.Write("\t\t;");
             output.Write(opt.Value.Comment);
          }
 
