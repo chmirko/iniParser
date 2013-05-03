@@ -431,7 +431,7 @@ namespace ConfigRW.Parsing
          if (line[position] == ' ')
          {
             curLexeme.Append(line[position]);
-            curState = state.gatherIdentifierBody_spaces;
+            curState = state.gatherElementBody_spaces;
             ++spacesGathered;
          }
          // Comment start

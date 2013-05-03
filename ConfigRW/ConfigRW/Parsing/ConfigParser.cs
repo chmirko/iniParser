@@ -96,11 +96,6 @@ namespace ConfigRW.Parsing
       }
 
       /// <summary>
-      /// Delimiter used in config values
-      /// </summary>
-      static internal char delimiter = ',';
-
-      /// <summary>
       /// Internal dictionary of all known sections
       /// </summary>
       private Dictionary<QualifiedSectionName, InnerSection> knownSections = new Dictionary<QualifiedSectionName, InnerSection>();
@@ -210,7 +205,11 @@ namespace ConfigRW.Parsing
          {
             foreach (var sect in knownSections)
             {
-               output.WriteLine(";" + sect.Value.Comment);
+               // write comment if present
+               if (sect.Value.Comment != null)
+               {
+                  output.WriteLine(";" + sect.Value.Comment);
+               }
                output.WriteLine("[" + sect.Key.ID + "]");
 
                foreach (var opt in sect.Value.Options)
@@ -250,7 +249,7 @@ namespace ConfigRW.Parsing
 
          if (opt.Value.Comment != null)
          {
-            output.Write(';');
+            output.Write(" ;");
             output.Write(opt.Value.Comment);
          }
 
@@ -270,9 +269,16 @@ namespace ConfigRW.Parsing
          // crawl all sections
          foreach (var section in structure.Sections)
          {
+            // acquire default comment if non-default is not set (and is present in file)
+            checkSectionComment(section);
+
             // crawl all options
             foreach (var option in section.Options)
             {
+               // acquire default comment if non-default is not set (and is present in file)
+               checkOptionComment(option);
+
+               // return value
                object value = extractValue(option);
                yield return new OptionValue(option.Name, value);
             }
@@ -283,26 +289,100 @@ namespace ConfigRW.Parsing
       }
 
       /// <summary>
+      /// Checks whether given section exists and has appropriate comment,
+      /// if it has no comment, it claims the default one
+      /// </summary>
+      /// <param name="section">Fully typed section info, with appropriate comment set</param>
+      private void checkSectionComment(SectionInfo section)
+      {
+         var qSec = section.Name;
+
+         // only if exists
+         if (knownSections.ContainsKey(qSec))
+         {
+            var innerSect = knownSections[qSec];
+
+            // only if it has no comment, default one is claimed
+            if (innerSect.Comment == null)
+            {
+               innerSect.Comment = section.DefaultComment;
+            }
+         }
+
+      }
+
+      /// <summary>
+      /// Checks whether given option exists and has appropriate comment,
+      /// if it has no comment, it claims the default one
+      /// </summary>
+      /// <param name="option">Fully typed option info with, appropriate comment set</param>
+      private void checkOptionComment(OptionInfo option)
+      {
+         var qSec = option.Name.Section;
+
+         // only if section exists
+         if (knownSections.ContainsKey(qSec))
+         {
+            var innerSect = knownSections[qSec];
+            var qOpt = option.Name;
+
+            // only if the option itself exists
+            if (innerSect.Options.ContainsKey(qOpt))
+            {
+               var innerOpt = innerSect.Options[qOpt];
+
+               // only if it has no comment, default one is claimed
+               if (innerOpt.Comment == null)
+               {
+                  innerOpt.Comment = option.DefaultComment;
+               }
+            }
+         }
+      }
+
+      /// <summary>
       /// Extracts value from internal representation into final form
       /// </summary>
       /// <param name="info">Option for which to extract the value</param>
       /// <returns>Value in expected format</returns>
       private object extractValue(OptionInfo info)
       {
-         // Match inner option to desired one
-         InnerOption opt;
-         try
-         {
-            opt = knownSections[info.Name.Section].Options[info.Name];
-         }
-         catch (Exception ex)
-         {
+         // obtain section
+         var qSec = info.Name.Section;
+         if (!knownSections.ContainsKey(qSec))
             throw new ParserException(
-               userMsg: "Error when retrieving expected value", 
-               developerMsg: "Error when finding internal representation of desired option, possibility of it being missing", 
-               inner: ex);
-         }
+               userMsg: "Error when retrieving expected value",
+               developerMsg: "Error when finding internal representation of section of desired option, possibility of it being missing");
+         var curSection = knownSections[qSec];
 
+
+         // option exists, retrieve value
+         if (curSection.Options.ContainsKey(info.Name))
+         {
+            var opt = curSection.Options[info.Name];
+            return extractValue(info, opt);
+         }
+         // option does not exist but is optional
+         else if (info.IsOptional)
+         {
+            return info.DefaultValue;
+         }
+         // option does not exist, and is missing
+         else
+            throw new ParserException(
+               userMsg: "Error when retrieving expected value",
+               developerMsg: "Error when finding internal representation of section of desired option, possibility of it being missing");
+      }
+
+      /// <summary>
+      /// Extracts value from internal representation into final form
+      /// internal representation existent and provided to the method
+      /// </summary>
+      /// <param name="info">Option for which to extract the value</param>
+      /// <param name="opt">Inner representaiton of desired option with desired value</param>
+      /// <returns>Value in expected format</returns>
+      private object extractValue(OptionInfo info, InnerOption opt)
+      {
          // Check container/singleUnit consistenci
          if (!info.IsContainer && opt.strValues.Count > 1)
             throw new ParserExceptionWithinConfig(
@@ -318,17 +398,12 @@ namespace ConfigRW.Parsing
          }
          catch (Exception ex)
          {
-            throw new ParserExceptionWithinConfig(userMsg: "Cannot find convertor", developerMsg: "Convertor terieving method thrown an exception", line: opt.Line, inner: ex);
+            throw new ParserExceptionWithinConfig(userMsg: "Cannot find convertor", developerMsg: "Convertor retrieving method thrown an exception", line: opt.Line, inner: ex);
          }
 
          // Value extraction
          try
          {
-            // Default to be returned
-            if (opt.strValues.Count == 0)
-            {
-               return info.DefaultValue;
-            }
             // Container
             if (info.IsContainer)
             {
@@ -410,7 +485,9 @@ namespace ConfigRW.Parsing
 
          // Ensure section exists
          if (!knownSections.ContainsKey(qSect))
+         {
             knownSections.Add(qSect, new InnerSection(qSect, null));
+         }
 
          // Ensure option exists
          if (!knownSections[qSect].Options.ContainsKey(qOpt))
