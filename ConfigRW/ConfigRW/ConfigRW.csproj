@@ -70,7 +70,6 @@
     <Compile Include="ConfigCreation\ReflectionUtils.cs" />
     <Compile Include="ConfigCreation\StructureValidation.cs" />
     <Compile Include="ConfigRWException.cs" />
-    <Compile Include="DefaultCommentAttribute.cs" />
     <Compile Include="ConfigCreation\ClassBuilder.cs" />
     <Compile Include="ConfigCreation\ConfigRoot.cs" />
     <Compile Include="ConfigCreation\ConfigSection.cs" />
@@ -78,7 +77,7 @@
     <Compile Include="ConfigCreation\StructureFactory.cs" />
     <Compile Include="IConfiguration.cs" />
     <Compile Include="Configuration.cs" />
-    <Compile Include="OptionInfoAttribute.cs" />
+    <Compile Include="Attributes.cs" />
     <Compile Include="Parsing\Converters\ConfigConverters.cs" />
     <Compile Include="Parsing\Converters\EnumConverter.cs" />
     <Compile Include="Parsing\Converters\BoolConverter.cs" />
@@ -105,8 +104,6 @@
     <Compile Include="Parsing\SectionInfo.cs" />
     <Compile Include="Parsing\StructureInfo.cs" />
     <Compile Include="QualifiedName.cs" />
-    <Compile Include="RangeAttribute.cs" />
-    <Compile Include="SectionInfoAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

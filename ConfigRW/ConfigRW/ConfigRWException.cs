@@ -28,10 +28,11 @@ namespace ConfigRW
         /// <param name="developerMsg">Generic exception message, desingated for application developer</param>
         /// <param name="logMsg">Message designated to be logged into log file, for future inspection (null if same as developerMsg)</param>
         /// <param name="inner">Inner exception, for chained exceptions (null if no chained exception)</param>      
-        public ConfigRWException(string userMsg, string developerMsg, string logMsg = null, Exception inner = null)
+        public ConfigRWException(string userMsg, string developerMsg, string logMsg = null, Exception inner = null):
+            base(developerMsg, inner)
         {
             UserMsg = userMsg;
-            LogMsg = (logMsg != null) ? logMsg : developerMsg;
+            LogMsg = (logMsg != null) ? logMsg : developerMsg;            
         }
 
     }

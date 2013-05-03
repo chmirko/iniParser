@@ -32,10 +32,11 @@ namespace UsageExamples
     /// Root configuration structure.
     /// </summary>
     public interface ConfigStructure : IConfiguration
-    {
+    {        
+        [SectionInfo(ID="A-$hoj")]
         SpecialTypeSection Special { get; }
 
-        [DefaultComment("First section of config, default comment")]
+        [DefaultComment("First section of config, default comment")]        
         Section1 Sec1 { get; }
         [DefaultComment("Second section of config")]
         Section2 Sec2 { get; }
@@ -64,7 +65,7 @@ namespace UsageExamples
 
     public interface Section1
     {
-        [Range(LowerBound = 0)]
+        [Range(LowerBound = 20)]
         int number { get; }
         [DefaultComment("Value that can be set at runtime")]
         int settableNumber { get; set; }

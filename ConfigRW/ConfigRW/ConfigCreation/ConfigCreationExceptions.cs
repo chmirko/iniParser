@@ -19,14 +19,35 @@ namespace ConfigRW
         /// <param name="userMsg">Message designated for user</param>
         /// <param name="developerMsg">Generic exception message, desingated for application developer</param>        
         /// <param name="inner">Inner exception, for chained exceptions (null if no chained exception)</param>
-        public PropertyValidationException(string userMsg, string developerMsg,PropertyInfo validatedProperty, Exception inner = null)
-            : base(userMsg, developerMsg, inner:inner)
+        public PropertyValidationException(string userMsg, string developerMsg, PropertyInfo validatedProperty, Exception inner = null)
+            : base(
+                string.Format(userMsg, validatedProperty),
+                string.Format(developerMsg, validatedProperty),
+                inner: inner
+            )
         {
             ValidatedProperty = validatedProperty;
         }
     }
 
-    public class TypeValidationException: ConfigRWException
+
+    public class IDValidationException : ConfigRWException
+    {
+        public readonly string ValidatedID;
+        public readonly PropertyInfo ValidatedProperty;
+
+        public IDValidationException(string userMsg, string developerMsg, string validatedID, PropertyInfo validatedProperty)
+            : base(
+                string.Format(userMsg, validatedID, validatedProperty),
+                string.Format(developerMsg, validatedID, validatedProperty)
+            )
+        {
+            ValidatedID = validatedID;
+            ValidatedProperty = validatedProperty;
+        }
+    }
+
+    public class TypeValidationException : ConfigRWException
     {
         /// <summary>
         /// Property where validation error has been found.
@@ -49,20 +70,21 @@ namespace ConfigRW
     {
         public readonly Type ContainerType;
 
-        public ContainerBuildException(string userMsg,string developerMsg,Type containerType):
-            base(userMsg,developerMsg)
+        public ContainerBuildException(string userMsg, string developerMsg, Type containerType) :
+            base(userMsg, developerMsg)
         {
             ContainerType = containerType;
         }
     }
 
-    public class CreateInstanceException: ConfigRWException
+    public class CreateInstanceException : ConfigRWException
     {
-        
+
 
         public CreateInstanceException(string userMsg, string developerMsg, Exception inner) :
-            base(userMsg, developerMsg, inner:inner)
-        {            
+            base(userMsg, developerMsg, inner: inner)
+        {
         }
     }
+
 }

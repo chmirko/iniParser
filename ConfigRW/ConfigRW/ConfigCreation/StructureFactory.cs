@@ -116,8 +116,12 @@ namespace ConfigRW.ConfigCreation
         /// <returns>Elements that are contained in container.</returns>
         internal static IEnumerable<object> GetContainerElements(object container)
         {
-            var builder = GetContainerBuilder(container.GetType());
+            if (container == null)
+            {
+                return new object[0];
+            }
 
+            var builder = GetContainerBuilder(container.GetType());
             return builder.GetElements(container);
         }
 
@@ -132,7 +136,9 @@ namespace ConfigRW.ConfigCreation
         {
             var builder = GetContainerBuilder(containerType);
             if (builder == null)
+            {
                 return null;
+            }
 
             return builder.ResolveElementType(containerType);
         }
