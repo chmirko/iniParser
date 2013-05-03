@@ -1,10 +1,3 @@
-obj
-*.suo
-/ConfigReader/ConfigReader/bin/Debug/*.exe
-/ConfigReader/ConfigReader/bin/Debug/*.config
-/ConfigReader/ConfigReader/bin/Debug/*.pdb
-/ConfigReader/ConfigReader/bin/Debug/*.exe
-/ConfigReader/ConfigReader/bin/Debug/*.config
 bin
 obj
 *.suo
