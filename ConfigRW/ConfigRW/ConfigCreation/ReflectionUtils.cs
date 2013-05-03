@@ -110,119 +110,38 @@ namespace ConfigRW.ConfigCreation
 
 
         /// <summary>
-        /// Get attribute of given type from attributes. If there is none matching attribute, default attribute with param less ctor is created.
+        /// Get attribute of AttributeType for given info.
         /// </summary>
-        /// <typeparam name="AttributeType">Type of searched attribute.</typeparam>
-        /// <param name="attributes">Attribute where the one with given type will be seareched.</param>
-        /// <returns>Founded or default attribute.</returns>
-        internal static AttributeType GetAttribute<AttributeType>(IEnumerable<CustomAttributeData> attributes)
-            where AttributeType : Attribute, new()
-        {
-            foreach (var attribute in attributes)
-            {
-                var attrType = attribute.Constructor.DeclaringType;
-                if (attrType == typeof(AttributeType))
-                {
-                    return (AttributeType)createAttributeInstance(attribute);
-                }
-            }
-
-            return new AttributeType();
-        }
-
-
-
+        /// <typeparam name="AttributeType">Type of attribute that will be returned</typeparam>
+        /// <param name="info">Member info which attribute will be searched</param>
+        /// <returns>Attribute attached to given info, or default instance of AttributeType</returns>
         internal static AttributeType GetAttribute<AttributeType>(MemberInfo info)
             where AttributeType : Attribute, new()
         {
-            //var attribs = CustomAttributeData.GetCustomAttributes(info);
             var attribs = info.GetCustomAttributes(typeof(AttributeType), true);
             return GetAttribute<AttributeType>(attribs);
         }
 
+        /// <summary>
+        /// Get attribute of AttributeType from given attribute objects. If no matching attribute is found, default AttributeType instance is returned.
+        /// </summary>
+        /// <typeparam name="AttributeType">Type of attribute that will be returned</typeparam>
+        /// <param name="attributes">Attribute objects</param>
+        /// <returns>Attribute from given attributes, or default instance of AttributeType</returns>
         private static AttributeType GetAttribute<AttributeType>(object[] attributes)
-        where AttributeType : Attribute, new()
+            where AttributeType : Attribute, new()
         {
             foreach (var attribute in attributes)
             {
-                return (AttributeType)attribute;
+                if (attribute is AttributeType)
+                {
+                    //Return attached attribute
+                    return (AttributeType)attribute;
+                }
             }
 
+            //Create default attribute
             return new AttributeType();
         }
-
-        internal static Attribute createAttributeInstance(CustomAttributeData data)
-        {
-            var attrType = data.Constructor.DeclaringType;
-            var ctorArgs = new List<object>();
-            foreach (var arg in data.ConstructorArguments)
-            {
-                ctorArgs.Add(arg.Value);
-            }
-
-
-            var attr = (Attribute)Activator.CreateInstance(attrType, ctorArgs.ToArray());
-
-            foreach (var namedArg in data.NamedArguments)
-            {
-                var property = namedArg.MemberInfo as PropertyInfo;
-                var val = getStoredObject(namedArg);
-
-
-                property.SetValue(attr, val, null);
-            }
-
-            return attr;
-        }
-
-        private static object getStoredObject(CustomAttributeNamedArgument namedArg)
-        {
-            var val = namedArg.TypedValue.Value;
-            if (val is ReadOnlyCollection<CustomAttributeTypedArgument>)
-            {
-                return getStoredObject(val as ReadOnlyCollection<CustomAttributeTypedArgument>, namedArg.TypedValue.ArgumentType);
-            }
-            return val;
-        }
-
-        private static object getStoredObject(CustomAttributeTypedArgument arg)
-        {
-            var value = arg.Value;
-
-            if (!(value is ReadOnlyCollection<CustomAttributeTypedArgument>))
-            {
-                return value;
-            }
-
-            var elements = value as ReadOnlyCollection<CustomAttributeTypedArgument>;
-
-            return getStoredObject(elements, arg.ArgumentType);
-        }
-
-        private static object getStoredObject(ReadOnlyCollection<CustomAttributeTypedArgument> elements, Type expectedType)
-        {
-            var convertedElements = new List<object>();
-            foreach (var el in elements)
-            {
-                var elValue = el.Value;
-                if (elValue is CustomAttributeTypedArgument)
-                {
-                    elValue = getStoredObject((CustomAttributeTypedArgument)elValue);
-                }
-
-                convertedElements.Add(elValue);
-            }
-
-
-            var builder = StructureFactory.GetContainerBuilder(expectedType);
-            if (builder == null)
-            {
-                return null;
-            }
-            return builder.CreateContainer(expectedType, convertedElements);
-
-        }
-
-
     }
 }
