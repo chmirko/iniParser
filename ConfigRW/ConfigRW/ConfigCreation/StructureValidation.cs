@@ -96,10 +96,20 @@ namespace ConfigRW.ConfigCreation
             if (!structureType.IsInterface)
             {
                 throw new TypeValidationException(
-                       userMsg: "Type describing configuration structure has to be interface",
+                       userMsg: "Type describing configuration structure has to be public interface",
                        developerMsg: "StructureValidation::checkSignature failed because structure type isn't interface",
                        validatedType: structureType
                        );
+            }
+
+
+            if (!structureType.IsPublic)
+            {
+                throw new TypeValidationException(
+                     userMsg: "Type describing configuration structure has to be public",
+                     developerMsg: "StructureValidation::checkSignature failed because structure type isn't public",
+                     validatedType: structureType
+                     );
             }
 
             //note: all methods are public because we are in interface
