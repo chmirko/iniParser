@@ -98,6 +98,11 @@ namespace ConfigRW
 
             var structureInfo = StructureFactory.CreateStructureInfo(structureType);
             var optionValues =  readFromParser?parser.GetOptionValues(structureInfo):getDefaults(structureInfo);
+            if (!readFromParser)
+            {
+                //parser has to now about structure 
+                parser.RegisterStructure(structureInfo);
+            }
 
         
             var configRoot = ConfigFactory.CreateConfigRoot(structureInfo);
@@ -108,7 +113,7 @@ namespace ConfigRW
                 configRoot.SetOption(value);
                 if (!readFromParser)
                 {
-                    //parser doesn't know about default values - notify him
+                    //parser doesn't know about default values - notify it
                     var info = configRoot.GetOptionInfo(value.Name);
                     parser.SetOption(info, value);
                 }
