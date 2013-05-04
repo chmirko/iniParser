@@ -109,7 +109,7 @@ namespace UsageExamples
    public interface Section1
    {
       [Range(LowerBound = 20)]
-      [OptionInfo(DefaultValue = 30)]
+      [OptionInfo(DefaultValue = 10)]
       int number { get; }
       [DefaultComment("Value that can be set at runtime")]
       int settableNumber { get; set; }

@@ -6,7 +6,8 @@ using System.Text;
 namespace ConfigRW
 {
     /// <summary>
-    /// Base exception for exceptions thrown out of Config Reader and Writer.    
+    /// Exceptions thrown out of ConfigRW library.
+    /// Except really extraordynary conditions, this should be the only one exception thorwon out of the ConfigRW library.
     /// </summary>
     public class ConfigRWException : Exception
     {

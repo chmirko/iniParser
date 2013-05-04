@@ -87,7 +87,7 @@ namespace ConfigRW.ConfigCreation
 
             var expectedType = optionProperty.PropertyType;
 
-            var defaultValue = createDefaultObject(infoAttr.DefaultValue, expectedType);
+            var defaultValue = createDefaultObject(optionProperty,infoAttr.DefaultValue);
 
             return new OptionInfo(
                 optionName, expectedType, optionProperty.Name,
@@ -220,10 +220,12 @@ namespace ConfigRW.ConfigCreation
         /// Create object that can be used as option default.
         /// </summary>
         /// <param name="defaultValue">Default value specified by user.</param>
-        /// <param name="expectedType">Type that option expects.</param>
+        /// <param name="optionProperty">Property that describes option which defaultValue will be created</param>
         /// <returns>Default value object.</returns>
-        private static object createDefaultObject(object defaultValue, Type expectedType)
+        private static object createDefaultObject(PropertyInfo optionProperty, object defaultValue)
         {
+            var expectedType = optionProperty.PropertyType;
+
             if (defaultValue == null)
             {
                 //there is no default value
@@ -243,6 +245,7 @@ namespace ConfigRW.ConfigCreation
                 throw new ContainerBuildException(
                     userMsg: "Cannot create default object for container option",
                     developerMsg: "StructureFactory::createDefaultObject missing builder for container type",
+                    validatedOptionProperty:optionProperty,
                     containerType: expectedType
 
                     );

@@ -45,16 +45,34 @@ namespace ConfigRW
         internal abstract string toString();
 
         #region Standard method overrides
+        /// <summary>
+        /// Equals override that allows comparing qualified names with different references.
+        /// </summary>
+        /// <param name="obj">Object to be compared.</param>
+        /// <returns>True if obj is qualified name with same string representation.</returns>
         public override bool Equals(object obj)
         {
+            if (!(obj is QualifiedName))
+            {
+                return false;
+            }
+
             return ToString() == obj.ToString();
         }
 
+        /// <summary>
+        /// GetHashCode override that allows hashing qualified names according its string representation.
+        /// </summary>
+        /// <returns>HashCode for qualified name.</returns>
         public override int GetHashCode()
         {
-            return ToString().GetHashCode();
+            return toString().GetHashCode();
         }
 
+        /// <summary>
+        /// Get string representation of qualified name.
+        /// </summary>
+        /// <returns>String representation of qualified name.</returns>
         public override string ToString()
         {
             return toString();
