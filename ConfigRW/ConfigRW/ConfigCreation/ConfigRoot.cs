@@ -31,7 +31,7 @@ namespace ConfigRW.ConfigCreation
         /// Save configuration into given file.
         /// </summary>
         /// <param name="outputFile">File where configuration will be saved.</param>
-        public void Save(string outputFile)
+        public void SaveTo(string outputFile)
         {
             flushChanges();
             _parser.Save(outputFile);

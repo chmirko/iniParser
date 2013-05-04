@@ -20,7 +20,7 @@ namespace ConfigRW
         /// Save configuration into output file.
         /// </summary>
         /// <param name="outputFile">Output file where configuration will be saved.</param>
-        void Save(string outputFile);
+        void SaveTo(string outputFile);
         /// <summary>
         /// Write configuration into output.
         /// </summary>

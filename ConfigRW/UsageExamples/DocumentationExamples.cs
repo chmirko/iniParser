@@ -33,21 +33,23 @@ var players = Configuration.CreateFromFile<Players>("players.ini");
 //now we can work with players like with usuall .NET object
 ++players.Player1.SavedLevel;
 
-//...other work with configuration...
+//...other work with configuration data...
 
 //we can save configuration easily
-players.Save("changedConfig.ini");
+players.SaveTo("changedConfig.ini");
         }
 
         static void BuilderExample()
         {
 var structureBuilder = new ConfigBuilder();
 
-//Structure is hidden in code
-structureBuilder.AddOption<string>("Player1", "Name").SetDefault("NoName");
+//Structure is hidden in code :-(
+structureBuilder.AddOption<string>("Player1", "Name")
+    .SetDefault("NoName").SetReadonly();
 structureBuilder.AddOption<int>("Player1", "SavedLevel");
 
-structureBuilder.AddOption<string>("Player2", "Name").SetDefault("NoName");
+structureBuilder.AddOption<string>("Player2", "Name")
+    .SetDefault("NoName").SetReadonly();    
 structureBuilder.AddOption<int>("Player2", "SavedLevel");
 
 var configuration = structureBuilder.Build("players.ini");
@@ -59,10 +61,18 @@ var savedLevel=configuration.ReadValue<int>("Player1", "SavedLevel");
 //we need to explicitly write changes into configuration object
 configuration.WriteValue<int>("Player1", "SavedLevel", savedLevel);
 
-//...other work with configuration...
+//...other work with configuration data...
 
 //save results
-configuration.Save("changedConfig.ini");
+configuration.SaveTo("changedConfig.ini");
+        }
+
+        static void ExampleSaveProvider()
+        {
+            var configObj=new Config();
+            Config.Save(configObj, "output.ini");
+
+            configObj.SaveTo("output.ini");            
         }
     }
 
@@ -87,6 +97,11 @@ configuration.Save("changedConfig.ini");
         {
             throw new NotImplementedException();
         }
+
+        internal void SetReadonly()
+        {
+            throw new NotImplementedException();
+        }
     }
 
     class Config
@@ -101,7 +116,12 @@ configuration.Save("changedConfig.ini");
             throw new NotImplementedException();
         }
 
-        internal void Save(string p)
+        internal void SaveTo(string p)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static void Save(object config, string p)
         {
             throw new NotImplementedException();
         }

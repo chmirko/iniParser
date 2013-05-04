@@ -42,11 +42,11 @@ namespace UsageExamples
 
          // Test saving from directlyCreated struct
          var parseConf_cleanStore = Configuration.CreateFromDefaults<ParserConfigStruct>();
-         parseConf_cleanStore.Save("parseTest_directlyStored.cfg");
+         parseConf_cleanStore.SaveTo("parseTest_directlyStored.cfg");
 
          // Test default values not being saved after not present in original file (and other featurettes as well)
          var parseConf_readStore = Configuration.CreateFromFile<ParserConfigStruct>("raw.cfg", ParsingMode.Relaxed);
-         parseConf_readStore.Save("parseTest_defaultSaveTest.cfg");
+         parseConf_readStore.SaveTo("parseTest_defaultSaveTest.cfg");
       }
 
       static void Main(string[] args)
@@ -59,14 +59,14 @@ namespace UsageExamples
          config.Special.List.Add("test added");
          config.Sec1.settableNumber = 98765;
          config.SetComment(QualifiedName.ForSection("Sec2"), "Comment on section 2");
-         config.Save("defaultValues.cfg");
+         config.SaveTo("defaultValues.cfg");
 
          var config2 = Configuration.CreateFromFile<ConfigStructure>("defaultValues.cfg", ParsingMode.Strict);
          config2.SetComment(QualifiedName.ForSection("Sec2"), "Comment override");
          config2.SetComment(QualifiedName.ForSection("SpecialTest"), "Comment added");
          config2.Special.List.Add("test changed");
 
-         config2.Save("changedConfig.cfg");
+         config2.SaveTo("changedConfig.cfg");
       }
    }
 
