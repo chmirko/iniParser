@@ -244,6 +244,34 @@ namespace ConfigRW.Parsing
       }
 
       /// <summary>
+      /// Register structure info (used when file is not being read)
+      /// </summary>
+      /// <param name="structure">Structure info</param>
+      internal void RegisterStructure(StructureInfo structure)
+      {
+         // crawl all sections
+         foreach (var section in structure.Sections)
+         {
+            // Create section and extract comment
+            var newSection = new InnerSection(section.Name, section.DefaultComment);
+            knownSections.Add(section.Name, newSection);
+
+            // crawl all options
+            foreach (var option in section.Options)
+            {
+               // Skip optional options
+               if (option.IsOptional)
+                  continue;
+
+               // Create option and extract comment
+               var newOption = new InnerOption(option.Name, null);
+               newOption.Comment = option.DefaultComment;
+               newSection.Options.Add(option.Name, newOption);
+            }
+         }
+      }
+
+      /// <summary>
       /// Guts of WriteTo method
       /// </summary>
       private static void WriteCoreTo(StreamWriter output, KeyValuePair<QualifiedOptionName,InnerOption> opt, string defaultDelimiter)
@@ -284,7 +312,7 @@ namespace ConfigRW.Parsing
       private static string escapeValue(string value)
       {
          string lTrim = value.TrimStart();
-         string fullTrim = value.TrimEnd();
+         string fullTrim = lTrim.TrimEnd();
 
          int headingSpaces = value.Length - lTrim.Length;
          int trailingSpaces = lTrim.Length - fullTrim.Length;
@@ -544,10 +572,12 @@ namespace ConfigRW.Parsing
          QualifiedSectionName qSect = value.Name.Section;
          QualifiedOptionName qOpt = value.Name;
 
-         // Ensure section exists
+         // Check that section exists
          if (!knownSections.ContainsKey(qSect))
          {
-            knownSections.Add(qSect, new InnerSection(qSect, null));
+            throw new ParserException(
+               userMsg: "error, unknown section", 
+               developerMsg: "tried to set option in unknown section, sections needs to be retrieved from RegisterStructure() or from the actual file");
          }
 
          // Ensure option exists

@@ -47,7 +47,6 @@ namespace UsageExamples
          // Test default values not being saved after not present in original file (and other featurettes as well)
          var parseConf_readStore = Configuration.CreateFromFile<ParserConfigStruct>("raw.cfg", ParsingMode.Relaxed);
          parseConf_readStore.Save("parseTest_defaultSaveTest.cfg");
-
       }
 
       static void Main(string[] args)
