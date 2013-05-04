@@ -106,6 +106,7 @@ $(document).ready(function(){initNavTree('class_usage_examples_1_1_program.html'
 <div class="header">
   <div class="summary">
 <a href="#pri-static-methods">Static Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_usage_examples_1_1_program-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">UsageExamples.Program Class Reference</div>  </div>
@@ -114,8 +115,16 @@ $(document).ready(function(){initNavTree('class_usage_examples_1_1_program.html'
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
+<tr class="memitem:ad519fcb5ef14965ff7abe6ee7047f7ed"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_usage_examples_1_1_program.html#ad519fcb5ef14965ff7abe6ee7047f7ed">runParserTests</a> ()</td></tr>
+<tr class="memdesc:ad519fcb5ef14965ff7abe6ee7047f7ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Testing scenarios used during parser development  <a href="#ad519fcb5ef14965ff7abe6ee7047f7ed">More...</a><br/></td></tr>
+<tr class="separator:ad519fcb5ef14965ff7abe6ee7047f7ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae99a15a1d63ca19036826cfbdf3c5e1c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_usage_examples_1_1_program.html#ae99a15a1d63ca19036826cfbdf3c5e1c">Main</a> (string[] args)</td></tr>
 <tr class="separator:ae99a15a1d63ca19036826cfbdf3c5e1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a6614094e44f284ea44e2c874d782a35e"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_usage_examples_1_1_program.html#a6614094e44f284ea44e2c874d782a35e">rawConfig</a></td></tr>
+<tr class="separator:a6614094e44f284ea44e2c874d782a35e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="ae99a15a1d63ca19036826cfbdf3c5e1c"></a>
@@ -142,6 +151,72 @@ Static Private Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ad519fcb5ef14965ff7abe6ee7047f7ed"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void UsageExamples.Program.runParserTests </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Testing scenarios used during parser development </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a6614094e44f284ea44e2c874d782a35e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const string UsageExamples.Program.rawConfig</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= <span class="stringliteral">@&quot;</span></div>
+<div class="line"><span class="stringliteral">         [ParseSect_A]</span></div>
+<div class="line"><span class="stringliteral">         uncommentedOpt = dummyVal</span></div>
+<div class="line"><span class="stringliteral">         optSingleA = AlphaBrawoCharlieDeltaEchoFoxtrot    ;I HAZ COMMENTS</span></div>
+<div class="line"><span class="stringliteral">         optSingleB=\ \ \ Alpha   Brawo   Charlie   Delta   Echo   Foxtrot\ \ \ </span></div>
+<div class="line"><span class="stringliteral">         optMultiA = Alpha,Brawo,Charlie,Delta,Echo,Foxtrot    ;I HAZ COMMENTS TOO</span></div>
+<div class="line"><span class="stringliteral">         optMultiB=Alpha:Brawo:Charlie:Delta:Echo:Foxtrot</span></div>
+<div class="line"><span class="stringliteral"></span></div>
+<div class="line"><span class="stringliteral">         [ParseSect_B]</span></div>
+<div class="line"><span class="stringliteral">         uncommentedOpt=dummyVal ; HA! HAS COMMENT HERE, just must be everywhere as some dummyDeveloper made it non-optional</span></div>
+<div class="line"><span class="stringliteral">         optSingleA=${ParseSect_A#optSingleA}    ;I HAZ COMMENTS</span></div>
+<div class="line"><span class="stringliteral">         optSingleB = ${ParseSect_A#optSingleB}</span></div>
+<div class="line"><span class="stringliteral">         optMultiA=${ParseSect_A#optSingleA}, Golf, Hotel, India, Juliet    ;I HAZ COMMENTS TOO</span></div>
+<div class="line"><span class="stringliteral">         optMultiB = ${ParseSect_A#optMultiB},        Golf        ,Hotel, India, Juliet</span></div>
+<div class="line"><span class="stringliteral"></span></div>
+<div class="line"><span class="stringliteral">         [ParseSect_C]</span></div>
+<div class="line"><span class="stringliteral">         uncommentedOpt=dummyVal</span></div>
+<div class="line"><span class="stringliteral">         abundant = Hello, What the heck am I doing here, whell, screwing your parsing process; have a nice exception catching day</span></div>
+<div class="line"><span class="stringliteral">         optMultiA = Heading, ${ParseSect_B#optMultiA}, kilo,       Lima, \ \ \ Mike\ \ \   ;I HAZ COMMENTS TOO</span></div>
+<div class="line"><span class="stringliteral">         optMultiB=HeadingHereToo:${ParseSect_B#optMultiB}::somethingMissingBeforeMe:kilo:Lima&quot;</span></div>
+</div><!-- fragment -->
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>Z:/Dokumenty/CUNI NMgr/2LS/NPRG043 - Doporučené postupy/iniParser/ConfigRW/UsageExamples/<a class="el" href="_program_8cs.html">Program.cs</a></li>
 </ul>
@@ -151,7 +226,7 @@ Static Private Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_usage_examples.html">UsageExamples</a></li><li class="navelem"><a class="el" href="class_usage_examples_1_1_program.html">Program</a></li>
-    <li class="footer">Generated on Fri May 3 2013 22:37:57 for ConfigRW by
+    <li class="footer">Generated on Sat May 4 2013 14:14:34 for ConfigRW by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

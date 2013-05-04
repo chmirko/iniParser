@@ -108,7 +108,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions_0x75.html#index_u"><span>u</span></a></li>
       <li><a href="functions_0x76.html#index_v"><span>v</span></a></li>
       <li><a href="functions_0x77.html#index_w"><span>w</span></a></li>
-      <li><a href="functions_0x78.html#index_x"><span>x</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -131,7 +130,7 @@ $(document).ready(function(){initNavTree('functions_0x63.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Properties</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -168,11 +167,17 @@ $(document).ready(function(){initNavTree('functions_0x63.html','');});
 <li>checkInternalAsSeen()
 : <a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#ad050a474c8f265a106f27697b1d52961">ConfigRW.Parsing.ConfigParser</a>
 </li>
+<li>checkOptionCommentAndSeen()
+: <a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#ac69afaa305f3547e480feacbf79b8ddf">ConfigRW.Parsing.ConfigParser</a>
+</li>
 <li>checkOptionUniqueness()
 : <a class="el" href="class_config_r_w_1_1_config_creation_1_1_structure_validation.html#ac675729675689358cf2de3edf3b0d808">ConfigRW.ConfigCreation.StructureValidation</a>
 </li>
 <li>checkRangeTypeMatching()
 : <a class="el" href="class_config_r_w_1_1_config_creation_1_1_structure_validation.html#a19798e84bc2c6236948bbc33f818503a">ConfigRW.ConfigCreation.StructureValidation</a>
+</li>
+<li>checkSectionCommentAndSeen()
+: <a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#afd5da341cc63ed2e9ce5ef855467500d">ConfigRW.Parsing.ConfigParser</a>
 </li>
 <li>checkSectionUniqueness()
 : <a class="el" href="class_config_r_w_1_1_config_creation_1_1_structure_validation.html#a6562edf5150bf768880adc24dd4d51fb">ConfigRW.ConfigCreation.StructureValidation</a>
@@ -185,6 +190,9 @@ $(document).ready(function(){initNavTree('functions_0x63.html','');});
 </li>
 <li>checkValidity()
 : <a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#a8a511061738195f8facd52194b506756">ConfigRW.Parsing.ConfigParser</a>
+</li>
+<li>checkValiditySingle()
+: <a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#a7542dfa9f987dfecf4e212a44270a07d">ConfigRW.Parsing.ConfigParser</a>
 </li>
 <li>ClassBuilder()
 : <a class="el" href="class_config_r_w_1_1_config_creation_1_1_class_builder_3_01_parent_class_01_4.html#a641d1377172fb4ee1107eaf0600f4e44">ConfigRW.ConfigCreation.ClassBuilder&lt; ParentClass &gt;</a>
@@ -215,7 +223,7 @@ $(document).ready(function(){initNavTree('functions_0x63.html','');});
 : <a class="el" href="class_config_r_w_1_1_config_r_w_exception.html#abb655bd4845b21ec3316826501b0bc62">ConfigRW.ConfigRWException</a>
 </li>
 <li>ContainerBuildException()
-: <a class="el" href="class_config_r_w_1_1_container_build_exception.html#aa42b31f0c0e4dd9bfd024c4a3c0e5e31">ConfigRW.ContainerBuildException</a>
+: <a class="el" href="class_config_r_w_1_1_container_build_exception.html#afae2474d9eb590e55e2e48c4ae2f2ced">ConfigRW.ContainerBuildException</a>
 </li>
 <li>ContainerType
 : <a class="el" href="class_config_r_w_1_1_container_build_exception.html#a1e93a27daebb865746a5cf8b22197722">ConfigRW.ContainerBuildException</a>
@@ -243,22 +251,22 @@ $(document).ready(function(){initNavTree('functions_0x63.html','');});
 </li>
 <li>CreateContainer()
 : <a class="el" href="class_config_r_w_1_1_config_creation_1_1_container_builders_1_1_array_builder.html#ae067cf91f97643c86644be386a0db28b">ConfigRW.ConfigCreation.ContainerBuilders.ArrayBuilder</a>
-, <a class="el" href="class_config_r_w_1_1_config_creation_1_1_container_builders_1_1_list_compatible_builder.html#a27a5e8dfde2e8826e58880aaa5b6d674">ConfigRW.ConfigCreation.ContainerBuilders.ListCompatibleBuilder</a>
 , <a class="el" href="interface_config_r_w_1_1_config_creation_1_1_i_container_builder.html#a9732e6530b91d5db942097a273a6ccbf">ConfigRW.ConfigCreation.IContainerBuilder</a>
-, <a class="el" href="class_config_r_w_1_1_config_creation_1_1_structure_factory.html#a4e97269e735098ee9ed38d076e7a6daf">ConfigRW.ConfigCreation.StructureFactory</a>
 , <a class="el" href="class_config_r_w_1_1_config_creation_1_1_container_builders_1_1_collection_builder.html#a01a109d4c51bfaa02d73dbbd59b71e9b">ConfigRW.ConfigCreation.ContainerBuilders.CollectionBuilder</a>
+, <a class="el" href="class_config_r_w_1_1_config_creation_1_1_structure_factory.html#a4e97269e735098ee9ed38d076e7a6daf">ConfigRW.ConfigCreation.StructureFactory</a>
+, <a class="el" href="class_config_r_w_1_1_config_creation_1_1_container_builders_1_1_list_compatible_builder.html#a27a5e8dfde2e8826e58880aaa5b6d674">ConfigRW.ConfigCreation.ContainerBuilders.ListCompatibleBuilder</a>
 </li>
 <li>createDefaultObject()
-: <a class="el" href="class_config_r_w_1_1_config_creation_1_1_structure_factory.html#a9ee2de01c2985371338ba215e8c44866">ConfigRW.ConfigCreation.StructureFactory</a>
+: <a class="el" href="class_config_r_w_1_1_config_creation_1_1_structure_factory.html#a091127d1e4967bf6de90e6a545403555">ConfigRW.ConfigCreation.StructureFactory</a>
 </li>
 <li>CreateFromDefaults&lt; Structure &gt;()
 : <a class="el" href="class_config_r_w_1_1_configuration.html#a6c08aa317143d3e1c4659812cb5ec635">ConfigRW.Configuration</a>
 </li>
 <li>CreateFromFile&lt; Structure &gt;()
-: <a class="el" href="class_config_r_w_1_1_configuration.html#a18b765517a6bc94dc8f006491aee3821">ConfigRW.Configuration</a>
+: <a class="el" href="class_config_r_w_1_1_configuration.html#a6267c0af88cb169f1a83d1d223ed6c25">ConfigRW.Configuration</a>
 </li>
 <li>CreateFromStream&lt; Structure &gt;()
-: <a class="el" href="class_config_r_w_1_1_configuration.html#a82c7adf827960edd3fa4c198b742f89f">ConfigRW.Configuration</a>
+: <a class="el" href="class_config_r_w_1_1_configuration.html#a61ce5d680fde6bd8eefb61b32694d1a4">ConfigRW.Configuration</a>
 </li>
 <li>CreateInstanceException()
 : <a class="el" href="class_config_r_w_1_1_create_instance_exception.html#a604c737b0682c2fae2fc6b9924af8825">ConfigRW.CreateInstanceException</a>
@@ -284,7 +292,7 @@ $(document).ready(function(){initNavTree('functions_0x63.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri May 3 2013 22:37:57 for ConfigRW by
+    <li class="footer">Generated on Sat May 4 2013 16:34:12 for ConfigRW by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

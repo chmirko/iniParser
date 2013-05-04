@@ -94,7 +94,7 @@ $(document).ready(function(){initNavTree('class_config_r_w_1_1_parsing_1_1_confi
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Properties</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -107,7 +107,6 @@ $(document).ready(function(){initNavTree('class_config_r_w_1_1_parsing_1_1_confi
   <div class="summary">
 <a href="#pac-methods">Package Functions</a> &#124;
 <a href="#pac-static-methods">Static Package Functions</a> &#124;
-<a href="#pac-static-attribs">Static Package Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
@@ -128,6 +127,9 @@ Package Functions</h2></td></tr>
 <tr class="memitem:a73a9c608c730a7417909c7b13b0323ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#a73a9c608c730a7417909c7b13b0323ed">WriteTo</a> (StreamWriter output)</td></tr>
 <tr class="memdesc:a73a9c608c730a7417909c7b13b0323ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write parsed and changed options into output stream  <a href="#a73a9c608c730a7417909c7b13b0323ed">More...</a><br/></td></tr>
 <tr class="separator:a73a9c608c730a7417909c7b13b0323ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac57e71e40adbb4b4968b2c9c44637277"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#ac57e71e40adbb4b4968b2c9c44637277">RegisterStructure</a> (<a class="el" href="class_config_r_w_1_1_parsing_1_1_structure_info.html">StructureInfo</a> structure)</td></tr>
+<tr class="memdesc:ac57e71e40adbb4b4968b2c9c44637277"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register structure info (used when file is not being read)  <a href="#ac57e71e40adbb4b4968b2c9c44637277">More...</a><br/></td></tr>
+<tr class="separator:ac57e71e40adbb4b4968b2c9c44637277"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8086f9043e3254db4f0ee8f40ed303de"><td class="memItemLeft" align="right" valign="top">IEnumerable&lt; <a class="el" href="class_config_r_w_1_1_parsing_1_1_option_value.html">OptionValue</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#a8086f9043e3254db4f0ee8f40ed303de">GetOptionValues</a> (<a class="el" href="class_config_r_w_1_1_parsing_1_1_structure_info.html">StructureInfo</a> structure)</td></tr>
 <tr class="memdesc:a8086f9043e3254db4f0ee8f40ed303de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current option values. Options validity is checked here. Returns only options which were present in file or options that were passed through SetOption.  <a href="#a8086f9043e3254db4f0ee8f40ed303de">More...</a><br/></td></tr>
 <tr class="separator:a8086f9043e3254db4f0ee8f40ed303de"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -135,7 +137,7 @@ Package Functions</h2></td></tr>
 <tr class="memdesc:adebd0fd08aa26fec9e51ac88a035fcfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set option info and it's value. NOTE: Only options which are set via this call can be ADDED into output (readed options are included automatically).  <a href="#adebd0fd08aa26fec9e51ac88a035fcfa">More...</a><br/></td></tr>
 <tr class="separator:adebd0fd08aa26fec9e51ac88a035fcfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a511061738195f8facd52194b506756"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#a8a511061738195f8facd52194b506756">checkValidity</a> (<a class="el" href="class_config_r_w_1_1_parsing_1_1_option_info.html">OptionInfo</a> info, <a class="el" href="class_config_r_w_1_1_parsing_1_1_option_value.html">OptionValue</a> value)</td></tr>
-<tr class="memdesc:a8a511061738195f8facd52194b506756"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether given otpion value satisfies given option constraints  <a href="#a8a511061738195f8facd52194b506756">More...</a><br/></td></tr>
+<tr class="memdesc:a8a511061738195f8facd52194b506756"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether given option value satisfies given option constraints  <a href="#a8a511061738195f8facd52194b506756">More...</a><br/></td></tr>
 <tr class="separator:a8a511061738195f8facd52194b506756"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b84cabbdc4f933496e143b6d88eadee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#a8b84cabbdc4f933496e143b6d88eadee">SetComment</a> (<a class="el" href="class_config_r_w_1_1_qualified_name.html">QualifiedName</a> name, string comment)</td></tr>
 <tr class="memdesc:a8b84cabbdc4f933496e143b6d88eadee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overrides default and parsed comment.  <a href="#a8b84cabbdc4f933496e143b6d88eadee">More...</a><br/></td></tr>
@@ -153,12 +155,6 @@ Static Package Functions</h2></td></tr>
 <tr class="memdesc:aeadf2c059a7e59c1e4fde0a2f97c77f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create Config <a class="el" href="class_config_r_w_1_1_parsing_1_1_parser.html" title="Line parser for reading configuration file ">Parser</a>, which parses given file  <a href="#aeadf2c059a7e59c1e4fde0a2f97c77f0">More...</a><br/></td></tr>
 <tr class="separator:aeadf2c059a7e59c1e4fde0a2f97c77f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pac-static-attribs"></a>
-Static Package Attributes</h2></td></tr>
-<tr class="memitem:aa09b63353ad6da7ce12b753202448c24"><td class="memItemLeft" align="right" valign="top">static char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#aa09b63353ad6da7ce12b753202448c24">delimiter</a> = ','</td></tr>
-<tr class="memdesc:aa09b63353ad6da7ce12b753202448c24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delimiter used in config values  <a href="#aa09b63353ad6da7ce12b753202448c24">More...</a><br/></td></tr>
-<tr class="separator:aa09b63353ad6da7ce12b753202448c24"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a67b34cba616f0c22affd133158a56fd7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#a67b34cba616f0c22affd133158a56fd7">ConfigParser</a> (<a class="el" href="namespace_config_r_w.html#ad7a7c48e02463927bbb71dab3941c03a">ParsingMode</a> mode)</td></tr>
@@ -167,9 +163,6 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a3fcb49d0bf575b503f0c6861405f7048"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#a3fcb49d0bf575b503f0c6861405f7048">readConfig</a> (StreamReader input)</td></tr>
 <tr class="memdesc:a3fcb49d0bf575b503f0c6861405f7048"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read configuration data from given stream  <a href="#a3fcb49d0bf575b503f0c6861405f7048">More...</a><br/></td></tr>
 <tr class="separator:a3fcb49d0bf575b503f0c6861405f7048"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e052f4d6a6cac26c533bde9d6478e61"><td class="memItemLeft" align="right" valign="top">object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#a4e052f4d6a6cac26c533bde9d6478e61">extractValue</a> (<a class="el" href="class_config_r_w_1_1_parsing_1_1_option_info.html">OptionInfo</a> info)</td></tr>
-<tr class="memdesc:a4e052f4d6a6cac26c533bde9d6478e61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extracts value from internal representation into final form  <a href="#a4e052f4d6a6cac26c533bde9d6478e61">More...</a><br/></td></tr>
-<tr class="separator:a4e052f4d6a6cac26c533bde9d6478e61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7852ba1da7f97d6300883bc6164b40bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#a7852ba1da7f97d6300883bc6164b40bb">markInternalAsUnseen</a> ()</td></tr>
 <tr class="memdesc:a7852ba1da7f97d6300883bc6164b40bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Marks internal elements as not seen (used with strict mode)  <a href="#a7852ba1da7f97d6300883bc6164b40bb">More...</a><br/></td></tr>
 <tr class="separator:a7852ba1da7f97d6300883bc6164b40bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -179,9 +172,30 @@ Private Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
+<tr class="memitem:a9148c37507daa9328b34f58bc28739b5"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#a9148c37507daa9328b34f58bc28739b5">trimRespectLastEscapedSpace</a> (string value)</td></tr>
+<tr class="memdesc:a9148c37507daa9328b34f58bc28739b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Trims string however if last space is to be escaped, it is left there  <a href="#a9148c37507daa9328b34f58bc28739b5">More...</a><br/></td></tr>
+<tr class="separator:a9148c37507daa9328b34f58bc28739b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3184813bac1255bc5f8b8a4163721fe"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#af3184813bac1255bc5f8b8a4163721fe">WriteCoreTo</a> (StreamWriter output, KeyValuePair&lt; <a class="el" href="class_config_r_w_1_1_parsing_1_1_qualified_option_name.html">QualifiedOptionName</a>, <a class="el" href="class_config_r_w_1_1_parsing_1_1_inner_option.html">InnerOption</a> &gt; opt, string defaultDelimiter)</td></tr>
 <tr class="memdesc:af3184813bac1255bc5f8b8a4163721fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Guts of WriteTo method  <a href="#af3184813bac1255bc5f8b8a4163721fe">More...</a><br/></td></tr>
 <tr class="separator:af3184813bac1255bc5f8b8a4163721fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc5031a16749b14f7b89a3fd13e64cce"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#adc5031a16749b14f7b89a3fd13e64cce">escapeValue</a> (string value)</td></tr>
+<tr class="memdesc:adc5031a16749b14f7b89a3fd13e64cce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Escapes value for safe output In our case, just escapes trailing and ending spaces  <a href="#adc5031a16749b14f7b89a3fd13e64cce">More...</a><br/></td></tr>
+<tr class="separator:adc5031a16749b14f7b89a3fd13e64cce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd5da341cc63ed2e9ce5ef855467500d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#afd5da341cc63ed2e9ce5ef855467500d">checkSectionCommentAndSeen</a> (<a class="el" href="class_config_r_w_1_1_parsing_1_1_section_info.html">SectionInfo</a> section, Dictionary&lt; <a class="el" href="class_config_r_w_1_1_parsing_1_1_qualified_section_name.html">QualifiedSectionName</a>, <a class="el" href="class_config_r_w_1_1_parsing_1_1_inner_section.html">InnerSection</a> &gt; <a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#a1b7bdb81932f1212f68774a3d3e1c068">knownSections</a>)</td></tr>
+<tr class="memdesc:afd5da341cc63ed2e9ce5ef855467500d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether given section exists and has appropriate comment, if it has no comment, it claims the default one  <a href="#afd5da341cc63ed2e9ce5ef855467500d">More...</a><br/></td></tr>
+<tr class="separator:afd5da341cc63ed2e9ce5ef855467500d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac69afaa305f3547e480feacbf79b8ddf"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#ac69afaa305f3547e480feacbf79b8ddf">checkOptionCommentAndSeen</a> (<a class="el" href="class_config_r_w_1_1_parsing_1_1_option_info.html">OptionInfo</a> option, Dictionary&lt; <a class="el" href="class_config_r_w_1_1_parsing_1_1_qualified_section_name.html">QualifiedSectionName</a>, <a class="el" href="class_config_r_w_1_1_parsing_1_1_inner_section.html">InnerSection</a> &gt; <a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#a1b7bdb81932f1212f68774a3d3e1c068">knownSections</a>)</td></tr>
+<tr class="memdesc:ac69afaa305f3547e480feacbf79b8ddf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether given option exists and has appropriate comment, if it has no comment, it claims the default one  <a href="#ac69afaa305f3547e480feacbf79b8ddf">More...</a><br/></td></tr>
+<tr class="separator:ac69afaa305f3547e480feacbf79b8ddf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee51cc1b91ac594547fb12645c765915"><td class="memItemLeft" align="right" valign="top">static object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#aee51cc1b91ac594547fb12645c765915">extractValue</a> (<a class="el" href="class_config_r_w_1_1_parsing_1_1_option_info.html">OptionInfo</a> info, Dictionary&lt; <a class="el" href="class_config_r_w_1_1_parsing_1_1_qualified_section_name.html">QualifiedSectionName</a>, <a class="el" href="class_config_r_w_1_1_parsing_1_1_inner_section.html">InnerSection</a> &gt; <a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#a1b7bdb81932f1212f68774a3d3e1c068">knownSections</a>)</td></tr>
+<tr class="memdesc:aee51cc1b91ac594547fb12645c765915"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extracts value from internal representation into final form  <a href="#aee51cc1b91ac594547fb12645c765915">More...</a><br/></td></tr>
+<tr class="separator:aee51cc1b91ac594547fb12645c765915"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac53fc383be3f023323cddba149ca57f"><td class="memItemLeft" align="right" valign="top">static object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#aac53fc383be3f023323cddba149ca57f">extractValue</a> (<a class="el" href="class_config_r_w_1_1_parsing_1_1_option_info.html">OptionInfo</a> info, <a class="el" href="class_config_r_w_1_1_parsing_1_1_inner_option.html">InnerOption</a> opt)</td></tr>
+<tr class="memdesc:aac53fc383be3f023323cddba149ca57f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extracts value from internal representation into final form internal representation existent and provided to the method  <a href="#aac53fc383be3f023323cddba149ca57f">More...</a><br/></td></tr>
+<tr class="separator:aac53fc383be3f023323cddba149ca57f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7542dfa9f987dfecf4e212a44270a07d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#a7542dfa9f987dfecf4e212a44270a07d">checkValiditySingle</a> (<a class="el" href="class_config_r_w_1_1_parsing_1_1_option_info.html">OptionInfo</a> info, <a class="el" href="class_config_r_w_1_1_parsing_1_1_option_value.html">OptionValue</a> value, object elem)</td></tr>
+<tr class="memdesc:a7542dfa9f987dfecf4e212a44270a07d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether given option value satisfies given option constraints for single element (either the only one, or one from many if it is collection)  <a href="#a7542dfa9f987dfecf4e212a44270a07d">More...</a><br/></td></tr>
+<tr class="separator:a7542dfa9f987dfecf4e212a44270a07d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a67b80deca391288b87bb8ccbca0525f8"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#a67b80deca391288b87bb8ccbca0525f8">wrongOrder</a> (object lower, object bigger)</td></tr>
 <tr class="memdesc:a67b80deca391288b87bb8ccbca0525f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true when lower object is actually bigger  <a href="#a67b80deca391288b87bb8ccbca0525f8">More...</a><br/></td></tr>
 <tr class="separator:a67b80deca391288b87bb8ccbca0525f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -258,6 +272,92 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ac69afaa305f3547e480feacbf79b8ddf"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void ConfigRW.Parsing.ConfigParser.checkOptionCommentAndSeen </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_config_r_w_1_1_parsing_1_1_option_info.html">OptionInfo</a>&#160;</td>
+          <td class="paramname"><em>option</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Dictionary&lt; <a class="el" href="class_config_r_w_1_1_parsing_1_1_qualified_section_name.html">QualifiedSectionName</a>, <a class="el" href="class_config_r_w_1_1_parsing_1_1_inner_section.html">InnerSection</a> &gt;&#160;</td>
+          <td class="paramname"><em>knownSections</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks whether given option exists and has appropriate comment, if it has no comment, it claims the default one </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">option</td><td>Fully typed option info with, appropriate comment set</td></tr>
+    <tr><td class="paramname">knownSections</td><td>Dictionary of all known sections</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="afd5da341cc63ed2e9ce5ef855467500d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void ConfigRW.Parsing.ConfigParser.checkSectionCommentAndSeen </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_config_r_w_1_1_parsing_1_1_section_info.html">SectionInfo</a>&#160;</td>
+          <td class="paramname"><em>section</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Dictionary&lt; <a class="el" href="class_config_r_w_1_1_parsing_1_1_qualified_section_name.html">QualifiedSectionName</a>, <a class="el" href="class_config_r_w_1_1_parsing_1_1_inner_section.html">InnerSection</a> &gt;&#160;</td>
+          <td class="paramname"><em>knownSections</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks whether given section exists and has appropriate comment, if it has no comment, it claims the default one </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">section</td><td>Fully typed section info, with appropriate comment set</td></tr>
+    <tr><td class="paramname">knownSections</td><td>Dictionary of all known sections</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a8a511061738195f8facd52194b506756"></a>
 <div class="memitem">
 <div class="memproto">
@@ -290,7 +390,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Checks whether given otpion value satisfies given option constraints </p>
+<p>Checks whether given option value satisfies given option constraints </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">info</td><td>Structure describing option format</td></tr>
@@ -301,7 +401,7 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a4e052f4d6a6cac26c533bde9d6478e61"></a>
+<a class="anchor" id="a7542dfa9f987dfecf4e212a44270a07d"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -309,16 +409,109 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">object ConfigRW.Parsing.ConfigParser.extractValue </td>
+          <td class="memname">static void ConfigRW.Parsing.ConfigParser.checkValiditySingle </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_config_r_w_1_1_parsing_1_1_option_info.html">OptionInfo</a>&#160;</td>
-          <td class="paramname"><em>info</em></td><td>)</td>
+          <td class="paramname"><em>info</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_config_r_w_1_1_parsing_1_1_option_value.html">OptionValue</a>&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>elem</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks whether given option value satisfies given option constraints for single element (either the only one, or one from many if it is collection) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">info</td><td>Structure describing option format</td></tr>
+    <tr><td class="paramname">value</td><td>Structure wearing option value</td></tr>
+    <tr><td class="paramname">elem</td><td>Single element to be checkd</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="adc5031a16749b14f7b89a3fd13e64cce"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static string ConfigRW.Parsing.ConfigParser.escapeValue </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Escapes value for safe output In our case, just escapes trailing and ending spaces </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Value to be escaped</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Escaped value ready to be printed out</dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aee51cc1b91ac594547fb12645c765915"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static object ConfigRW.Parsing.ConfigParser.extractValue </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_config_r_w_1_1_parsing_1_1_option_info.html">OptionInfo</a>&#160;</td>
+          <td class="paramname"><em>info</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Dictionary&lt; <a class="el" href="class_config_r_w_1_1_parsing_1_1_qualified_section_name.html">QualifiedSectionName</a>, <a class="el" href="class_config_r_w_1_1_parsing_1_1_inner_section.html">InnerSection</a> &gt;&#160;</td>
+          <td class="paramname"><em>knownSections</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -327,6 +520,51 @@ Private Attributes</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">info</td><td>Option for which to extract the value</td></tr>
+    <tr><td class="paramname">knownSections</td><td>Dictionary of all known sections</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Value in expected format</dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aac53fc383be3f023323cddba149ca57f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static object ConfigRW.Parsing.ConfigParser.extractValue </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_config_r_w_1_1_parsing_1_1_option_info.html">OptionInfo</a>&#160;</td>
+          <td class="paramname"><em>info</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_config_r_w_1_1_parsing_1_1_inner_option.html">InnerOption</a>&#160;</td>
+          <td class="paramname"><em>opt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Extracts value from internal representation into final form internal representation existent and provided to the method </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">info</td><td>Option for which to extract the value</td></tr>
+    <tr><td class="paramname">opt</td><td>Inner representaiton of desired option with desired value</td></tr>
   </table>
   </dd>
 </dl>
@@ -538,6 +776,38 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ac57e71e40adbb4b4968b2c9c44637277"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConfigRW.Parsing.ConfigParser.RegisterStructure </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_config_r_w_1_1_parsing_1_1_structure_info.html">StructureInfo</a>&#160;</td>
+          <td class="paramname"><em>structure</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Register structure info (used when file is not being read) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">structure</td><td>Structure info</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="ad002f8a0b4ba39118f54f6b400ec0b80"></a>
 <div class="memitem">
 <div class="memproto">
@@ -653,6 +923,39 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a class="anchor" id="a9148c37507daa9328b34f58bc28739b5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static string ConfigRW.Parsing.ConfigParser.trimRespectLastEscapedSpace </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Trims string however if last space is to be escaped, it is left there </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Value to be escaped</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Escaped value</dd></dl>
 
 </div>
 </div>
@@ -797,28 +1100,6 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aa09b63353ad6da7ce12b753202448c24"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">char ConfigRW.Parsing.ConfigParser.delimiter = ','</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Delimiter used in config values </p>
-
-</div>
-</div>
 <a class="anchor" id="a1b7bdb81932f1212f68774a3d3e1c068"></a>
 <div class="memitem">
 <div class="memproto">
@@ -850,7 +1131,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_config_r_w.html">ConfigRW</a></li><li class="navelem"><a class="el" href="namespace_config_r_w_1_1_parsing.html">Parsing</a></li><li class="navelem"><a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html">ConfigParser</a></li>
-    <li class="footer">Generated on Fri May 3 2013 22:37:57 for ConfigRW by
+    <li class="footer">Generated on Sat May 4 2013 16:34:12 for ConfigRW by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

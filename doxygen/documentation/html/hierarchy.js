@@ -25,8 +25,7 @@ var hierarchy =
     ] ],
     [ "ConfigRW.Extensions", "class_config_r_w_1_1_extensions.html", null ],
     [ "ConfigRW.IConfiguration", "interface_config_r_w_1_1_i_configuration.html", [
-      [ "ConfigRW.ConfigCreation.ConfigRoot", "class_config_r_w_1_1_config_creation_1_1_config_root.html", null ],
-      [ "UsageExamples.ConfigStructure", "interface_usage_examples_1_1_config_structure.html", null ]
+      [ "ConfigRW.ConfigCreation.ConfigRoot", "class_config_r_w_1_1_config_creation_1_1_config_root.html", null ]
     ] ],
     [ "ConfigRW.ConfigCreation.IContainerBuilder", "interface_config_r_w_1_1_config_creation_1_1_i_container_builder.html", [
       [ "ConfigRW.ConfigCreation.ContainerBuilders.ArrayBuilder", "class_config_r_w_1_1_config_creation_1_1_container_builders_1_1_array_builder.html", null ],
@@ -50,7 +49,6 @@ var hierarchy =
     [ "ConfigRW.Parsing.OptionInfo", "class_config_r_w_1_1_parsing_1_1_option_info.html", null ],
     [ "ConfigRW.Parsing.OptionValue", "class_config_r_w_1_1_parsing_1_1_option_value.html", null ],
     [ "ConfigRW.Parsing.Parser", "class_config_r_w_1_1_parsing_1_1_parser.html", null ],
-    [ "UsageExamples.Program", "class_usage_examples_1_1_program.html", null ],
     [ "ConfigRW.ConfigCreation.PropertyStorage", "class_config_r_w_1_1_config_creation_1_1_property_storage.html", [
       [ "ConfigRW.ConfigCreation.ConfigRoot", "class_config_r_w_1_1_config_creation_1_1_config_root.html", null ],
       [ "ConfigRW.ConfigCreation.ConfigSection", "class_config_r_w_1_1_config_creation_1_1_config_section.html", null ]
@@ -60,10 +58,7 @@ var hierarchy =
       [ "ConfigRW.Parsing.QualifiedSectionName", "class_config_r_w_1_1_parsing_1_1_qualified_section_name.html", null ]
     ] ],
     [ "ConfigRW.ConfigCreation.ReflectionUtils", "class_config_r_w_1_1_config_creation_1_1_reflection_utils.html", null ],
-    [ "UsageExamples.Section1", "interface_usage_examples_1_1_section1.html", null ],
-    [ "UsageExamples.Section2", "interface_usage_examples_1_1_section2.html", null ],
     [ "ConfigRW.Parsing.SectionInfo", "class_config_r_w_1_1_parsing_1_1_section_info.html", null ],
-    [ "UsageExamples.SpecialTypeSection", "interface_usage_examples_1_1_special_type_section.html", null ],
     [ "ConfigRW.ConfigCreation.StructureFactory", "class_config_r_w_1_1_config_creation_1_1_structure_factory.html", null ],
     [ "ConfigRW.Parsing.StructureInfo", "class_config_r_w_1_1_parsing_1_1_structure_info.html", null ],
     [ "ConfigRW.ConfigCreation.StructureValidation", "class_config_r_w_1_1_config_creation_1_1_structure_validation.html", null ],
