@@ -121,7 +121,7 @@ namespace ConfigRW.Parsing
             while ((oneLine = input.ReadLine()) != null)
             {
                // Trim & update state variables
-               oneLine = oneLine.Trim();
+               oneLine = trimRespectLastEscapedSpace(oneLine);
                ++curLine;
 
                // blank line
@@ -160,7 +160,23 @@ namespace ConfigRW.Parsing
                section: curSection.ID,
                inner: ex);
          }
-      }  
+      }
+
+      /// <summary>
+      /// Trims string however if last space is to be escaped, it is left there
+      /// </summary>
+      /// <param name="value">Value to be escaped</param>
+      /// <returns>Escaped value</returns>
+      private static string trimRespectLastEscapedSpace(string value)
+      {
+         string lTrim = value.TrimStart();
+         string fullTrim = value.Trim();
+
+         if (fullTrim.Length > 1 && fullTrim.Length != lTrim.Length && fullTrim[fullTrim.Length - 1] == '\\')
+            return fullTrim + ' ';
+         else
+            return fullTrim;
+      }
 
       /// <summary>
       /// Write parsed and changed options into output file
@@ -205,6 +221,9 @@ namespace ConfigRW.Parsing
          {
             foreach (var sect in knownSections)
             {
+               // blank line before section
+               output.WriteLine();
+
                // write comment if present
                if (sect.Value.Comment != null)
                {
@@ -230,7 +249,7 @@ namespace ConfigRW.Parsing
       private static void WriteCoreTo(StreamWriter output, KeyValuePair<QualifiedOptionName,InnerOption> opt, string defaultDelimiter)
       {
          output.Write(opt.Key.ID);
-         output.Write('=');
+         output.Write(" = ");
 
          bool firstStep = true;
          foreach (var optVal in opt.Value.strValues)
@@ -244,16 +263,47 @@ namespace ConfigRW.Parsing
                output.Write(defaultDelimiter);
             }
 
-            output.Write(optVal);
+            output.Write(escapeValue(optVal));
          }
 
          if (opt.Value.Comment != null)
          {
-            output.Write("\t\t;");
+            output.Write("    ;");
             output.Write(opt.Value.Comment);
          }
 
          output.WriteLine();
+      }
+
+      /// <summary>
+      /// Escapes value for safe output
+      /// In our case, just escapes trailing and ending spaces
+      /// </summary>
+      /// <param name="value">Value to be escaped</param>
+      /// <returns>Escaped value ready to be printed out</returns>
+      private static string escapeValue(string value)
+      {
+         string lTrim = value.TrimStart();
+         string fullTrim = value.TrimEnd();
+
+         int headingSpaces = value.Length - lTrim.Length;
+         int trailingSpaces = lTrim.Length - fullTrim.Length;
+
+         StringBuilder toOut = new StringBuilder();
+
+         for (int i = 0; i < headingSpaces; ++i)
+         {
+            toOut.Append("\\ ");
+         }
+
+         toOut.Append(fullTrim);
+
+         for (int i = 0; i < trailingSpaces; ++i)
+         {
+            toOut.Append("\\ ");
+         }
+
+         return toOut.ToString();
       }
 
       /// <summary>
@@ -270,16 +320,18 @@ namespace ConfigRW.Parsing
          foreach (var section in structure.Sections)
          {
             // acquire default comment if non-default is not set (and is present in file)
-            checkSectionComment(section);
+            // also marks section as seen
+            checkSectionCommentAndSeen(section, knownSections);
 
             // crawl all options
             foreach (var option in section.Options)
             {
                // acquire default comment if non-default is not set (and is present in file)
-               checkOptionComment(option);
+               // also marks option as seen
+               checkOptionCommentAndSeen(option, knownSections);
 
                // return value
-               object value = extractValue(option);
+               object value = extractValue(option, knownSections);
                yield return new OptionValue(option.Name, value);
             }
          }
@@ -293,7 +345,8 @@ namespace ConfigRW.Parsing
       /// if it has no comment, it claims the default one
       /// </summary>
       /// <param name="section">Fully typed section info, with appropriate comment set</param>
-      private void checkSectionComment(SectionInfo section)
+      /// <param name="knownSections">Dictionary of all known sections</param>
+      private static void checkSectionCommentAndSeen(SectionInfo section, Dictionary<QualifiedSectionName, InnerSection> knownSections)
       {
          var qSec = section.Name;
 
@@ -301,6 +354,9 @@ namespace ConfigRW.Parsing
          if (knownSections.ContainsKey(qSec))
          {
             var innerSect = knownSections[qSec];
+
+            // mark as seen for strict mode
+            innerSect.Seen = true;
 
             // only if it has no comment, default one is claimed
             if (innerSect.Comment == null)
@@ -316,7 +372,8 @@ namespace ConfigRW.Parsing
       /// if it has no comment, it claims the default one
       /// </summary>
       /// <param name="option">Fully typed option info with, appropriate comment set</param>
-      private void checkOptionComment(OptionInfo option)
+      /// <param name="knownSections">Dictionary of all known sections</param>
+      private static void checkOptionCommentAndSeen(OptionInfo option, Dictionary<QualifiedSectionName, InnerSection> knownSections)
       {
          var qSec = option.Name.Section;
 
@@ -331,6 +388,9 @@ namespace ConfigRW.Parsing
             {
                var innerOpt = innerSect.Options[qOpt];
 
+               // mark as seen for strict mode
+               innerOpt.Seen = true;
+
                // only if it has no comment, default one is claimed
                if (innerOpt.Comment == null)
                {
@@ -344,8 +404,9 @@ namespace ConfigRW.Parsing
       /// Extracts value from internal representation into final form
       /// </summary>
       /// <param name="info">Option for which to extract the value</param>
+      /// <param name="knownSections">Dictionary of all known sections</param>
       /// <returns>Value in expected format</returns>
-      private object extractValue(OptionInfo info)
+      private static object extractValue(OptionInfo info, Dictionary<QualifiedSectionName, InnerSection> knownSections)
       {
          // obtain section
          var qSec = info.Name.Section;
@@ -381,7 +442,7 @@ namespace ConfigRW.Parsing
       /// <param name="info">Option for which to extract the value</param>
       /// <param name="opt">Inner representaiton of desired option with desired value</param>
       /// <returns>Value in expected format</returns>
-      private object extractValue(OptionInfo info, InnerOption opt)
+      private static object extractValue(OptionInfo info, InnerOption opt)
       {
          // Check container/singleUnit consistenci
          if (!info.IsContainer && opt.strValues.Count > 1)
@@ -496,6 +557,9 @@ namespace ConfigRW.Parsing
             knownSections[qSect].Options.Add(qOpt, newOpt);
             newOpt.Comment = info.DefaultComment;
          }
+
+         // along the way, check the comment
+         checkOptionCommentAndSeen(info, knownSections);
 
          // Pass value into option
          InnerOption curOpt = knownSections[qSect].Options[qOpt];

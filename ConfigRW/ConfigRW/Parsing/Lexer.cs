@@ -68,6 +68,13 @@ namespace ConfigRW.Parsing
          /// </summary>
          newLexemeStart,
          /// <summary>
+         /// Another lexeme in value part of option is expected,
+         /// if spaces occur, they should be ignored, if comment section start occurs, comment state is expected
+         /// This state is special, that previous lexeme definitely ended, howerver nothing is known about presence of next delimiter,
+         /// it may or may not be present
+         /// </summary>
+         newLexemeStart_ignoreDelimiter,
+         /// <summary>
          /// In progress of gathering element body
          /// </summary>
          gatherElementBody,
@@ -201,6 +208,9 @@ namespace ConfigRW.Parsing
                break;
             case state.newLexemeStart:
                action_newLexemeStart();
+               break;
+            case state.newLexemeStart_ignoreDelimiter:
+               action_newLexemeStart_ignoreDelimiter();
                break;
             case state.gatherElementBody:
                action_gatherElementBody();
@@ -425,6 +435,64 @@ namespace ConfigRW.Parsing
          } 
       }
 
+      private void action_newLexemeStart_ignoreDelimiter()
+      {
+         // Skip preceeding blanks
+         if (line[position] == ' ')
+         {
+            /*just advance*/
+            ++position;
+         }
+         // Comment start
+         else if (line[position] == ';')
+         {
+            curState = state.comment;
+            ++position;
+         }
+         // Escaper found
+         else if (line[position] == '\\')
+         {
+            curState = state.gatherElementBody_escaped;
+            ++position;
+         }
+         // Link start
+         else if (line[position] == '$')
+         {
+            if (position + 1 == line.Length || line[position + 1] != '{')
+            {
+               throw new ParserException(userMsg: "Error while parsing", developerMsg: "Inappropriate link start");
+            }
+
+            curState = state.gatherLinkSection;
+            position += 2;
+         }
+         // Delimiter found
+         else if (line[position] == ',' || line[position] == ':')
+         {
+            // Check homogenous delimiters
+            if (delimiter == null)
+            {
+               delimiter = line[position];
+            }
+            else if (delimiter != line[position])
+            {
+               throw new ParserException(
+                  userMsg: "Error during parsing, heterogenous delimiters",
+                  developerMsg: "At least two different types of delimiter found on single line");
+            }
+
+            // DO NOT STORE, delimiter (if found) is about to be ignored
+            ++position;
+         }
+         // Take as part of value
+         else
+         {
+            curLexeme.Append(line[position]);
+            curState = state.gatherElementBody;
+            ++position;
+         }
+      }
+
       private void action_gatherElementBody()
       {
          // Collectiong spaces (possibility of spaces rollback)
@@ -479,6 +547,7 @@ namespace ConfigRW.Parsing
       {
          // Take as part of value
          curLexeme.Append(line[position]);
+         curState = state.gatherElementBody;
          ++position;
       }
 
@@ -581,7 +650,7 @@ namespace ConfigRW.Parsing
             lexes.Add(new Tuple<Lexes, string>(Lexes.NT_LinkOption, curLexeme.ToString()));
             evaluateLink();
             curLexeme = new StringBuilder();
-            curState = state.newLexemeStart;
+            curState = state.newLexemeStart_ignoreDelimiter;
          }
          // part of link
          else
@@ -619,6 +688,7 @@ namespace ConfigRW.Parsing
             case state.gatherIdentifierBody_escaped:
                throw new ParserException(userMsg: "Error when parsing config", developerMsg: "unexpected final state in action_finalize");
             case state.newLexemeStart:
+            case state.newLexemeStart_ignoreDelimiter:
                /*no action*/
                break;
             case state.gatherElementBody:
@@ -688,9 +758,9 @@ namespace ConfigRW.Parsing
       /// </summary>
       private void evaluateLink()
       {
-         var lnkSection = lexes.Last();
-         lexes.RemoveAt(lexes.Count - 1);
          var lnkOption = lexes.Last();
+         lexes.RemoveAt(lexes.Count - 1);
+         var lnkSection = lexes.Last();
          lexes.RemoveAt(lexes.Count - 1);
 
          if (lnkSection.Item1 != Lexes.NT_LinkSection || lnkOption.Item1 != Lexes.NT_LinkOption)
