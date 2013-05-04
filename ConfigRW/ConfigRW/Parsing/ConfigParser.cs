@@ -650,10 +650,10 @@ namespace ConfigRW.Parsing
       private static void checkValiditySingle(OptionInfo info, OptionValue value, object elem)
       {
          if (
-                  (info.LowerBound != null && wrongOrder(info.LowerBound, elem))
-                  ||
-                  (info.UpperBound != null && wrongOrder(elem, info.UpperBound))
-                  )
+            (info.LowerBound != null && wrongOrder(info.LowerBound, elem))
+            ||
+            (info.UpperBound != null && wrongOrder(elem, info.UpperBound))
+            )
          {
             throw new ParserExceptionWithinConfig(
                userMsg: "Value out of bounds",
