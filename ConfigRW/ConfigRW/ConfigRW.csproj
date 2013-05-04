@@ -111,7 +111,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <Compile Include="NET_3.5_fix.cs" />
-    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

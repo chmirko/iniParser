@@ -67,6 +67,10 @@ namespace UsageExamples
             config2.Special.List.Add("test changed");
 
             config2.SaveTo("changedConfig.cfg");
+
+            var config3 = Configuration.CreateFromFile<ParserConfigStruct>("rawOptSection.cfg");
+
+            config3.SaveTo("rawOptSectionChanged.cfg");
         }
     }
 
@@ -117,7 +121,7 @@ namespace UsageExamples
     }
 
     public interface Section2
-    {        
+    {
         [OptionInfo(ID = "Name with space", IsOptional = true, DefaultValue = "default value")]
         string Field_name { get; }
 
@@ -135,6 +139,7 @@ namespace UsageExamples
         [DefaultComment("Section used as parser tester - ALPHA")]
         ParserTestSection ParseSect_A { get; }
 
+        [OptionInfo(IsOptional=true)]
         [DefaultComment("Section used as parser tester - BRAVO")]
         ParserTestSection ParseSect_B { get; }
 
