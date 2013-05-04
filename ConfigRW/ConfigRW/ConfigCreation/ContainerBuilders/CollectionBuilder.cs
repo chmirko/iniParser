@@ -19,7 +19,8 @@ namespace ConfigRW.ConfigCreation.ContainerBuilders
                 return null;
             }
 
-            if (containerType.GetConstructor(new Type[] { }) == null)
+            var paramLessCtor = containerType.GetConstructor(new Type[] { });
+            if (paramLessCtor== null || !paramLessCtor.IsPublic)
             {
                 //we can't instantiate this type
                 return null;
