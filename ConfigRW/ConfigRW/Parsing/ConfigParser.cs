@@ -507,7 +507,7 @@ namespace ConfigRW.Parsing
             // Single value
             else
             {
-               return convertor.Deserialize(opt.strValues[0]);
+               return convertor.Deserialize(opt.strValues.Count > 0 ? opt.strValues[0] : "");
             }
          }
          catch (Exception ex)

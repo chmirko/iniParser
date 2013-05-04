@@ -481,7 +481,8 @@ namespace ConfigRW.Parsing
                   developerMsg: "At least two different types of delimiter found on single line");
             }
 
-            // DO NOT STORE, delimiter (if found) is about to be ignored
+            // DO NOT STORE, delimiter (if found) is about to be ignored (only once)
+            curState = state.newLexemeStart;
             ++position;
          }
          // Take as part of value
