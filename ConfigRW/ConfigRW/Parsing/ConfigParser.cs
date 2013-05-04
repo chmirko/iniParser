@@ -221,6 +221,10 @@ namespace ConfigRW.Parsing
          {
             foreach (var sect in knownSections)
             {
+               // skip empty optional section
+               if (sect.Value.Options.Count == 0)
+                  continue;
+
                // blank line before section
                output.WriteLine();
 
@@ -347,22 +351,44 @@ namespace ConfigRW.Parsing
          // crawl all sections
          foreach (var section in structure.Sections)
          {
-            // acquire default comment if non-default is not set (and is present in file)
+            // acquire default comment if non-default one is not set (and is present in file)
             // also marks section as seen
-            checkSectionCommentAndSeen(section, knownSections);
+            // in case of missing optional section, itforces its existende
+            bool forced = checkForceSectionCommentAndSeen(section, knownSections);
 
-            // crawl all options
-            foreach (var option in section.Options)
+            // Forced section, it is optional and not present
+            if (forced)
             {
-               // acquire default comment if non-default is not set (and is present in file)
-               // also marks option as seen
-               checkOptionCommentAndSeen(option, knownSections);
+               // crawl all options
+               foreach (var option in section.Options)
+               {
+                  // skip optional options
+                  if (option.IsOptional)
+                     continue;
 
-               // return value
-               object value = extractValue(option, knownSections);
-               var optionValue = new OptionValue(option.Name, value);
-               checkValidity(option, optionValue);
-               yield return optionValue;
+                  // return non-optional option
+                  var optionValue = new OptionValue(option.Name, option.DefaultValue);
+                  checkValidity(option, optionValue);
+                  yield return optionValue;
+               }
+            }
+            // Standard appropach of data extreaction
+            else
+            {
+
+               // crawl all options
+               foreach (var option in section.Options)
+               {
+                  // acquire default comment if non-default is not set (and is present in file)
+                  // also marks option as seen
+                  checkOptionCommentAndSeen(option, knownSections);
+
+                  // return value
+                  object value = extractValue(option, knownSections);
+                  var optionValue = new OptionValue(option.Name, value);
+                  checkValidity(option, optionValue);
+                  yield return optionValue;
+               }
             }
          }
 
@@ -373,10 +399,19 @@ namespace ConfigRW.Parsing
       /// <summary>
       /// Checks whether given section exists and has appropriate comment,
       /// if it has no comment, it claims the default one
+      /// 
+      /// Forces section existence
+      /// 
+      /// In case the section does not exist, it is created with appropriate default comment,
+      /// this is the case of optional sections not presented in configuration file,
+      /// these should not be stored into outStream (unles filled)
+      /// Also in getValues its nonOptional members are provided from within structure info,
+      /// as they are not in InnerRepresentation
       /// </summary>
       /// <param name="section">Fully typed section info, with appropriate comment set</param>
       /// <param name="knownSections">Dictionary of all known sections</param>
-      private static void checkSectionCommentAndSeen(SectionInfo section, Dictionary<QualifiedSectionName, InnerSection> knownSections)
+      /// <return>Whether section had to be forced, thus created anew (not present in source file)</return>
+      private static bool checkForceSectionCommentAndSeen(SectionInfo section, Dictionary<QualifiedSectionName, InnerSection> knownSections)
       {
          var qSec = section.Name;
 
@@ -393,7 +428,18 @@ namespace ConfigRW.Parsing
             {
                innerSect.Comment = section.DefaultComment;
             }
+
+            return false;
          }
+         // Force existence for optional
+         else if (section.IsOptional)
+         {
+            var newSection = new InnerSection(section.Name, section.DefaultComment);
+            knownSections.Add(section.Name, newSection);
+            return true;
+         }
+         // Exception will be thrown later, with more info
+            return false;
 
       }
 
