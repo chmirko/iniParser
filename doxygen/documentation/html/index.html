@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>ConfigRW: Main Page</title>
+<title>ConfigRW: My Personal Index Page</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -86,7 +86,7 @@ $(document).ready(function(){initNavTree('index.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Properties</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -97,15 +97,259 @@ $(document).ready(function(){initNavTree('index.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">ConfigRW Documentation</div>  </div>
+<div class="title">My Personal Index Page </div>  </div>
 </div><!--header-->
 <div class="contents">
-</div><!-- contents -->
+<div class="textblock"><h1><a class="anchor" id="sec_intro"></a>
+ConfigRW</h1>
+<pre class="fragment"> Tool for easy reading and writing of configuration files.
+ Convenient usage of this tool is at first covered by series of simple explanations with examples, for more theoretically based users.
+ Convenient usage of this tool is also later covered by series of simple examples with explanation, for more practically oriented users.
+</pre><h1><a class="anchor" id="sec_overview"></a>
+Overview</h1>
+<h2><a class="anchor" id="subsect_overview_hierarach"></a>
+Structure hierarchy</h2>
+<pre class="fragment"> We treat configuration as hierarchical structure. The hieararchy starts with the configuration structure itself. 
+ The configuration structure then contains few sections, where each section contains its options.
+</pre><h2><a class="anchor" id="subsect_overview_handling"></a>
+Handling</h2>
+<pre class="fragment"> When user wishes to utilize our config, he/she needs to specifi this hierarchy, for which he/she may utilize directly .NET language features.
+ Once the configuration structure is known, user can proceed with operations on the configuration itself.
+    The configuration can be modified from within the code (by natural .NET environment)
+    The configuration can be imprinted into a stream
+    The configuration can be stored into a file
+    The configuration can be loaded from a stream
+    The configuration can be loaded from a file
+</pre><h2><a class="anchor" id="subsect_overview_except"></a>
+Exceptions</h2>
+<pre class="fragment"> In case that ConfigRW occurs some undesired situation, it utilizes Exception system to do so. All (non trully fatal) exceptions are inherited from ConfigRWException,
+ so these are the ones to be handled.
+
+ The exception contains userMsg, that is the message designated for user, unles you have your own. 
+ Then it contains logMsg, which is message designated to be blindly flushed into a log file, for later inspection.
+ Messgae a developer is expected to be concerned with the most, is so called developer message. As during development, 
+ exceptions are expected to strike the most, this particular message is provided as Exception's main message,
+ so most IDEs are expected to show it in easy accessible way during development.
+
+ Inner exceptions are commonly assigned, to provide developer with more detailed information, considering he/she needs to examine them
+
+ Where it is rational, exception laying lower in the hierarchy is thrown, these are:
+
+ ParserException:
+    thrown when the originator is parsing process, so most probably, the problem lays somewhere in the data being 
+    processed (either loaded from file, or stored manually)
+
+ ParserExceptionWithinConfig
+    even more specific level of ParserException, occurs mostly during parsing of the stream or file, and provides developer with 
+    recent Line, Section and Option (all that are available when exception occurs)
+</pre><h1><a class="anchor" id="sec_specifyStruct"></a>
+Specification of config hierarchy</h1>
+<h2><a class="anchor" id="subsect_structure"></a>
+Configuration Structure</h2>
+<pre class="fragment"> Configuration structure is represented by simple .NET public interface inherited from IConfiguration.
+ The public interface is expected to contain multiple properties, one propertie per one section with default getter. The section has the same name as given property.
+</pre><div class="fragment"><div class="line"><span class="comment">// Example: Simple configuration with single section</span></div>
+<div class="line"><span class="keyword">public</span> <span class="keyword">interface </span>myConfiguration : IConfiguration</div>
+<div class="line">{</div>
+<div class="line">    Section mySection {<span class="keyword">get</span>;}</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>And that's it. Next paragraph contains more advanced features, which you have to master only when you actually need them.</p>
+<p>Additional features are operated by attributes.</p>
+<p>May user need to name a section inside a configuration file differently (e.g. for shared configs with pseudo-equivalent sections), he/she can use SectionInfo attribute, with parameter ID set to whatever value he/she wishes to use as the section identifier inside the configuration files.</p>
+<div class="fragment"><div class="line"><span class="comment">// Example: Configuration with single, custom named section</span></div>
+<div class="line"><span class="keyword">public</span> <span class="keyword">interface </span>myConfiguration : IConfiguration</div>
+<div class="line">{</div>
+<div class="line">   [SectionInfo(ID = <span class="stringliteral">&quot;customNamedSection&quot;</span>)]</div>
+<div class="line">    Section mySection {<span class="keyword">get</span>;}</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>Section attribute also can be utilized to mark section as optional.</p>
+<div class="fragment"><div class="line"><span class="comment">// Example: Configuration with single, optional section</span></div>
+<div class="line"><span class="keyword">public</span> <span class="keyword">interface </span>myConfiguration : IConfiguration</div>
+<div class="line">{</div>
+<div class="line">   [SectionInfo(Isoptional = <span class="keyword">true</span>)]</div>
+<div class="line">    Section mySection {<span class="keyword">get</span>;}</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>If user wishes to assign default comment with certain section, DefaultComment attribute serves this purpose. It takes desired comment as its parameter.</p>
+<div class="fragment"><div class="line"><span class="comment">// Example: Configuration with single section with comment</span></div>
+<div class="line"><span class="keyword">public</span> <span class="keyword">interface </span>myConfiguration : IConfiguration</div>
+<div class="line">{</div>
+<div class="line">   [DefaultComment(<span class="stringliteral">&quot;Comment for my section&quot;</span>)]</div>
+<div class="line">    Section mySection {<span class="keyword">get</span>;}</div>
+<div class="line">}</div>
+</div><!-- fragment --><h2><a class="anchor" id="subsec_section"></a>
+Section</h2>
+<pre class="fragment"> Section of configuration structure is represented by simple .NET public interface. The section is expected to contain one property per option, with default getter (and setter if modification is desired).
+</pre><div class="fragment"><div class="line"><span class="comment">// Example: Simple section with two options, one is mutable</span></div>
+<div class="line"><span class="keyword">public</span> <span class="keyword">interface </span>Section</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordtype">int</span> myOption1 {<span class="keyword">get</span>;}</div>
+<div class="line">   list&lt;bool&gt; myOption2 {<span class="keyword">get</span>; <span class="keyword">set</span>;}</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>And that's it. Next paragraph contains more advanced features, which you have to master only when you actually need their additional features.</p>
+<p>If there is need for advanced control of options, OptionInfo attribute serves as the right tool for this job. It recognizes these parameters: DefaultValue - default value for given option (i.e. value when an option is not set) ID - sets custom name for given option IsOptional - sets whether this option is considered to be optional</p>
+<div class="fragment"><div class="line"><span class="comment">// Example: Not so simple example of OptionInfo attribute usage</span></div>
+<div class="line"><span class="keyword">public</span> <span class="keyword">interface </span>Section</div>
+<div class="line">{</div>
+<div class="line">   [OptionInfo(ID = <span class="stringliteral">&quot;userOption&quot;</span>, IsOptional = <span class="keyword">true</span>, DefaultValue = <span class="stringliteral">&quot;default_value&quot;</span>)]</div>
+<div class="line">   <span class="keywordtype">string</span> myOption {<span class="keyword">get</span>; <span class="keyword">set</span>;}</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>If user wishes to assign default comment with certain option, DefaultComment attribute can be used. It takes the comment as its parameter</p>
+<div class="fragment"><div class="line"><span class="comment">// Example: Simple section with two options, one is mutable, both have default comment</span></div>
+<div class="line"><span class="keyword">public</span> <span class="keyword">interface </span>Section</div>
+<div class="line">{</div>
+<div class="line">   [DefaultComment(<span class="stringliteral">&quot;Comment for read only option&quot;</span>)]</div>
+<div class="line">    <span class="keywordtype">int</span> myOption1 {<span class="keyword">get</span>;}</div>
+<div class="line">   [DefaultComment(<span class="stringliteral">&quot;Comment for mutable option&quot;</span>)]</div>
+<div class="line">   list&lt;float&gt; myOption2 {<span class="keyword">get</span>; <span class="keyword">set</span>;}</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>In case of numerical value (or IEnumerable of numerical values), it is possible to define lower and/or upper bound, both are inclusive. To do so, Range attribute needs to be present.</p>
+<div class="fragment"><div class="line"><span class="comment">// Example: Simple section with two options, one is mutable, both have default comment</span></div>
+<div class="line"><span class="keyword">public</span> <span class="keyword">interface </span>Section</div>
+<div class="line">{</div>
+<div class="line">   [Range(LowerBound = 0, UpperBound = 10)]</div>
+<div class="line">    <span class="keywordtype">int</span> remainingFingers {<span class="keyword">get</span>;}</div>
+<div class="line">   [Range(LowerBound = 1)]</div>
+<div class="line">   list&lt;int&gt; positiveNumbers {<span class="keyword">get</span>; <span class="keyword">set</span>;}</div>
+<div class="line">}</div>
+</div><!-- fragment --><h1><a class="anchor" id="sec_advanced"></a>
+Advanced type in config</h1>
+<pre class="fragment"> NOTE: This section contains tweaks for advanced developers and needs tweaking of the parser code itself.
+ If you wish to utilize any of them, be prepared to modify internal structures of the program.
+ No examples are provided here, as these tweaks are designated for users who trully understand what are they doing 
+ and are familiar with ConfigRW internal structures.
+
+ In case that more advanced type is expected to be present in a structure,
+ user needs to implement its serializer/deserializer inherited from IValueConverter and register it in ConfigConverters class
+
+ In case that more complex structures are to be parsed from config file, full parser contains of standard duo Parser + Lexer.
+ Both can be found in expected classes inside Parsing namespace. Lexer except its work also resolves internal links and is implemented as state automaton,
+ which is its storn place, as here can be implemented powerfull gadgets if you may need them.
+</pre><h1><a class="anchor" id="usage"></a>
+Usage</h1>
+<pre class="fragment"> Usage of ConfigRW once Connfiguration Structure is specified is quite simple and intuitive.
+ When user needs to access option optA in section SecB inside configuration confC, he/she accessed confC.SecB.optA.
+ The approach is same for reading of the option and for modification of mutable options.
+
+ Creating default config is achieved by calling Configuration.CreateFromDefaults&lt;IConfiguration&gt;() factory method, with appropriate type instead of IConfiguration;
+
+ Loading config from file utilizes method is Configuration.CreateFromFile&lt;IConfiguration&gt;(string, ParsingMode), where the first argument specifies a config file and 
+ the second one determines parsing mode (strict or relaxed) 
+
+ Loading config from stream is very similar, just the utilized method is Configuration.CreateFromStream&lt;IConfiguration&gt;(StreamReader, ParsingMode), and file name
+ is replaced by the input stream
+
+ Storing configuration inside file is achieved by .SaveTo(string) method of configuration with output filename as its parameter.
+
+ Storing configuration into stream is similar to storing it into file, however utilized method is .WriteTo(StreamWriter) and parameter takes output stream instead of filename
+</pre><h1><a class="anchor" id="sec_examples"></a>
+Examples</h1>
+<h2><a class="anchor" id="sub_exSimple"></a>
+Simple quick to work example</h2>
+<div class="fragment"><div class="line"><span class="comment">// Configuration structure</span></div>
+<div class="line"><span class="keyword">public</span> <span class="keyword">interface </span>myConfiguration : IConfiguration</div>
+<div class="line">{</div>
+<div class="line">    Section mySection {<span class="keyword">get</span>;}</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// Section structure</span></div>
+<div class="line"><span class="keyword">public</span> <span class="keyword">interface </span>Section</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordtype">int</span> myOption1 {<span class="keyword">get</span>;}</div>
+<div class="line">   list&lt;bool&gt; myOption2 {<span class="keyword">get</span>; <span class="keyword">set</span>;}</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// usage</span></div>
+<div class="line"><span class="keywordtype">void</span> workingMethod()</div>
+<div class="line">{</div>
+<div class="line">   <span class="comment">// just save config to file</span></div>
+<div class="line">   var defaultConfig = Configuration.CreateFromDefaults&lt;myConfiguration&gt;();</div>
+<div class="line">   defaultConfig.SaveTo(<span class="stringliteral">&quot;config.cfg&quot;</span>);</div>
+<div class="line">   </div>
+<div class="line">   <span class="comment">// just load config from file (relaxed mode)</span></div>
+<div class="line">   var fromFileConfig = Configuration.CreateFromFile&lt;myConfiguration&gt;(<span class="stringliteral">&quot;config.cfg&quot;</span>, <a class="code" href="namespace_config_r_w.html#ad7a7c48e02463927bbb71dab3941c03a" title="Mode of configuration file parsing. ">ParsingMode</a>.Relaxed);</div>
+<div class="line">}</div>
+</div><!-- fragment --><h2><a class="anchor" id="sub_exComplex"></a>
+More complex example demonstrating wider functionality</h2>
+<div class="fragment"><div class="line"><span class="comment">// Configuration structure</span></div>
+<div class="line"><span class="keyword">public</span> <span class="keyword">interface </span>myConfiguration : IConfiguration</div>
+<div class="line">{</div>
+<div class="line">   [DefaultComment(<span class="stringliteral">&quot;This is the alpha section and is compulsory&quot;</span>)]</div>
+<div class="line">   [SectionInfo(ID = <span class="stringliteral">&quot;AlphaSection&quot;</span>, IsOptional = <span class="keyword">false</span>)]</div>
+<div class="line">    Section_alpha alphaSect {<span class="keyword">get</span>;}</div>
+<div class="line">   </div>
+<div class="line">   [DefaultComment(<span class="stringliteral">&quot;This is the bravo section, however user file recognizes beta instead, it is optional&quot;</span>)]</div>
+<div class="line">   [SectionInfo(ID = <span class="stringliteral">&quot;BetaSection&quot;</span>, IsOptional = <span class="keyword">true</span>)]</div>
+<div class="line">   Section_bravo bravoSect {<span class="keyword">get</span>;}</div>
+<div class="line">   </div>
+<div class="line">   [DefaultComment(<span class="stringliteral">&quot;This is the second alpha section, which is compulsory and named charlie&quot;</span>)]</div>
+<div class="line">   [SectionInfo(ID = <span class="stringliteral">&quot;CharlieSection&quot;</span>, IsOptional = <span class="keyword">false</span>)]</div>
+<div class="line">    Section_alpha charlieSect {<span class="keyword">get</span>;}</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// Section structure alpha</span></div>
+<div class="line"><span class="keyword">public</span> <span class="keyword">interface </span>Section_alpha</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordtype">int</span> myOption1 {<span class="keyword">get</span>;}</div>
+<div class="line">   list&lt;bool&gt; myOption2 {<span class="keyword">get</span>; <span class="keyword">set</span>;}</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// Section structure bravo</span></div>
+<div class="line"><span class="keyword">public</span> <span class="keyword">interface </span>Section_bravo</div>
+<div class="line">{</div>
+<div class="line">   [OptionInfo(DefaultValue = <span class="keyword">new</span> <span class="keywordtype">int</span>[] {1, 2, 3, 4, 5})]</div>
+<div class="line">   [DefaultComment(<span class="stringliteral">&quot;This readonly option contains 5 elements, 1-5 by default&quot;</span>)]</div>
+<div class="line">    list&lt;int&gt; intList {<span class="keyword">get</span>;}</div>
+<div class="line">   </div>
+<div class="line">   [Range(LowerBound = 0.3f, UpperBound = 0.9f)]</div>
+<div class="line">   [OptionInfo(ID = <span class="stringliteral">&quot;commonValue&quot;</span>, IsOptional = <span class="keyword">true</span>, DefaultValue = 0.4f)]</div>
+<div class="line">   <span class="keywordtype">float</span> trulySuspiciousValue {<span class="keyword">get</span>; <span class="keyword">set</span>;}</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// usage</span></div>
+<div class="line"><span class="keywordtype">void</span> workingMethod()</div>
+<div class="line">{</div>
+<div class="line">   </div>
+<div class="line">   <span class="comment">// just load config from file (strict mode)</span></div>
+<div class="line">   <span class="keywordflow">try</span></div>
+<div class="line">   {</div>
+<div class="line">      <span class="comment">// LoadFrom file</span></div>
+<div class="line">      var configData = Configuration.CreateFromFile&lt;myConfiguration&gt;(<span class="stringliteral">&quot;config.cfg&quot;</span>, <a class="code" href="namespace_config_r_w.html#ad7a7c48e02463927bbb71dab3941c03a" title="Mode of configuration file parsing. ">ParsingMode</a>.Relaxed);</div>
+<div class="line">      </div>
+<div class="line">      <span class="comment">// retrieve and use value</span></div>
+<div class="line">      <span class="keywordflow">if</span> (configData.bravoSect.trulySuspiciousValue &gt; 0.5f)</div>
+<div class="line">      {</div>
+<div class="line">         doSomething();</div>
+<div class="line">      }</div>
+<div class="line">      <span class="keywordflow">else</span></div>
+<div class="line">      {</div>
+<div class="line">         doSomethingElse();</div>
+<div class="line">      }</div>
+<div class="line">      </div>
+<div class="line">      <span class="comment">// Tinker with value</span></div>
+<div class="line">      configData.alphaSect.myOption2 = <span class="keyword">new</span> List&lt;int&gt;();</div>
+<div class="line">      <span class="keywordflow">foreach</span> (<span class="keywordtype">int</span> someInt <span class="keywordflow">in</span> someInts)</div>
+<div class="line">      {</div>
+<div class="line">         configData.alphaSect.myOption2.add(someInt*2);</div>
+<div class="line">      }</div>
+<div class="line"></div>
+<div class="line">      <span class="comment">// Save back to the file</span></div>
+<div class="line">      configData.SaveTo(<span class="stringliteral">&quot;config.cfg&quot;</span>);</div>
+<div class="line">   }</div>
+<div class="line">   <span class="keywordflow">catch</span> (ConfigRWException ex)</div>
+<div class="line">   {</div>
+<div class="line">      <span class="comment">// something failed, config may be in wrong format, who knows</span></div>
+<div class="line">   }</div>
+<div class="line">   <span class="keywordflow">catch</span> (Exception ex)</div>
+<div class="line">   {</div>
+<div class="line">      <span class="comment">// trully fatal problem occurred, or the source is not originated from ConfigRW</span></div>
+<div class="line">   }</div>
+<div class="line">}</div>
+</div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri May 3 2013 22:37:57 for ConfigRW by
+    <li class="footer">Generated on Sat May 4 2013 16:34:12 for ConfigRW by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

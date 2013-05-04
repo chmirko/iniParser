@@ -94,7 +94,7 @@ $(document).ready(function(){initNavTree('class_config_r_w_1_1_parser_exception_
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Properties</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -105,13 +105,16 @@ $(document).ready(function(){initNavTree('class_config_r_w_1_1_parser_exception_
 
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pac-methods">Package Functions</a> &#124;
 <a href="class_config_r_w_1_1_parser_exception_within_config-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">ConfigRW.ParserExceptionWithinConfig Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Special type of exception thrown form the parser, this one contains additional info of parsing position in the parsed file  
+ <a href="class_config_r_w_1_1_parser_exception_within_config.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for ConfigRW.ParserExceptionWithinConfig:</div>
 <div class="dyncontent">
@@ -119,24 +122,10 @@ Inheritance diagram for ConfigRW.ParserExceptionWithinConfig:</div>
   <img src="class_config_r_w_1_1_parser_exception_within_config.png" usemap="#ConfigRW.ParserExceptionWithinConfig_map" alt=""/>
   <map id="ConfigRW.ParserExceptionWithinConfig_map" name="ConfigRW.ParserExceptionWithinConfig_map">
 <area href="class_config_r_w_1_1_parser_exception.html" title="Exceptions thrown out of parser Except really extraordynary conditions, this should be the only one e..." alt="ConfigRW.ParserException" shape="rect" coords="0,112,236,136"/>
-<area href="class_config_r_w_1_1_config_r_w_exception.html" title="Base exception for exceptions thrown out of Config Reader and Writer. " alt="ConfigRW.ConfigRWException" shape="rect" coords="0,56,236,80"/>
+<area href="class_config_r_w_1_1_config_r_w_exception.html" title="Exceptions thrown out of ConfigRW library. Except really extraordynary conditions, this should be the only one exception thorwon out of the ConfigRW library. " alt="ConfigRW.ConfigRWException" shape="rect" coords="0,56,236,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr class="memitem:a7da1cdf97cb04d9ce37370fdac13659b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_parser_exception_within_config.html#a7da1cdf97cb04d9ce37370fdac13659b">ParserExceptionWithinConfig</a> (string userMsg, string developerMsg, string logMsg=null, uint?line=null, string section=null, string option=null, Exception inner=null)</td></tr>
-<tr class="memdesc:a7da1cdf97cb04d9ce37370fdac13659b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exception constructor  <a href="#a7da1cdf97cb04d9ce37370fdac13659b">More...</a><br/></td></tr>
-<tr class="separator:a7da1cdf97cb04d9ce37370fdac13659b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_class_config_r_w_1_1_parser_exception"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_config_r_w_1_1_parser_exception')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_config_r_w_1_1_parser_exception.html">ConfigRW.ParserException</a></td></tr>
-<tr class="memitem:aec2fbfe8a2e2d6b4ce6e6aa9afceddc6 inherit pub_methods_class_config_r_w_1_1_parser_exception"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_parser_exception.html#aec2fbfe8a2e2d6b4ce6e6aa9afceddc6">ParserException</a> (string userMsg, string developerMsg, string logMsg=null, Exception inner=null)</td></tr>
-<tr class="memdesc:aec2fbfe8a2e2d6b4ce6e6aa9afceddc6 inherit pub_methods_class_config_r_w_1_1_parser_exception"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exception constructor  <a href="#aec2fbfe8a2e2d6b4ce6e6aa9afceddc6">More...</a><br/></td></tr>
-<tr class="separator:aec2fbfe8a2e2d6b4ce6e6aa9afceddc6 inherit pub_methods_class_config_r_w_1_1_parser_exception"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_class_config_r_w_1_1_config_r_w_exception"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_config_r_w_1_1_config_r_w_exception')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_config_r_w_1_1_config_r_w_exception.html">ConfigRW.ConfigRWException</a></td></tr>
-<tr class="memitem:abb655bd4845b21ec3316826501b0bc62 inherit pub_methods_class_config_r_w_1_1_config_r_w_exception"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_config_r_w_exception.html#abb655bd4845b21ec3316826501b0bc62">ConfigRWException</a> (string userMsg, string developerMsg, string logMsg=null, Exception inner=null)</td></tr>
-<tr class="memdesc:abb655bd4845b21ec3316826501b0bc62 inherit pub_methods_class_config_r_w_1_1_config_r_w_exception"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exception constructor  <a href="#abb655bd4845b21ec3316826501b0bc62">More...</a><br/></td></tr>
-<tr class="separator:abb655bd4845b21ec3316826501b0bc62 inherit pub_methods_class_config_r_w_1_1_config_r_w_exception"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:aa8e921f7a6ec907ffad9ca1176cd11e9"><td class="memItemLeft" align="right" valign="top">readonly uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_parser_exception_within_config.html#aa8e921f7a6ec907ffad9ca1176cd11e9">Line</a></td></tr>
@@ -148,8 +137,27 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:ae44d08c1aa48543fb83c4bffa35c425b"><td class="memItemLeft" align="right" valign="top">readonly string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_parser_exception_within_config.html#ae44d08c1aa48543fb83c4bffa35c425b">Option</a></td></tr>
 <tr class="memdesc:ae44d08c1aa48543fb83c4bffa35c425b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Option where exception ocurred (if aplicable)  <a href="#ae44d08c1aa48543fb83c4bffa35c425b">More...</a><br/></td></tr>
 <tr class="separator:ae44d08c1aa48543fb83c4bffa35c425b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pac-methods"></a>
+Package Functions</h2></td></tr>
+<tr class="memitem:a7da1cdf97cb04d9ce37370fdac13659b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_parser_exception_within_config.html#a7da1cdf97cb04d9ce37370fdac13659b">ParserExceptionWithinConfig</a> (string userMsg, string developerMsg, string logMsg=null, uint?line=null, string section=null, string option=null, Exception inner=null)</td></tr>
+<tr class="memdesc:a7da1cdf97cb04d9ce37370fdac13659b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exception constructor  <a href="#a7da1cdf97cb04d9ce37370fdac13659b">More...</a><br/></td></tr>
+<tr class="separator:a7da1cdf97cb04d9ce37370fdac13659b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pac_methods_class_config_r_w_1_1_parser_exception"><td colspan="2" onclick="javascript:toggleInherit('pac_methods_class_config_r_w_1_1_parser_exception')"><img src="closed.png" alt="-"/>&#160;Package Functions inherited from <a class="el" href="class_config_r_w_1_1_parser_exception.html">ConfigRW.ParserException</a></td></tr>
+<tr class="memitem:aec2fbfe8a2e2d6b4ce6e6aa9afceddc6 inherit pac_methods_class_config_r_w_1_1_parser_exception"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_parser_exception.html#aec2fbfe8a2e2d6b4ce6e6aa9afceddc6">ParserException</a> (string userMsg, string developerMsg, string logMsg=null, Exception inner=null)</td></tr>
+<tr class="memdesc:aec2fbfe8a2e2d6b4ce6e6aa9afceddc6 inherit pac_methods_class_config_r_w_1_1_parser_exception"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exception constructor  <a href="#aec2fbfe8a2e2d6b4ce6e6aa9afceddc6">More...</a><br/></td></tr>
+<tr class="separator:aec2fbfe8a2e2d6b4ce6e6aa9afceddc6 inherit pac_methods_class_config_r_w_1_1_parser_exception"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pub_methods_class_config_r_w_1_1_config_r_w_exception"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_config_r_w_1_1_config_r_w_exception')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_config_r_w_1_1_config_r_w_exception.html">ConfigRW.ConfigRWException</a></td></tr>
+<tr class="memitem:abb655bd4845b21ec3316826501b0bc62 inherit pub_methods_class_config_r_w_1_1_config_r_w_exception"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_config_r_w_exception.html#abb655bd4845b21ec3316826501b0bc62">ConfigRWException</a> (string userMsg, string developerMsg, string logMsg=null, Exception inner=null)</td></tr>
+<tr class="memdesc:abb655bd4845b21ec3316826501b0bc62 inherit pub_methods_class_config_r_w_1_1_config_r_w_exception"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exception constructor  <a href="#abb655bd4845b21ec3316826501b0bc62">More...</a><br/></td></tr>
+<tr class="separator:abb655bd4845b21ec3316826501b0bc62 inherit pub_methods_class_config_r_w_1_1_config_r_w_exception"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Special type of exception thrown form the parser, this one contains additional info of parsing position in the parsed file </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a7da1cdf97cb04d9ce37370fdac13659b"></a>
 <div class="memitem">
 <div class="memproto">
@@ -207,7 +215,7 @@ Public Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -219,6 +227,8 @@ Public Attributes</h2></td></tr>
     <tr><td class="paramname">developerMsg</td><td>Generic exception message, desingated for application developer</td></tr>
     <tr><td class="paramname">logMsg</td><td>Message designated to be logged into log file, for future inspection (null if same as developerMsg)</td></tr>
     <tr><td class="paramname">line</td><td>Line in configuration file where exception ocurred</td></tr>
+    <tr><td class="paramname">section</td><td>Currently parsed section, if available</td></tr>
+    <tr><td class="paramname">option</td><td>Currently parsed option, if available</td></tr>
     <tr><td class="paramname">inner</td><td>Inner exception, for chained exceptions (null if no chained exception)</td></tr>
   </table>
   </dd>
@@ -278,7 +288,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_config_r_w.html">ConfigRW</a></li><li class="navelem"><a class="el" href="class_config_r_w_1_1_parser_exception_within_config.html">ParserExceptionWithinConfig</a></li>
-    <li class="footer">Generated on Fri May 3 2013 22:37:56 for ConfigRW by
+    <li class="footer">Generated on Sat May 4 2013 16:34:11 for ConfigRW by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

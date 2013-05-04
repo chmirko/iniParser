@@ -5,8 +5,8 @@ var searchData=
   ['name_5fpropertystorage_5fsetter',['name_PropertyStorage_Setter',['../class_config_r_w_1_1_config_creation_1_1_reflection_utils.html#a7d8e97c86ec7e30a6c5bb51fac623680',1,'ConfigRW::ConfigCreation::ReflectionUtils']]],
   ['net_5f3_2e5_5ffix_2ecs',['NET_3.5_fix.cs',['../_n_e_t__3_85__fix_8cs.html',1,'']]],
   ['newlexemestart',['newLexemeStart',['../class_config_r_w_1_1_parsing_1_1_lexer.html#a5e470bcee76b73ce790ee8ece86c4ba2a4196113f7e104216e2a330a48302409c',1,'ConfigRW::Parsing::Lexer']]],
+  ['newlexemestart_5fignoredelimiter',['newLexemeStart_ignoreDelimiter',['../class_config_r_w_1_1_parsing_1_1_lexer.html#a5e470bcee76b73ce790ee8ece86c4ba2a7038ee45a66534519e1bd8c98b38c8bc',1,'ConfigRW::Parsing::Lexer']]],
   ['nongenericmatch',['NonGenericMatch',['../class_config_r_w_1_1_config_creation_1_1_reflection_utils.html#ae06ade3bbaa3870af85cf8e4fb345e4f',1,'ConfigRW::ConfigCreation::ReflectionUtils']]],
   ['nt_5flinkoption',['NT_LinkOption',['../class_config_r_w_1_1_parsing_1_1_lexer.html#aed0b106dbf6fed341629f4a78b7b5a92ab59a0c4926418c87b2526445511f45b1',1,'ConfigRW::Parsing::Lexer']]],
-  ['nt_5flinksection',['NT_LinkSection',['../class_config_r_w_1_1_parsing_1_1_lexer.html#aed0b106dbf6fed341629f4a78b7b5a92a79ca044f43e55504ab9c3b5b91b3b2ae',1,'ConfigRW::Parsing::Lexer']]],
-  ['number',['number',['../interface_usage_examples_1_1_section1.html#ab004cba9a5536141835199596dd9c08b',1,'UsageExamples::Section1']]]
+  ['nt_5flinksection',['NT_LinkSection',['../class_config_r_w_1_1_parsing_1_1_lexer.html#aed0b106dbf6fed341629f4a78b7b5a92a79ca044f43e55504ab9c3b5b91b3b2ae',1,'ConfigRW::Parsing::Lexer']]]
 ];

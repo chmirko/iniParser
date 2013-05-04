@@ -8,7 +8,6 @@ var searchData=
   ['configroot',['ConfigRoot',['../class_config_r_w_1_1_config_creation_1_1_config_root.html',1,'ConfigRW::ConfigCreation']]],
   ['configrwexception',['ConfigRWException',['../class_config_r_w_1_1_config_r_w_exception.html',1,'ConfigRW']]],
   ['configsection',['ConfigSection',['../class_config_r_w_1_1_config_creation_1_1_config_section.html',1,'ConfigRW::ConfigCreation']]],
-  ['configstructure',['ConfigStructure',['../interface_usage_examples_1_1_config_structure.html',1,'UsageExamples']]],
   ['configuration',['Configuration',['../class_config_r_w_1_1_configuration.html',1,'ConfigRW']]],
   ['containerbuildexception',['ContainerBuildException',['../class_config_r_w_1_1_container_build_exception.html',1,'ConfigRW']]],
   ['createinstanceexception',['CreateInstanceException',['../class_config_r_w_1_1_create_instance_exception.html',1,'ConfigRW']]]

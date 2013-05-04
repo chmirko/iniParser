@@ -1,6 +1,24 @@
 var NAVTREE =
 [
   [ "ConfigRW", "index.html", [
+    [ "My Personal Index Page", "index.html", [
+      [ "ConfigRW", "index.html#sec_intro", null ],
+      [ "Overview", "index.html#sec_overview", [
+        [ "Structure hierarchy", "index.html#subsect_overview_hierarach", null ],
+        [ "Handling", "index.html#subsect_overview_handling", null ],
+        [ "Exceptions", "index.html#subsect_overview_except", null ]
+      ] ],
+      [ "Specification of config hierarchy", "index.html#sec_specifyStruct", [
+        [ "Configuration Structure", "index.html#subsect_structure", null ],
+        [ "Section", "index.html#subsec_section", null ]
+      ] ],
+      [ "Advanced type in config", "index.html#sec_advanced", null ],
+      [ "Usage", "index.html#usage", null ],
+      [ "Examples", "index.html#sec_examples", [
+        [ "Simple quick to work example", "index.html#sub_exSimple", null ],
+        [ "More complex example demonstrating wider functionality", "index.html#sub_exComplex", null ]
+      ] ]
+    ] ],
     [ "Namespaces", null, [
       [ "Namespace List", "namespaces.html", "namespaces" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -32,7 +50,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_array_builder_8cs.html",
-"class_config_r_w_1_1_parsing_1_1_int64_converter.html#a6238bd54427aadef132b5479088c167c"
+"class_config_r_w_1_1_parsing_1_1_int64_converter.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

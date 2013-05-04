@@ -76,6 +76,7 @@
     <Compile Include="ConfigCreation\ConfigSection.cs" />
     <Compile Include="ConfigCreation\ConfigFactory.cs" />
     <Compile Include="ConfigCreation\StructureFactory.cs" />
+    <Compile Include="Documentation.cs" />
     <Compile Include="IConfiguration.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="Attributes.cs" />

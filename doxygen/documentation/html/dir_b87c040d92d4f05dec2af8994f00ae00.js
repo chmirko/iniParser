@@ -13,6 +13,7 @@ var dir_b87c040d92d4f05dec2af8994f00ae00 =
       [ "ConfigRWException", "class_config_r_w_1_1_config_r_w_exception.html", "class_config_r_w_1_1_config_r_w_exception" ]
     ] ],
     [ "Configuration.cs", "_configuration_8cs.html", "_configuration_8cs" ],
+    [ "Documentation.cs", "_documentation_8cs.html", null ],
     [ "IConfiguration.cs", "_i_configuration_8cs.html", [
       [ "IConfiguration", "interface_config_r_w_1_1_i_configuration.html", "interface_config_r_w_1_1_i_configuration" ]
     ] ],

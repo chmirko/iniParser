@@ -94,7 +94,7 @@ $(document).ready(function(){initNavTree('class_config_r_w_1_1_qualified_name.ht
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Properties</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -130,10 +130,13 @@ Inheritance diagram for ConfigRW.QualifiedName:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ad266ba2cc6fb8ab3f4b7b7f49f361033"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_qualified_name.html#ad266ba2cc6fb8ab3f4b7b7f49f361033">Equals</a> (object obj)</td></tr>
+<tr class="memdesc:ad266ba2cc6fb8ab3f4b7b7f49f361033"><td class="mdescLeft">&#160;</td><td class="mdescRight">Equals override that allows comparing qualified names with different references.  <a href="#ad266ba2cc6fb8ab3f4b7b7f49f361033">More...</a><br/></td></tr>
 <tr class="separator:ad266ba2cc6fb8ab3f4b7b7f49f361033"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61839181abc7ceac6a6944f3874b70a2"><td class="memItemLeft" align="right" valign="top">override int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_qualified_name.html#a61839181abc7ceac6a6944f3874b70a2">GetHashCode</a> ()</td></tr>
+<tr class="memdesc:a61839181abc7ceac6a6944f3874b70a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">GetHashCode override that allows hashing qualified names according its string representation.  <a href="#a61839181abc7ceac6a6944f3874b70a2">More...</a><br/></td></tr>
 <tr class="separator:a61839181abc7ceac6a6944f3874b70a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd480109c33bfed817a97bde461de07c"><td class="memItemLeft" align="right" valign="top">override string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_qualified_name.html#afd480109c33bfed817a97bde461de07c">ToString</a> ()</td></tr>
+<tr class="memdesc:afd480109c33bfed817a97bde461de07c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get string representation of qualified name.  <a href="#afd480109c33bfed817a97bde461de07c">More...</a><br/></td></tr>
 <tr class="separator:afd480109c33bfed817a97bde461de07c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
@@ -175,6 +178,15 @@ Package Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Equals override that allows comparing qualified names with different references. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obj</td><td>Object to be compared.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if obj is qualified name with same string representation.</dd></dl>
 
 </div>
 </div>
@@ -276,6 +288,9 @@ Package Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>GetHashCode override that allows hashing qualified names according its string representation. </p>
+<dl class="section return"><dt>Returns</dt><dd>HashCode for qualified name.</dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a5f32a5ff88568e9dc97f146facb01b60"></a>
@@ -327,6 +342,9 @@ Package Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Get string representation of qualified name. </p>
+<dl class="section return"><dt>Returns</dt><dd>String representation of qualified name.</dd></dl>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
@@ -338,7 +356,7 @@ Package Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_config_r_w.html">ConfigRW</a></li><li class="navelem"><a class="el" href="class_config_r_w_1_1_qualified_name.html">QualifiedName</a></li>
-    <li class="footer">Generated on Fri May 3 2013 22:37:56 for ConfigRW by
+    <li class="footer">Generated on Sat May 4 2013 16:34:11 for ConfigRW by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

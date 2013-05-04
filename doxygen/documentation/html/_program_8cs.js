@@ -5,6 +5,8 @@ var _program_8cs =
     [ "SpecialTypeSection", "interface_usage_examples_1_1_special_type_section.html", "interface_usage_examples_1_1_special_type_section" ],
     [ "Section1", "interface_usage_examples_1_1_section1.html", "interface_usage_examples_1_1_section1" ],
     [ "Section2", "interface_usage_examples_1_1_section2.html", "interface_usage_examples_1_1_section2" ],
+    [ "ParserConfigStruct", "interface_usage_examples_1_1_parser_config_struct.html", "interface_usage_examples_1_1_parser_config_struct" ],
+    [ "ParserTestSection", "interface_usage_examples_1_1_parser_test_section.html", "interface_usage_examples_1_1_parser_test_section" ],
     [ "EnumTest", "_program_8cs.html#a8f2de740017e2714a63471e3993db787", [
       [ "Value1", "_program_8cs.html#a8f2de740017e2714a63471e3993db787a7ee5a281b28d7ca1fab06b43d0b7d8ac", null ],
       [ "Value2", "_program_8cs.html#a8f2de740017e2714a63471e3993db787a0fe13ed1638da4d4b1ef316729f3bb32", null ],
