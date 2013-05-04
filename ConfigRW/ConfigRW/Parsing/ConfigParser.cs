@@ -410,7 +410,7 @@ namespace ConfigRW.Parsing
       /// </summary>
       /// <param name="section">Fully typed section info, with appropriate comment set</param>
       /// <param name="knownSections">Dictionary of all known sections</param>
-      /// <return>Whether section had to be forced, thus created anew (not present in source file)</return>
+      /// <returns>Whether section had to be forced, thus created anew (not present in source file)</returns>
       private static bool checkForceSectionCommentAndSeen(SectionInfo section, Dictionary<QualifiedSectionName, InnerSection> knownSections)
       {
          var qSec = section.Name;

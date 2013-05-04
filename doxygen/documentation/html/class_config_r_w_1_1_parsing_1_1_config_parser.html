@@ -181,9 +181,9 @@ Static Private Member Functions</h2></td></tr>
 <tr class="memitem:adc5031a16749b14f7b89a3fd13e64cce"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#adc5031a16749b14f7b89a3fd13e64cce">escapeValue</a> (string value)</td></tr>
 <tr class="memdesc:adc5031a16749b14f7b89a3fd13e64cce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Escapes value for safe output In our case, just escapes trailing and ending spaces  <a href="#adc5031a16749b14f7b89a3fd13e64cce">More...</a><br/></td></tr>
 <tr class="separator:adc5031a16749b14f7b89a3fd13e64cce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd5da341cc63ed2e9ce5ef855467500d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#afd5da341cc63ed2e9ce5ef855467500d">checkSectionCommentAndSeen</a> (<a class="el" href="class_config_r_w_1_1_parsing_1_1_section_info.html">SectionInfo</a> section, Dictionary&lt; <a class="el" href="class_config_r_w_1_1_parsing_1_1_qualified_section_name.html">QualifiedSectionName</a>, <a class="el" href="class_config_r_w_1_1_parsing_1_1_inner_section.html">InnerSection</a> &gt; <a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#a1b7bdb81932f1212f68774a3d3e1c068">knownSections</a>)</td></tr>
-<tr class="memdesc:afd5da341cc63ed2e9ce5ef855467500d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether given section exists and has appropriate comment, if it has no comment, it claims the default one  <a href="#afd5da341cc63ed2e9ce5ef855467500d">More...</a><br/></td></tr>
-<tr class="separator:afd5da341cc63ed2e9ce5ef855467500d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb6fac0d811490fa856f9175630948f1"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#abb6fac0d811490fa856f9175630948f1">checkForceSectionCommentAndSeen</a> (<a class="el" href="class_config_r_w_1_1_parsing_1_1_section_info.html">SectionInfo</a> section, Dictionary&lt; <a class="el" href="class_config_r_w_1_1_parsing_1_1_qualified_section_name.html">QualifiedSectionName</a>, <a class="el" href="class_config_r_w_1_1_parsing_1_1_inner_section.html">InnerSection</a> &gt; <a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#a1b7bdb81932f1212f68774a3d3e1c068">knownSections</a>)</td></tr>
+<tr class="memdesc:abb6fac0d811490fa856f9175630948f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether given section exists and has appropriate comment, if it has no comment, it claims the default one  <a href="#abb6fac0d811490fa856f9175630948f1">More...</a><br/></td></tr>
+<tr class="separator:abb6fac0d811490fa856f9175630948f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac69afaa305f3547e480feacbf79b8ddf"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#ac69afaa305f3547e480feacbf79b8ddf">checkOptionCommentAndSeen</a> (<a class="el" href="class_config_r_w_1_1_parsing_1_1_option_info.html">OptionInfo</a> option, Dictionary&lt; <a class="el" href="class_config_r_w_1_1_parsing_1_1_qualified_section_name.html">QualifiedSectionName</a>, <a class="el" href="class_config_r_w_1_1_parsing_1_1_inner_section.html">InnerSection</a> &gt; <a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#a1b7bdb81932f1212f68774a3d3e1c068">knownSections</a>)</td></tr>
 <tr class="memdesc:ac69afaa305f3547e480feacbf79b8ddf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether given option exists and has appropriate comment, if it has no comment, it claims the default one  <a href="#ac69afaa305f3547e480feacbf79b8ddf">More...</a><br/></td></tr>
 <tr class="separator:ac69afaa305f3547e480feacbf79b8ddf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -247,6 +247,52 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="abb6fac0d811490fa856f9175630948f1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool ConfigRW.Parsing.ConfigParser.checkForceSectionCommentAndSeen </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_config_r_w_1_1_parsing_1_1_section_info.html">SectionInfo</a>&#160;</td>
+          <td class="paramname"><em>section</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Dictionary&lt; <a class="el" href="class_config_r_w_1_1_parsing_1_1_qualified_section_name.html">QualifiedSectionName</a>, <a class="el" href="class_config_r_w_1_1_parsing_1_1_inner_section.html">InnerSection</a> &gt;&#160;</td>
+          <td class="paramname"><em>knownSections</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks whether given section exists and has appropriate comment, if it has no comment, it claims the default one </p>
+<p>Forces section existence</p>
+<p>In case the section does not exist, it is created with appropriate default comment, this is the case of optional sections not presented in configuration file, these should not be stored into outStream (unles filled) Also in getValues its nonOptional members are provided from within structure info, as they are not in InnerRepresentation </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">section</td><td>Fully typed section info, with appropriate comment set</td></tr>
+    <tr><td class="paramname">knownSections</td><td>Dictionary of all known sections</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Whether section had to be forced, thus created anew (not present in source file)</dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ad050a474c8f265a106f27697b1d52961"></a>
 <div class="memitem">
 <div class="memproto">
@@ -308,49 +354,6 @@ Private Attributes</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">option</td><td>Fully typed option info with, appropriate comment set</td></tr>
-    <tr><td class="paramname">knownSections</td><td>Dictionary of all known sections</td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="afd5da341cc63ed2e9ce5ef855467500d"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void ConfigRW.Parsing.ConfigParser.checkSectionCommentAndSeen </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_config_r_w_1_1_parsing_1_1_section_info.html">SectionInfo</a>&#160;</td>
-          <td class="paramname"><em>section</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Dictionary&lt; <a class="el" href="class_config_r_w_1_1_parsing_1_1_qualified_section_name.html">QualifiedSectionName</a>, <a class="el" href="class_config_r_w_1_1_parsing_1_1_inner_section.html">InnerSection</a> &gt;&#160;</td>
-          <td class="paramname"><em>knownSections</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Checks whether given section exists and has appropriate comment, if it has no comment, it claims the default one </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">section</td><td>Fully typed section info, with appropriate comment set</td></tr>
     <tr><td class="paramname">knownSections</td><td>Dictionary of all known sections</td></tr>
   </table>
   </dd>
@@ -1131,7 +1134,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_config_r_w.html">ConfigRW</a></li><li class="navelem"><a class="el" href="namespace_config_r_w_1_1_parsing.html">Parsing</a></li><li class="navelem"><a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html">ConfigParser</a></li>
-    <li class="footer">Generated on Sat May 4 2013 16:34:12 for ConfigRW by
+    <li class="footer">Generated on Sat May 4 2013 18:57:09 for ConfigRW by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>
