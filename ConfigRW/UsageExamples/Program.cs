@@ -139,7 +139,7 @@ namespace UsageExamples
         [DefaultComment("Section used as parser tester - ALPHA")]
         ParserTestSection ParseSect_A { get; }
 
-        [OptionInfo(IsOptional=true)]
+        [SectionInfo(IsOptional=true)]
         [DefaultComment("Section used as parser tester - BRAVO")]
         ParserTestSection ParseSect_B { get; }
 
