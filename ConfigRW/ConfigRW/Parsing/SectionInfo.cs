@@ -35,11 +35,16 @@ namespace ConfigRW.Parsing
         internal readonly string AssociatedProperty;
 
         /// <summary>
+        /// Determine that section is optional.
+        /// </summary>
+        internal readonly bool IsOptional;
+
+        /// <summary>
         /// Here are stored options in section.
         /// </summary>
         private readonly Dictionary<QualifiedOptionName, OptionInfo> _options = new Dictionary<QualifiedOptionName, OptionInfo>();
 
-        internal SectionInfo(QualifiedSectionName name,PropertyInfo associatedProperty, List<OptionInfo> options,string defaultComment)
+        internal SectionInfo(QualifiedSectionName name,bool isOptional,PropertyInfo associatedProperty, List<OptionInfo> options,string defaultComment)
         {
             Name = name;
 
@@ -65,5 +70,7 @@ namespace ConfigRW.Parsing
         {
             return _options[name];
         }
+
+        
     }
 }

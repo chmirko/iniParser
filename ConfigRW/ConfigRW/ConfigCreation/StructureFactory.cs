@@ -65,7 +65,7 @@ namespace ConfigRW.ConfigCreation
                 options.Add(optionInfo);
             }
 
-            return new SectionInfo(sectionName, sectionProperty, options, commentAttr.CommentText);
+            return new SectionInfo(sectionName,infoAttr.IsOptional, sectionProperty, options, commentAttr.CommentText);
         }
 
         /// <summary>
