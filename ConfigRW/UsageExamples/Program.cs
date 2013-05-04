@@ -117,8 +117,7 @@ namespace UsageExamples
     }
 
     public interface Section2
-    {
-        [Range(LowerBound="e")]
+    {        
         [OptionInfo(ID = "Name with space", IsOptional = true, DefaultValue = "default value")]
         string Field_name { get; }
 

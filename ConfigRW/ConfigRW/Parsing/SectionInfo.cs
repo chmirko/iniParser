@@ -55,6 +55,7 @@ namespace ConfigRW.Parsing
 
             AssociatedProperty = associatedProperty.Name;
             DescribingType = associatedProperty.PropertyType;
+            IsOptional = isOptional;
 
             foreach (var option in options)
             {
