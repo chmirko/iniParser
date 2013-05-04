@@ -112,6 +112,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 </ul>
 </li>
 <li class="level1"><a href="#sec_compatibility">Compatibility</a></li>
+<li class="level1"><a href="#sec_containers">Container types as option</a></li>
 <li class="level1"><a href="#sec_advanced">Advanced type in config</a></li>
 <li class="level1"><a href="#usage">Usage</a></li>
 <li class="level1"><a href="#sec_examples">Examples</a><ul><li class="level2"><a href="#sub_exSimple">Simple quick to work example</a></li>
@@ -247,7 +248,35 @@ Compatibility</h1>
  implementation. Most problematic methods, are the ones working around reflection. After consultations with lab teacher, we concluded that the solution 
  is prepared to be working with satisfying implementation of the .NET,
  therefore satisfies the task as compleetness of the MONO is out of our concern.
-</pre><h1><a class="anchor" id="sec_advanced"></a>
+</pre><h1><a class="anchor" id="sec_containers"></a>
+Container types as option</h1>
+<pre class="fragment"> ConfigRW supports among scalar types also container types. However for usage of container types, certain criteria needs to be met.
+ Container type can be an array of scalar types. For example array of integers is perfectly valid scalar type.
+ Container type can be any standard .NET type implementing IEnumerable or ICollection.
+ Container type can be any non-abstract type implementing ICollection interface meeting certain criteria.
+     Type needs to have parameter-less accessible constructor.
+     Method Add() is used to add new elements into a collection.
+     IEnumerable.GetEnumerator() is used for elements extraction.
+
+ When setting default values for containers, it is set as array of given type. For empty collection it should be empty 
+ array of given type, as null means null (i.e. no collection =&gt; error)
+</pre><div class="fragment"><div class="line"><span class="comment">// Section structure with numerous container types</span></div>
+<div class="line"><span class="keyword">public</span> <span class="keyword">interface </span>Section</div>
+<div class="line">{</div>
+<div class="line">   [DefaultComment(<span class="stringliteral">&quot;This is scalar type&quot;</span>)]</div>
+<div class="line">    <span class="keywordtype">int</span> scalar {<span class="keyword">get</span>;}</div>
+<div class="line">   </div>
+<div class="line">   [DefaultComment(<span class="stringliteral">&quot;This is array of integers&quot;</span>)]</div>
+<div class="line">   <span class="keywordtype">int</span>[] arrayInt {<span class="keyword">get</span>;}</div>
+<div class="line">   </div>
+<div class="line">   [DefaultComment(<span class="stringliteral">&quot;This is list of integers&quot;</span>)]</div>
+<div class="line">   List&lt;int&gt; listInt {<span class="keyword">get</span>;}</div>
+<div class="line">   </div>
+<div class="line">   [DefaultComment(<span class="stringliteral">&quot;This is list of strings with default values&quot;</span>)]</div>
+<div class="line">   [OptionInfo(DefaultValue = <span class="keyword">new</span> <span class="keywordtype">string</span>[] { <span class="stringliteral">&quot;value1&quot;</span>, <span class="stringliteral">&quot;value2&quot;</span>, <span class="stringliteral">&quot;valu3&quot;</span> })]</div>
+<div class="line">   List&lt;string&gt; List { <span class="keyword">get</span>; }</div>
+<div class="line">}</div>
+</div><!-- fragment --><h1><a class="anchor" id="sec_advanced"></a>
 Advanced type in config</h1>
 <pre class="fragment"> NOTE: This section contains tweaks for advanced developers and needs tweaking of the parser code itself.
  If you wish to utilize any of them, be prepared to modify internal structures of the program.
@@ -327,6 +356,7 @@ More complex example demonstrating wider functionality</h2>
 <div class="line">{</div>
 <div class="line">    <span class="keywordtype">int</span> myOption1 {<span class="keyword">get</span>;}</div>
 <div class="line">   List&lt;bool&gt; myOption2 {<span class="keyword">get</span>; <span class="keyword">set</span>;}</div>
+<div class="line">   customEnum userSelection {<span class="keyword">get</span>;}</div>
 <div class="line">}</div>
 <div class="line"></div>
 <div class="line"><span class="comment">// Section structure bravo</span></div>
@@ -385,7 +415,7 @@ More complex example demonstrating wider functionality</h2>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat May 4 2013 18:57:10 for ConfigRW by
+    <li class="footer">Generated on Sat May 4 2013 21:12:31 for ConfigRW by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

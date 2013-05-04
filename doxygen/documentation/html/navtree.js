@@ -13,6 +13,7 @@ var NAVTREE =
         [ "Section", "index.html#subsec_section", null ]
       ] ],
       [ "Compatibility", "index.html#sec_compatibility", null ],
+      [ "Container types as option", "index.html#sec_containers", null ],
       [ "Advanced type in config", "index.html#sec_advanced", null ],
       [ "Usage", "index.html#usage", null ],
       [ "Examples", "index.html#sec_examples", [

@@ -435,6 +435,7 @@ namespace ConfigRW.Parsing
          else if (section.IsOptional)
          {
             var newSection = new InnerSection(section.Name, section.DefaultComment);
+            newSection.Seen = true;
             knownSections.Add(section.Name, newSection);
             return true;
          }

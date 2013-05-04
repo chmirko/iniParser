@@ -180,6 +180,40 @@ namespace ConfigRW
     * is prepared to be working with satisfying implementation of the .NET,
     * therefore satisfies the task as compleetness of the MONO is out of our concern.
     * 
+    * \section sec_containers Container types as option
+    * 
+    * ConfigRW supports among scalar types also container types. However for usage of container types, certain criteria needs to be met.
+    * Container type can be an array of scalar types. For example array of integers is perfectly valid scalar type.
+    * Container type can be any standard .NET type implementing IEnumerable or ICollection.
+    * Container type can be any non-abstract type implementing ICollection interface meeting certain criteria.
+    *     Type needs to have parameter-less accessible constructor.
+    *     Method Add() is used to add new elements into a collection.
+    *     IEnumerable.GetEnumerator() is used for elements extraction.
+    *     
+    * When setting default values for containers, it is set as array of given type. For empty collection it should be empty 
+    * array of given type, as null means null (i.e. no collection => error)
+    * 
+    * \code{.cs}
+    * 
+    * // Section structure with numerous container types
+    * public interface Section
+    * {
+    *    [DefaultComment("This is scalar type")]
+	 *    int scalar {get;}
+    *    
+    *    [DefaultComment("This is array of integers")]
+    *    int[] arrayInt {get;}
+    *    
+    *    [DefaultComment("This is list of integers")]
+    *    List<int> listInt {get;}
+    *    
+    *    [DefaultComment("This is list of strings with default values")]
+    *    [OptionInfo(DefaultValue = new string[] { "value1", "value2", "valu3" })]
+    *    List<string> List { get; }
+    * }
+    * 
+    * \endcode
+    * 
     * \section sec_advanced Advanced type in config
     * 
     * NOTE: This section contains tweaks for advanced developers and needs tweaking of the parser code itself.
@@ -266,6 +300,7 @@ namespace ConfigRW
     * {
 	 *    int myOption1 {get;}
     *    List<bool> myOption2 {get; set;}
+    *    customEnum userSelection {get;}
     * }
     * 
     * // Section structure bravo
