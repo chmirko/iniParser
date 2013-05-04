@@ -15,20 +15,20 @@ namespace ConfigRW.Parsing
         /// <summary>
         /// Qualified name of section, where this option is defined.
         /// </summary>
-        public readonly QualifiedSectionName Section;
+        internal readonly QualifiedSectionName Section;
         /// <summary>
         /// ID of option. This ID is used in input/output file.
         /// </summary>
-        public readonly string ID;
+        internal readonly string ID;
 
-        public QualifiedOptionName(QualifiedSectionName section,string optionID) {
+        internal QualifiedOptionName(QualifiedSectionName section,string optionID) {
             ID= optionID;
             Section = section;
         }
         
         internal override string toString()
         {
-            return string.Format("{0}::{1}", Section.ID, ID);
+            return string.Format("'{0}'::'{1}'", Section.ID, ID);
         }
     }
 }

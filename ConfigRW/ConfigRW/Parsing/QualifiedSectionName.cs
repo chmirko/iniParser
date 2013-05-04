@@ -15,9 +15,9 @@ namespace ConfigRW.Parsing
         /// <summary>
         /// ID of section. This ID is used in input/output file.
         /// </summary>
-        public readonly string ID;
+        internal readonly string ID;
 
-        public QualifiedSectionName(string name)
+        internal QualifiedSectionName(string name)
         {
             ID = name;
         }
