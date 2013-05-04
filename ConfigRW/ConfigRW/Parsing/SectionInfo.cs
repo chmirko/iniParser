@@ -20,7 +20,7 @@ namespace ConfigRW.Parsing
         /// <summary>
         /// Type which describes section structure.
         /// </summary>
-        internal readonly Type DescribingType;     
+        internal readonly Type DescribingType;
         /// <summary>
         /// Default comment associated with section.
         /// </summary>
@@ -44,7 +44,12 @@ namespace ConfigRW.Parsing
         /// </summary>
         private readonly Dictionary<QualifiedOptionName, OptionInfo> _options = new Dictionary<QualifiedOptionName, OptionInfo>();
 
-        internal SectionInfo(QualifiedSectionName name,bool isOptional,PropertyInfo associatedProperty, List<OptionInfo> options,string defaultComment)
+        internal SectionInfo(
+            QualifiedSectionName name, PropertyInfo associatedProperty,
+            bool isOptional,
+            string defaultComment,
+            List<OptionInfo> options
+            )
         {
             Name = name;
 
@@ -71,6 +76,6 @@ namespace ConfigRW.Parsing
             return _options[name];
         }
 
-        
+
     }
 }
