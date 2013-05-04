@@ -56,7 +56,7 @@ namespace ConfigRW
         /// <param name="mode">Mode which is used for parsing input data.</param>
         /// <typeparam name="Structure">Interface which describes structure of configuration file.</typeparam>
         /// <returns>Configuration object.</returns>
-        public static Structure CreateFromFile<Structure>(string configFilePath, ParsingMode mode)
+        public static Structure CreateFromFile<Structure>(string configFilePath, ParsingMode mode=ParsingMode.Strict)
             where Structure : IConfiguration
         {
             var parser=ConfigParser.FromFile(configFilePath,mode);
@@ -72,7 +72,7 @@ namespace ConfigRW
         /// <param name="mode">Mode which is used for parsing input data.</param>
         /// <typeparam name="Structure">Interface which describes structure of configuration file.</typeparam>
         /// <returns>Configuration object.</returns>
-        public static Structure CreateFromStream<Structure>(StreamReader input, ParsingMode mode)
+        public static Structure CreateFromStream<Structure>(StreamReader input, ParsingMode mode = ParsingMode.Strict)
             where Structure : IConfiguration
         {
             var parser = ConfigParser.FromStream(input, mode);
