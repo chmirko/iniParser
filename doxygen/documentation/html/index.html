@@ -100,11 +100,34 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="title">My Personal Index Page </div>  </div>
 </div><!--header-->
 <div class="contents">
+<div class="toc"><h3>Table of Contents</h3>
+<ul><li class="level1"><a href="#sec_intro">ConfigRW</a></li>
+<li class="level1"><a href="#sec_overview">Overview</a><ul><li class="level2"><a href="#subsect_overview_hierarach">Structure hierarchy</a></li>
+<li class="level2"><a href="#subsect_overview_handling">Handling</a></li>
+<li class="level2"><a href="#subsect_overview_except">Exceptions</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#sec_specifyStruct">Specification of config hierarchy</a><ul><li class="level2"><a href="#subsect_structure">Configuration Structure</a></li>
+<li class="level2"><a href="#subsec_section">Section</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#sec_compatibility">Compatibility</a></li>
+<li class="level1"><a href="#sec_advanced">Advanced type in config</a></li>
+<li class="level1"><a href="#usage">Usage</a></li>
+<li class="level1"><a href="#sec_examples">Examples</a><ul><li class="level2"><a href="#sub_exSimple">Simple quick to work example</a></li>
+<li class="level2"><a href="#sub_exComplex">More complex example demonstrating wider functionality</a></li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="textblock"><h1><a class="anchor" id="sec_intro"></a>
 ConfigRW</h1>
 <pre class="fragment"> Tool for easy reading and writing of configuration files.
  Convenient usage of this tool is at first covered by series of simple explanations with examples, for more theoretically based users.
  Convenient usage of this tool is also later covered by series of simple examples with explanation, for more practically oriented users.
+
+ format of configuration files this tool handles by default can be found online
+ http://d3s.mff.cuni.cz/teaching/programming_practices/ukol2/
 </pre><h1><a class="anchor" id="sec_overview"></a>
 Overview</h1>
 <h2><a class="anchor" id="subsect_overview_hierarach"></a>
@@ -115,6 +138,7 @@ Structure hierarchy</h2>
 Handling</h2>
 <pre class="fragment"> When user wishes to utilize our config, he/she needs to specifi this hierarchy, for which he/she may utilize directly .NET language features.
  Once the configuration structure is known, user can proceed with operations on the configuration itself.
+    The configuration can be obtained as configuration of default values (used before additional processing or as default config creation)
     The configuration can be modified from within the code (by natural .NET environment)
     The configuration can be imprinted into a stream
     The configuration can be stored into a file
@@ -166,7 +190,7 @@ Configuration Structure</h2>
 <div class="fragment"><div class="line"><span class="comment">// Example: Configuration with single, optional section</span></div>
 <div class="line"><span class="keyword">public</span> <span class="keyword">interface </span>myConfiguration : IConfiguration</div>
 <div class="line">{</div>
-<div class="line">   [SectionInfo(Isoptional = <span class="keyword">true</span>)]</div>
+<div class="line">   [SectionInfo(IsOptional = <span class="keyword">true</span>)]</div>
 <div class="line">    Section mySection {<span class="keyword">get</span>;}</div>
 <div class="line">}</div>
 </div><!-- fragment --><p>If user wishes to assign default comment with certain section, DefaultComment attribute serves this purpose. It takes desired comment as its parameter.</p>
@@ -183,7 +207,7 @@ Section</h2>
 <div class="line"><span class="keyword">public</span> <span class="keyword">interface </span>Section</div>
 <div class="line">{</div>
 <div class="line">    <span class="keywordtype">int</span> myOption1 {<span class="keyword">get</span>;}</div>
-<div class="line">   list&lt;bool&gt; myOption2 {<span class="keyword">get</span>; <span class="keyword">set</span>;}</div>
+<div class="line">   List&lt;bool&gt; myOption2 {<span class="keyword">get</span>; <span class="keyword">set</span>;}</div>
 <div class="line">}</div>
 </div><!-- fragment --><p>And that's it. Next paragraph contains more advanced features, which you have to master only when you actually need their additional features.</p>
 <p>If there is need for advanced control of options, OptionInfo attribute serves as the right tool for this job. It recognizes these parameters: DefaultValue - default value for given option (i.e. value when an option is not set) ID - sets custom name for given option IsOptional - sets whether this option is considered to be optional</p>
@@ -200,18 +224,30 @@ Section</h2>
 <div class="line">   [DefaultComment(<span class="stringliteral">&quot;Comment for read only option&quot;</span>)]</div>
 <div class="line">    <span class="keywordtype">int</span> myOption1 {<span class="keyword">get</span>;}</div>
 <div class="line">   [DefaultComment(<span class="stringliteral">&quot;Comment for mutable option&quot;</span>)]</div>
-<div class="line">   list&lt;float&gt; myOption2 {<span class="keyword">get</span>; <span class="keyword">set</span>;}</div>
+<div class="line">   List&lt;float&gt; myOption2 {<span class="keyword">get</span>; <span class="keyword">set</span>;}</div>
 <div class="line">}</div>
-</div><!-- fragment --><p>In case of numerical value (or IEnumerable of numerical values), it is possible to define lower and/or upper bound, both are inclusive. To do so, Range attribute needs to be present.</p>
+</div><!-- fragment --><p>In case of IComparable type (or IEnumerable of IComparable types), it is possible to define lower and/or upper bound, both are inclusive. To do so, Range attribute needs to be present.</p>
 <div class="fragment"><div class="line"><span class="comment">// Example: Simple section with two options, one is mutable, both have default comment</span></div>
 <div class="line"><span class="keyword">public</span> <span class="keyword">interface </span>Section</div>
 <div class="line">{</div>
 <div class="line">   [Range(LowerBound = 0, UpperBound = 10)]</div>
 <div class="line">    <span class="keywordtype">int</span> remainingFingers {<span class="keyword">get</span>;}</div>
 <div class="line">   [Range(LowerBound = 1)]</div>
-<div class="line">   list&lt;int&gt; positiveNumbers {<span class="keyword">get</span>; <span class="keyword">set</span>;}</div>
+<div class="line">   List&lt;int&gt; positiveNumbers {<span class="keyword">get</span>; <span class="keyword">set</span>;}</div>
 <div class="line">}</div>
-</div><!-- fragment --><h1><a class="anchor" id="sec_advanced"></a>
+</div><!-- fragment --><h1><a class="anchor" id="sec_compatibility"></a>
+Compatibility</h1>
+<pre class="fragment"> The tool is developed under C# .NET 3.5
+ therefore it should be compatible with .NET 3.5 onwards (unless MS ceases backwars compatibility of used features)
+
+ Due to .NET being MS proprietary language and third party solutions (MONO) are not with par,
+ the ConfigRW is compilable under MONO, however not all versions are able to run it, due to many functions having
+ throw NotimplementedException() as their implementation. As this task has requirements to be reasonably compilable under wider selection
+ of operating systems (MONO stated explicitly for .NET), we claim that this project follows .NET standards and is compilable on reasonable .NET (3.5 compatible) 
+ implementation. Most problematic methods, are the ones working around reflection. After consultations with lab teacher, we concluded that the solution 
+ is prepared to be working with satisfying implementation of the .NET,
+ therefore satisfies the task as compleetness of the MONO is out of our concern.
+</pre><h1><a class="anchor" id="sec_advanced"></a>
 Advanced type in config</h1>
 <pre class="fragment"> NOTE: This section contains tweaks for advanced developers and needs tweaking of the parser code itself.
  If you wish to utilize any of them, be prepared to modify internal structures of the program.
@@ -255,7 +291,7 @@ Simple quick to work example</h2>
 <div class="line"><span class="keyword">public</span> <span class="keyword">interface </span>Section</div>
 <div class="line">{</div>
 <div class="line">    <span class="keywordtype">int</span> myOption1 {<span class="keyword">get</span>;}</div>
-<div class="line">   list&lt;bool&gt; myOption2 {<span class="keyword">get</span>; <span class="keyword">set</span>;}</div>
+<div class="line">   List&lt;bool&gt; myOption2 {<span class="keyword">get</span>; <span class="keyword">set</span>;}</div>
 <div class="line">}</div>
 <div class="line"></div>
 <div class="line"><span class="comment">// usage</span></div>
@@ -290,7 +326,7 @@ More complex example demonstrating wider functionality</h2>
 <div class="line"><span class="keyword">public</span> <span class="keyword">interface </span>Section_alpha</div>
 <div class="line">{</div>
 <div class="line">    <span class="keywordtype">int</span> myOption1 {<span class="keyword">get</span>;}</div>
-<div class="line">   list&lt;bool&gt; myOption2 {<span class="keyword">get</span>; <span class="keyword">set</span>;}</div>
+<div class="line">   List&lt;bool&gt; myOption2 {<span class="keyword">get</span>; <span class="keyword">set</span>;}</div>
 <div class="line">}</div>
 <div class="line"></div>
 <div class="line"><span class="comment">// Section structure bravo</span></div>
@@ -298,7 +334,7 @@ More complex example demonstrating wider functionality</h2>
 <div class="line">{</div>
 <div class="line">   [OptionInfo(DefaultValue = <span class="keyword">new</span> <span class="keywordtype">int</span>[] {1, 2, 3, 4, 5})]</div>
 <div class="line">   [DefaultComment(<span class="stringliteral">&quot;This readonly option contains 5 elements, 1-5 by default&quot;</span>)]</div>
-<div class="line">    list&lt;int&gt; intList {<span class="keyword">get</span>;}</div>
+<div class="line">    List&lt;int&gt; intList {<span class="keyword">get</span>;}</div>
 <div class="line">   </div>
 <div class="line">   [Range(LowerBound = 0.3f, UpperBound = 0.9f)]</div>
 <div class="line">   [OptionInfo(ID = <span class="stringliteral">&quot;commonValue&quot;</span>, IsOptional = <span class="keyword">true</span>, DefaultValue = 0.4f)]</div>
@@ -349,7 +385,7 @@ More complex example demonstrating wider functionality</h2>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat May 4 2013 16:34:12 for ConfigRW by
+    <li class="footer">Generated on Sat May 4 2013 18:57:10 for ConfigRW by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

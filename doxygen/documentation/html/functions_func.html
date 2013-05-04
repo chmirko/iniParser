@@ -222,6 +222,9 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 <li>checkDefaultValueMatching()
 : <a class="el" href="class_config_r_w_1_1_config_creation_1_1_structure_validation.html#ab0fee3cb27370e875fcdfab02665f39e">ConfigRW.ConfigCreation.StructureValidation</a>
 </li>
+<li>checkForceSectionCommentAndSeen()
+: <a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#abb6fac0d811490fa856f9175630948f1">ConfigRW.Parsing.ConfigParser</a>
+</li>
 <li>checkIDsValidity()
 : <a class="el" href="class_config_r_w_1_1_config_creation_1_1_structure_validation.html#a25d69d0ce6e2d8360138fcee417d66fa">ConfigRW.ConfigCreation.StructureValidation</a>
 </li>
@@ -239,9 +242,6 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 </li>
 <li>checkRangeTypeMatching()
 : <a class="el" href="class_config_r_w_1_1_config_creation_1_1_structure_validation.html#a19798e84bc2c6236948bbc33f818503a">ConfigRW.ConfigCreation.StructureValidation</a>
-</li>
-<li>checkSectionCommentAndSeen()
-: <a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#afd5da341cc63ed2e9ce5ef855467500d">ConfigRW.Parsing.ConfigParser</a>
 </li>
 <li>checkSectionUniqueness()
 : <a class="el" href="class_config_r_w_1_1_config_creation_1_1_structure_validation.html#a6562edf5150bf768880adc24dd4d51fb">ConfigRW.ConfigCreation.StructureValidation</a>
@@ -583,12 +583,14 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 
 <h3><a class="anchor" id="index_s"></a>- s -</h3><ul>
 <li>Save()
-: <a class="el" href="class_config_r_w_1_1_config_creation_1_1_config_root.html#ad539b7eba4002d3b7ef48453224212f2">ConfigRW.ConfigCreation.ConfigRoot</a>
-, <a class="el" href="interface_config_r_w_1_1_i_configuration.html#a902a639a7216ab40407abd5060bf1f4c">ConfigRW.IConfiguration</a>
-, <a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#ad002f8a0b4ba39118f54f6b400ec0b80">ConfigRW.Parsing.ConfigParser</a>
+: <a class="el" href="class_config_r_w_1_1_parsing_1_1_config_parser.html#ad002f8a0b4ba39118f54f6b400ec0b80">ConfigRW.Parsing.ConfigParser</a>
+</li>
+<li>SaveTo()
+: <a class="el" href="class_config_r_w_1_1_config_creation_1_1_config_root.html#ab44d2e026de464cc3b24aec42362ffae">ConfigRW.ConfigCreation.ConfigRoot</a>
+, <a class="el" href="interface_config_r_w_1_1_i_configuration.html#ac168b64edf20fef684759abf16856462">ConfigRW.IConfiguration</a>
 </li>
 <li>SectionInfo()
-: <a class="el" href="class_config_r_w_1_1_parsing_1_1_section_info.html#a759cf8598ef2e00fadcd36730e3b6357">ConfigRW.Parsing.SectionInfo</a>
+: <a class="el" href="class_config_r_w_1_1_parsing_1_1_section_info.html#a495e7fa96aa859c2c683a57e76d243aa">ConfigRW.Parsing.SectionInfo</a>
 </li>
 <li>SectionInfoAttribute()
 : <a class="el" href="class_config_r_w_1_1_section_info_attribute.html#aa3844aea15dbc3c881047e2be5382bd1">ConfigRW.SectionInfoAttribute</a>
@@ -634,13 +636,13 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 <li>ThrowOnInvalid()
 : <a class="el" href="class_config_r_w_1_1_config_creation_1_1_structure_validation.html#af4c677dac186d06768ac102a5ad25b0e">ConfigRW.ConfigCreation.StructureValidation</a>
 </li>
-<li>ToString()
-: <a class="el" href="class_config_r_w_1_1_qualified_name.html#afd480109c33bfed817a97bde461de07c">ConfigRW.QualifiedName</a>
-</li>
 <li>toString()
 : <a class="el" href="class_config_r_w_1_1_parsing_1_1_qualified_option_name.html#a43d804b7033e1b1e66bcddd69c77e109">ConfigRW.Parsing.QualifiedOptionName</a>
 , <a class="el" href="class_config_r_w_1_1_parsing_1_1_qualified_section_name.html#a510f4095b9cb2ff6161b4f2cb57db420">ConfigRW.Parsing.QualifiedSectionName</a>
 , <a class="el" href="class_config_r_w_1_1_qualified_name.html#a5f32a5ff88568e9dc97f146facb01b60">ConfigRW.QualifiedName</a>
+</li>
+<li>ToString()
+: <a class="el" href="class_config_r_w_1_1_qualified_name.html#afd480109c33bfed817a97bde461de07c">ConfigRW.QualifiedName</a>
 </li>
 <li>TrimEscaped()
 : <a class="el" href="class_config_r_w_1_1_parsing_1_1_parser.html#ac942a9b64472ff3aaf9201d02fc12bfe">ConfigRW.Parsing.Parser</a>
@@ -678,7 +680,7 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat May 4 2013 16:34:12 for ConfigRW by
+    <li class="footer">Generated on Sat May 4 2013 18:57:10 for ConfigRW by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

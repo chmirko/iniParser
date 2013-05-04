@@ -6,12 +6,16 @@ using System.Text;
 namespace ConfigRW
 {
    /*! \mainpage My Personal Index Page
+    * \tableofcontents
     *
     * \section sec_intro ConfigRW
     *
     * Tool for easy reading and writing of configuration files.
     * Convenient usage of this tool is at first covered by series of simple explanations with examples, for more theoretically based users.
     * Convenient usage of this tool is also later covered by series of simple examples with explanation, for more practically oriented users.
+    * 
+    * format of configuration files this tool handles by default can be found online
+    * http://d3s.mff.cuni.cz/teaching/programming_practices/ukol2/
     *
     * \section sec_overview Overview
     * 
@@ -24,6 +28,7 @@ namespace ConfigRW
     * 
     * When user wishes to utilize our config, he/she needs to specifi this hierarchy, for which he/she may utilize directly .NET language features.
     * Once the configuration structure is known, user can proceed with operations on the configuration itself.
+    *    The configuration can be obtained as configuration of default values (used before additional processing or as default config creation)
     *    The configuration can be modified from within the code (by natural .NET environment)
     *    The configuration can be imprinted into a stream
     *    The configuration can be stored into a file
@@ -90,7 +95,7 @@ namespace ConfigRW
     * // Example: Configuration with single, optional section
     * public interface myConfiguration : IConfiguration
     * {
-    *    [SectionInfo(Isoptional = true)]
+    *    [SectionInfo(IsOptional = true)]
 	 *    Section mySection {get;}
     * }
     * \endcode
@@ -115,7 +120,7 @@ namespace ConfigRW
     * public interface Section
     * {
 	 *    int myOption1 {get;}
-    *    list<bool> myOption2 {get; set;}
+    *    List<bool> myOption2 {get; set;}
     * }
     * \endcode
     * 
@@ -144,11 +149,11 @@ namespace ConfigRW
     *    [DefaultComment("Comment for read only option")]
 	 *    int myOption1 {get;}
     *    [DefaultComment("Comment for mutable option")]
-    *    list<float> myOption2 {get; set;}
+    *    List<float> myOption2 {get; set;}
     * }
     * \endcode
     * 
-    * In case of numerical value (or IEnumerable of numerical values), it is possible to define lower and/or upper bound, both are inclusive.
+    * In case of IComparable type (or IEnumerable of IComparable types), it is possible to define lower and/or upper bound, both are inclusive.
     * To do so, Range attribute needs to be present.
     * 
     * \code{.cs}
@@ -158,9 +163,22 @@ namespace ConfigRW
     *    [Range(LowerBound = 0, UpperBound = 10)]
 	 *    int remainingFingers {get;}
     *    [Range(LowerBound = 1)]
-    *    list<int> positiveNumbers {get; set;}
+    *    List<int> positiveNumbers {get; set;}
     * }
     * \endcode
+    * 
+    * \section sec_compatibility Compatibility
+    * 
+    * The tool is developed under C# .NET 3.5
+    * therefore it should be compatible with .NET 3.5 onwards (unless MS ceases backwars compatibility of used features)
+    * 
+    * Due to .NET being MS proprietary language and third party solutions (MONO) are not with par,
+    * the ConfigRW is compilable under MONO, however not all versions are able to run it, due to many functions having
+    * throw NotimplementedException() as their implementation. As this task has requirements to be reasonably compilable under wider selection
+    * of operating systems (MONO stated explicitly for .NET), we claim that this project follows .NET standards and is compilable on reasonable .NET (3.5 compatible) 
+    * implementation. Most problematic methods, are the ones working around reflection. After consultations with lab teacher, we concluded that the solution 
+    * is prepared to be working with satisfying implementation of the .NET,
+    * therefore satisfies the task as compleetness of the MONO is out of our concern.
     * 
     * \section sec_advanced Advanced type in config
     * 
@@ -209,7 +227,7 @@ namespace ConfigRW
     * public interface Section
     * {
 	 *    int myOption1 {get;}
-    *    list<bool> myOption2 {get; set;}
+    *    List<bool> myOption2 {get; set;}
     * }
     * 
     * // usage
@@ -247,7 +265,7 @@ namespace ConfigRW
     * public interface Section_alpha
     * {
 	 *    int myOption1 {get;}
-    *    list<bool> myOption2 {get; set;}
+    *    List<bool> myOption2 {get; set;}
     * }
     * 
     * // Section structure bravo
@@ -255,7 +273,7 @@ namespace ConfigRW
     * {
     *    [OptionInfo(DefaultValue = new int[] {1, 2, 3, 4, 5})]
     *    [DefaultComment("This readonly option contains 5 elements, 1-5 by default")]
-	 *    list<int> intList {get;}
+	 *    List<int> intList {get;}
     *    
     *    [Range(LowerBound = 0.3f, UpperBound = 0.9f)]
     *    [OptionInfo(ID = "commonValue", IsOptional = true, DefaultValue = 0.4f)]

@@ -1,9 +1,9 @@
 var class_config_r_w_1_1_parsing_1_1_config_parser =
 [
     [ "ConfigParser", "class_config_r_w_1_1_parsing_1_1_config_parser.html#a67b34cba616f0c22affd133158a56fd7", null ],
+    [ "checkForceSectionCommentAndSeen", "class_config_r_w_1_1_parsing_1_1_config_parser.html#abb6fac0d811490fa856f9175630948f1", null ],
     [ "checkInternalAsSeen", "class_config_r_w_1_1_parsing_1_1_config_parser.html#ad050a474c8f265a106f27697b1d52961", null ],
     [ "checkOptionCommentAndSeen", "class_config_r_w_1_1_parsing_1_1_config_parser.html#ac69afaa305f3547e480feacbf79b8ddf", null ],
-    [ "checkSectionCommentAndSeen", "class_config_r_w_1_1_parsing_1_1_config_parser.html#afd5da341cc63ed2e9ce5ef855467500d", null ],
     [ "checkValidity", "class_config_r_w_1_1_parsing_1_1_config_parser.html#a8a511061738195f8facd52194b506756", null ],
     [ "checkValiditySingle", "class_config_r_w_1_1_parsing_1_1_config_parser.html#a7542dfa9f987dfecf4e212a44270a07d", null ],
     [ "escapeValue", "class_config_r_w_1_1_parsing_1_1_config_parser.html#adc5031a16749b14f7b89a3fd13e64cce", null ],

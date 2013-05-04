@@ -119,8 +119,8 @@ $(document).ready(function(){initNavTree('class_config_r_w_1_1_parsing_1_1_secti
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pac-methods"></a>
 Package Functions</h2></td></tr>
-<tr class="memitem:a759cf8598ef2e00fadcd36730e3b6357"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_parsing_1_1_section_info.html#a759cf8598ef2e00fadcd36730e3b6357">SectionInfo</a> (<a class="el" href="class_config_r_w_1_1_parsing_1_1_qualified_section_name.html">QualifiedSectionName</a> name, PropertyInfo associatedProperty, List&lt; <a class="el" href="class_config_r_w_1_1_parsing_1_1_option_info.html">OptionInfo</a> &gt; options, string defaultComment)</td></tr>
-<tr class="separator:a759cf8598ef2e00fadcd36730e3b6357"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a495e7fa96aa859c2c683a57e76d243aa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_parsing_1_1_section_info.html#a495e7fa96aa859c2c683a57e76d243aa">SectionInfo</a> (<a class="el" href="class_config_r_w_1_1_parsing_1_1_qualified_section_name.html">QualifiedSectionName</a> name, PropertyInfo associatedProperty, bool isOptional, string defaultComment, List&lt; <a class="el" href="class_config_r_w_1_1_parsing_1_1_option_info.html">OptionInfo</a> &gt; options)</td></tr>
+<tr class="separator:a495e7fa96aa859c2c683a57e76d243aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a20606766bfed0c6b017f8875a04d6665"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_config_r_w_1_1_parsing_1_1_option_info.html">OptionInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_parsing_1_1_section_info.html#a20606766bfed0c6b017f8875a04d6665">GetOptionInfo</a> (<a class="el" href="class_config_r_w_1_1_parsing_1_1_qualified_option_name.html">QualifiedOptionName</a> name)</td></tr>
 <tr class="memdesc:a20606766bfed0c6b017f8875a04d6665"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get option info for option with given name.  <a href="#a20606766bfed0c6b017f8875a04d6665">More...</a><br/></td></tr>
 <tr class="separator:a20606766bfed0c6b017f8875a04d6665"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -142,6 +142,9 @@ Package Attributes</h2></td></tr>
 <tr class="memitem:a27a26034374ed1109320483785da7b7a"><td class="memItemLeft" align="right" valign="top">readonly string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_parsing_1_1_section_info.html#a27a26034374ed1109320483785da7b7a">AssociatedProperty</a></td></tr>
 <tr class="memdesc:a27a26034374ed1109320483785da7b7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Name of property that is associated with section.  <a href="#a27a26034374ed1109320483785da7b7a">More...</a><br/></td></tr>
 <tr class="separator:a27a26034374ed1109320483785da7b7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed53aa89772535b28b117b1293d088f0"><td class="memItemLeft" align="right" valign="top">readonly bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_parsing_1_1_section_info.html#aed53aa89772535b28b117b1293d088f0">IsOptional</a></td></tr>
+<tr class="memdesc:aed53aa89772535b28b117b1293d088f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determine that section is optional.  <a href="#aed53aa89772535b28b117b1293d088f0">More...</a><br/></td></tr>
+<tr class="separator:aed53aa89772535b28b117b1293d088f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -154,7 +157,7 @@ Private Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Info describing section structure. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a759cf8598ef2e00fadcd36730e3b6357"></a>
+<a class="anchor" id="a495e7fa96aa859c2c683a57e76d243aa"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -176,14 +179,20 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">List&lt; <a class="el" href="class_config_r_w_1_1_parsing_1_1_option_info.html">OptionInfo</a> &gt;&#160;</td>
-          <td class="paramname"><em>options</em>, </td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>isOptional</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>defaultComment</em>&#160;</td>
+          <td class="paramname"><em>defaultComment</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">List&lt; <a class="el" href="class_config_r_w_1_1_parsing_1_1_option_info.html">OptionInfo</a> &gt;&#160;</td>
+          <td class="paramname"><em>options</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -323,6 +332,28 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="aed53aa89772535b28b117b1293d088f0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly bool ConfigRW.Parsing.SectionInfo.IsOptional</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Determine that section is optional. </p>
+
+</div>
+</div>
 <a class="anchor" id="a3dcfbefde014e81101d7c5b3a1ae33d9"></a>
 <div class="memitem">
 <div class="memproto">
@@ -376,7 +407,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_config_r_w.html">ConfigRW</a></li><li class="navelem"><a class="el" href="namespace_config_r_w_1_1_parsing.html">Parsing</a></li><li class="navelem"><a class="el" href="class_config_r_w_1_1_parsing_1_1_section_info.html">SectionInfo</a></li>
-    <li class="footer">Generated on Sat May 4 2013 16:34:12 for ConfigRW by
+    <li class="footer">Generated on Sat May 4 2013 18:57:10 for ConfigRW by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>
