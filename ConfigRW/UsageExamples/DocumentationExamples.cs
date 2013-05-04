@@ -36,7 +36,7 @@ var players = Configuration.CreateFromFile<Players>("players.ini");
 //...other work with configuration...
 
 //we can save configuration easily
-players.Save("changedConfig.ini");
+players.SaveTo("changedConfig.ini");
         }
 
         static void BuilderExample()
@@ -62,7 +62,15 @@ configuration.WriteValue<int>("Player1", "SavedLevel", savedLevel);
 //...other work with configuration...
 
 //save results
-configuration.Save("changedConfig.ini");
+configuration.SaveTo("changedConfig.ini");
+        }
+
+        static void ExampleSaveProvider()
+        {
+            var configObj=new Config();
+            Config.Save(configObj, "output.ini");
+
+            configObj.SaveTo("output.ini");            
         }
     }
 
@@ -101,7 +109,12 @@ configuration.Save("changedConfig.ini");
             throw new NotImplementedException();
         }
 
-        internal void Save(string p)
+        internal void SaveTo(string p)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static void Save(object config, string p)
         {
             throw new NotImplementedException();
         }
