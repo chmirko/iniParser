@@ -19,7 +19,7 @@ namespace ConfigRW
       /// <param name="developerMsg">Generic exception message, desingated for application developer</param>
       /// <param name="logMsg">Message designated to be logged into log file, for future inspection (null if same as developerMsg)</param>
       /// <param name="inner">Inner exception, for chained exceptions (null if no chained exception)</param>
-      public ParserException(string userMsg, string developerMsg, string logMsg = null, Exception inner = null)
+      internal ParserException(string userMsg, string developerMsg, string logMsg = null, Exception inner = null)
          : base(userMsg,developerMsg,logMsg, inner)
       {
       }
@@ -56,7 +56,7 @@ namespace ConfigRW
       /// <param name="section">Currently parsed section, if available</param>
       /// <param name="option">Currently parsed option, if available</param>
       /// <param name="inner">Inner exception, for chained exceptions (null if no chained exception)</param>
-      public ParserExceptionWithinConfig(string userMsg, string developerMsg, string logMsg = null, uint? line = null, string section = null, string option = null, Exception inner = null)
+      internal ParserExceptionWithinConfig(string userMsg, string developerMsg, string logMsg = null, uint? line = null, string section = null, string option = null, Exception inner = null)
          : base(userMsg, developerMsg, logMsg, inner)
       {
          Line = line;

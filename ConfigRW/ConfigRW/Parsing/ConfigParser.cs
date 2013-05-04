@@ -360,7 +360,9 @@ namespace ConfigRW.Parsing
 
                // return value
                object value = extractValue(option, knownSections);
-               yield return new OptionValue(option.Name, value);
+               var optionValue = new OptionValue(option.Name, value);
+               checkValidity(option, optionValue);
+               yield return optionValue;
             }
          }
 
@@ -617,20 +619,44 @@ namespace ConfigRW.Parsing
       }
       
       /// <summary>
-      /// Checks whether given otpion value satisfies given option constraints
+      /// Checks whether given option value satisfies given option constraints
       /// </summary>
       /// <param name="info">Structure describing option format</param>
       /// <param name="value">Structure wearing option value</param>
       internal void checkValidity(OptionInfo info, OptionValue value)
       {
+         // Container handling
+         if (info.IsContainer)
+         {
+            foreach (var elem in ConfigRW.ConfigCreation.StructureFactory.GetContainerElements(value.ConvertedValue))
+            {
+               checkValiditySingle(info,value,elem);
+            }
+         }
+         // Scalar handling
+         else
+         {
+            checkValiditySingle(info,value,value.ConvertedValue);
+         }
+      }
+
+      /// <summary>
+      /// Checks whether given option value satisfies given option constraints
+      /// for single element (either the only one, or one from many if it is collection)
+      /// </summary>
+      /// <param name="info">Structure describing option format</param>
+      /// <param name="value">Structure wearing option value</param>
+      /// <param name="elem">Single element to be checkd</param>
+      private static void checkValiditySingle(OptionInfo info, OptionValue value, object elem)
+      {
          if (
-            (info.LowerBound != null && wrongOrder(info.LowerBound, value.ConvertedValue))
+            (info.LowerBound != null && wrongOrder(info.LowerBound, elem))
             ||
-            (info.UpperBound != null && wrongOrder(value.ConvertedValue, info.UpperBound))
+            (info.UpperBound != null && wrongOrder(elem, info.UpperBound))
             )
          {
             throw new ParserExceptionWithinConfig(
-               userMsg: "Value out of obunds",
+               userMsg: "Value out of bounds",
                developerMsg: "Given value is out of predefined bounds",
                section: value.Name.Section.ID,
                option: value.Name.ID);
