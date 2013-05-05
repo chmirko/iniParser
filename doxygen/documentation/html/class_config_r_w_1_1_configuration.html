@@ -113,7 +113,7 @@ $(document).ready(function(){initNavTree('class_config_r_w_1_1_configuration.htm
 </div><!--header-->
 <div class="contents">
 
-<p>Factory class for configuration objects.  
+<p>CONFIGURATION CLASS provides possibility of creating configuration objects. These objects let you manipulate with configuration file content. <a class="el" href="class_config_r_w_1_1_configuration.html" title="CONFIGURATION CLASS provides possibility of creating configuration objects. These objects let you man...">Configuration</a> object is specified by structure description in form of .NET public interface. <a class="el" href="class_config_r_w_1_1_configuration.html" title="CONFIGURATION CLASS provides possibility of creating configuration objects. These objects let you man...">Configuration</a> object than implements this interface and is mapped on content of configuration file.  
  <a href="class_config_r_w_1_1_configuration.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
@@ -138,7 +138,18 @@ Static Private Member Functions</h2></td></tr>
 <tr class="separator:a62244aba4ea3aaa08bd810ebe0687161"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Factory class for configuration objects. </p>
+<div class="textblock"><p>CONFIGURATION CLASS provides possibility of creating configuration objects. These objects let you manipulate with configuration file content. <a class="el" href="class_config_r_w_1_1_configuration.html" title="CONFIGURATION CLASS provides possibility of creating configuration objects. These objects let you man...">Configuration</a> object is specified by structure description in form of .NET public interface. <a class="el" href="class_config_r_w_1_1_configuration.html" title="CONFIGURATION CLASS provides possibility of creating configuration objects. These objects let you man...">Configuration</a> object than implements this interface and is mapped on content of configuration file. </p>
+<p><a class="el" href="class_config_r_w_1_1_configuration.html" title="CONFIGURATION CLASS provides possibility of creating configuration objects. These objects let you man...">Configuration</a> class provides three ways how to instantiate configuration object.</p>
+<ul>
+<li>Firstly, we can create configuration object from default values, that are available in structure description. NOTE: when you don't specify default value for non-optional option, you can create configuration file, with prepared required option lines, without any values. It's especially usefull when you need to force user to fill these required values.</li>
+</ul>
+<ul>
+<li>Next way how you can create configuration object is from configuration file. Library provides you with Strict and Relaxed mode of parsing. They differ in how they behave at abundant options (not specified in the configuration object) in the configuration file.</li>
+</ul>
+<ul>
+<li>Last way how you can create configuration object is from specified StreamReader. This is usefull when you need to work with configuration "file" in memory.</li>
+</ul>
+<p>STRUCTURE DESCRIPTION Structure of configuration files and their matching configuration objects is described by .NET interfaces. Those interfaces has to be public, because our library needs to implement them at runtime. Structure description allows natural constructs how to specify format of configuration file. For getting started with structure descriptions we recommend to see usage documentation of our library which contains with examples. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a1158681e1cf451868554a30c6954c49a"></a>
 <div class="memitem">
@@ -186,7 +197,7 @@ Static Private Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_config_r_w_1_1_configuration.html" title="Factory class for configuration objects. ">Configuration</a> object.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_config_r_w_1_1_configuration.html" title="CONFIGURATION CLASS provides possibility of creating configuration objects. These objects let you man...">Configuration</a> object.</dd></dl>
 <div class="typeconstraint">
 <dl><dt><b>Type Constraints</b><dt><dd>
 <table border="0" cellspacing="2" cellpadding="0">
@@ -225,7 +236,7 @@ Static Private Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_config_r_w_1_1_configuration.html" title="Factory class for configuration objects. ">Configuration</a> object.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_config_r_w_1_1_configuration.html" title="CONFIGURATION CLASS provides possibility of creating configuration objects. These objects let you man...">Configuration</a> object.</dd></dl>
 <div class="typeconstraint">
 <dl><dt><b>Type Constraints</b><dt><dd>
 <table border="0" cellspacing="2" cellpadding="0">
@@ -282,7 +293,7 @@ Static Private Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_config_r_w_1_1_configuration.html" title="Factory class for configuration objects. ">Configuration</a> object.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_config_r_w_1_1_configuration.html" title="CONFIGURATION CLASS provides possibility of creating configuration objects. These objects let you man...">Configuration</a> object.</dd></dl>
 <div class="typeconstraint">
 <dl><dt><b>Type Constraints</b><dt><dd>
 <table border="0" cellspacing="2" cellpadding="0">
@@ -339,7 +350,7 @@ Static Private Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_config_r_w_1_1_configuration.html" title="Factory class for configuration objects. ">Configuration</a> object.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_config_r_w_1_1_configuration.html" title="CONFIGURATION CLASS provides possibility of creating configuration objects. These objects let you man...">Configuration</a> object.</dd></dl>
 <div class="typeconstraint">
 <dl><dt><b>Type Constraints</b><dt><dd>
 <table border="0" cellspacing="2" cellpadding="0">
@@ -392,7 +403,7 @@ Static Private Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_config_r_w.html">ConfigRW</a></li><li class="navelem"><a class="el" href="class_config_r_w_1_1_configuration.html">Configuration</a></li>
-    <li class="footer">Generated on Sun May 5 2013 12:57:52 for ConfigRW by
+    <li class="footer">Generated on Sun May 5 2013 13:24:11 for ConfigRW by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>
