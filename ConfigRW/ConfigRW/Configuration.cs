@@ -17,19 +17,42 @@ namespace ConfigRW
     /// <summary>
     /// Mode of configuration file parsing.
     /// </summary>
-    public enum ParsingMode { 
+    public enum ParsingMode
+    {
         /// <summary>
-        /// Requires strict match with structure specification.
+        /// Requires strict match with structure description.
         /// </summary>
-        Strict, 
+        Strict,
         /// <summary>
-        /// Allows additional elements to be present in file.
+        /// Allows additional elements (those that wasn't specified in structure description) to be present in file.
         /// </summary>
-        Relaxed 
+        Relaxed
     }
 
     /// <summary>
-    /// Factory class for configuration objects.
+    /// CONFIGURATION CLASS 
+    ///     provides possibility of creating configuration objects. These objects let you
+    ///     manipulate with configuration file content. Configuration object is specified by structure description
+    ///     in form of .NET public interface. Configuration object than implements this interface and is mapped on content
+    ///     of configuration file.
+    ///  
+    /// Configuration class provides three ways how to instantiate configuration object.
+    /// * Firstly we can create configuration object from default values that are available in structure description.
+    ///     NOTE: when you don't specify default value for non-optional option, you can create configuration file, 
+    ///     with prepared required option lines, without any values. It's especially usefull when you want force config file user to fill some required values.
+    /// 
+    /// * Next way how you can create configuration object is from configuration file.
+    ///     Library provides you Strict and Relaxed mode of parsing. They differ in need to exactly met structure description in configuration file.
+    ///     
+    /// * Last way how you can create configuration object is from specified StreamReader.
+    ///     This is usefull when you need to work with configuration "file" in memory.
+    ///     
+    /// STRUCTURE DESCRIPTION
+    ///     Structure of configuration files and their matching configuration objects is
+    ///     described by .NET interfaces. Those interfaces has to be public, because our library
+    ///     needs to implement them at runtime. Structure description allows natural constructs how
+    ///     to specify format of configuration file. For getting started with structure descriptions
+    ///     we recommend to see usage documentation of our library with examples.
     /// </summary>
     public static class Configuration
     {
@@ -44,7 +67,7 @@ namespace ConfigRW
             where Structure : IConfiguration
         {
             var parser = ConfigParser.ForWritingOnly();
-            return createConfig<Structure>(parser, false);           
+            return createConfig<Structure>(parser, false);
         }
 
 
@@ -56,11 +79,11 @@ namespace ConfigRW
         /// <param name="mode">Mode which is used for parsing input data.</param>
         /// <typeparam name="Structure">Interface which describes structure of configuration file.</typeparam>
         /// <returns>Configuration object.</returns>
-        public static Structure CreateFromFile<Structure>(string configFilePath, ParsingMode mode=ParsingMode.Strict)
+        public static Structure CreateFromFile<Structure>(string configFilePath, ParsingMode mode = ParsingMode.Strict)
             where Structure : IConfiguration
         {
-            var parser=ConfigParser.FromFile(configFilePath,mode);
-            return createConfig<Structure>(parser);            
+            var parser = ConfigParser.FromFile(configFilePath, mode);
+            return createConfig<Structure>(parser);
         }
 
 
@@ -88,7 +111,7 @@ namespace ConfigRW
         /// <param name="readFromParser">Determine that values can be read from parser.</param>
         /// <typeparam name="Structure">Interface which describes structure of configuration file.</typeparam>
         /// <returns>Configuration object.</returns>
-        private static Structure createConfig<Structure>(ConfigParser parser,bool readFromParser=true)
+        private static Structure createConfig<Structure>(ConfigParser parser, bool readFromParser = true)
             where Structure : IConfiguration
         {
             var structureType = typeof(Structure);
@@ -97,14 +120,14 @@ namespace ConfigRW
             StructureValidation.ThrowOnInvalid(structureType);
 
             var structureInfo = StructureFactory.CreateStructureInfo(structureType);
-            var optionValues =  readFromParser?parser.GetOptionValues(structureInfo):getDefaults(structureInfo);
+            var optionValues = readFromParser ? parser.GetOptionValues(structureInfo) : getDefaults(structureInfo);
             if (!readFromParser)
             {
                 //parser has to now about structure 
                 parser.RegisterStructure(structureInfo);
             }
 
-        
+
             var configRoot = ConfigFactory.CreateConfigRoot(structureInfo);
             configRoot.AssociateParser(parser);
             //fill config with option values
@@ -133,7 +156,7 @@ namespace ConfigRW
             {
                 foreach (var option in section.Options)
                 {
-                    if (option.DefaultValue==null)
+                    if (option.DefaultValue == null)
                     {
                         continue;
                     }

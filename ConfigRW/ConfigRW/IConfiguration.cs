@@ -11,8 +11,9 @@ using ConfigRW.Parsing;
 namespace ConfigRW
 {
     /// <summary>
-    /// Required interface for configuration structure.
-    /// Provide access to configuration services.
+    /// Required interface for structure description. Provides access to configuration services.
+    /// NOTE:
+    ///     Structure description interface has to be public, because our library needs to implement it at runtime.
     /// </summary>
     public interface IConfiguration
     {
@@ -24,7 +25,7 @@ namespace ConfigRW
         /// <summary>
         /// Write configuration into output.
         /// </summary>
-        /// <param name="output">Output for configuration.</param>
+        /// <param name="output">Output stream where configuration will be written.<param>
         void WriteTo(StreamWriter output);
         /// <summary>
         /// Set comment to specified element.

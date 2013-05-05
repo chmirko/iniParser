@@ -16,7 +16,7 @@ namespace ConfigRW
     sealed public class SectionInfoAttribute : Attribute
     {
         /// <summary>
-        /// ID of section. This ID overrides default ID from property name.
+        /// ID of section. This ID overrides default ID generated from property name.
         /// </summary>
         public string ID { get; set; }
 
@@ -62,7 +62,9 @@ namespace ConfigRW
 
     /// <summary>
     /// Attribute for specifiing default comments.
-    /// Can be attached to option or section property.
+    /// 
+    /// NOTE:
+    ///     Only option or section properties can be decorated by this attribute.
     /// </summary>
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
     sealed public class DefaultCommentAttribute : Attribute
@@ -91,17 +93,28 @@ namespace ConfigRW
     }
 
     /// <summary>
-    /// Attribute for specifying range bounds on numerical values.
+    /// Attribute for specifying range bounds on options with comparable types.
+    /// Boundaries has to be of same type as property decorated with this attribute.
+    /// This type also has to implement IComparable interface (numerical values, string, enums,..).
+    /// 
+    /// If option is container, range values has to have it's element type. Range is than
+    /// applied on every element in container.
+    /// 
+    /// NOTE:
+    ///     Range is checked only when reading from config defaults/file/stream or saving to file/stream.
+    ///     So it's allowed for example fill container with out of range values and filter them according
+    ///     your application logic. This attribute only ensures that correct data are read/written from configuration 
+    ///     storage.
     /// </summary>
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
     sealed public class RangeAttribute : Attribute
     {
         /// <summary>
-        /// Upper bound of range.
+        /// Upper bound of range. Null means that there is no upper bound.
         /// </summary>
         public object UpperBound { get; set; }
         /// <summary>
-        /// Lower bound of range.
+        /// Lower bound of range. Null means that there is no lower bound.
         /// </summary>
         public object LowerBound { get; set; }
     }

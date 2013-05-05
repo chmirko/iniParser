@@ -9,6 +9,9 @@ namespace UsageExamples
 {
     class Program
     {
+        /// <summary>
+        /// In memory representation of tested config file
+        /// </summary>
         private const string rawConfig = @"
          [ParseSect_A]
          uncommentedOpt = dummyVal
@@ -49,28 +52,33 @@ namespace UsageExamples
             parseConf_readStore.SaveTo("parseTest_defaultSaveTest.cfg");
         }
 
-        static void Main(string[] args)
+        /// <summary>
+        /// Testing scenarios used during config creation development
+        /// </summary>
+        private static void runCreationTests()
         {
-            // parser testing
-            runParserTests();
-
-            // some other testing
+            // Test creating config from default values
             var config = Configuration.CreateFromDefaults<ConfigStructure>();
             config.Special.List.Add("test added");
             config.Sec1.settableNumber = 98765;
             config.SetComment(QualifiedName.ForSection("Sec2"), "Comment on section 2");
             config.SaveTo("defaultValues.cfg");
 
+            // Test reading and overriding defaultValues
             var config2 = Configuration.CreateFromFile<ConfigStructure>("defaultValues.cfg", ParsingMode.Strict);
             config2.SetComment(QualifiedName.ForSection("Sec2"), "Comment override");
             config2.SetComment(QualifiedName.ForSection("SpecialTest"), "Comment added");
             config2.Special.List.Add("test changed");
-
             config2.SaveTo("changedConfig.cfg");
+        }
 
-            var config3 = Configuration.CreateFromFile<ParserConfigStruct>("rawOptSection.cfg");
-
-            config3.SaveTo("rawOptSectionChanged.cfg");
+        static void Main(string[] args)
+        {
+            // parser testing
+            runParserTests();
+            
+            // config creation testing
+            runCreationTests();
         }
     }
 
@@ -111,6 +119,9 @@ namespace UsageExamples
         List<EnumTest> EnumSet { get; }
     }
 
+    /// <summary>
+    /// Simple section definition
+    /// </summary>
     public interface Section1
     {
         [Range(LowerBound = 20)]
@@ -120,6 +131,9 @@ namespace UsageExamples
         int settableNumber { get; set; }
     }
 
+    /// <summary>
+    /// Section definition used for duplicit ID testing
+    /// </summary>
     public interface Section2
     {
         [OptionInfo(ID = "Name with space", IsOptional = true, DefaultValue = "default value")]
