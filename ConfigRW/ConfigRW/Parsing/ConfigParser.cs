@@ -117,7 +117,7 @@ namespace ConfigRW.Parsing
          try
          {
             string oneLine;
-            string fullLineComment = null;
+            string fullLineComment = "";
             while ((oneLine = input.ReadLine()) != null)
             {
                // Trim & update state variables
@@ -133,7 +133,7 @@ namespace ConfigRW.Parsing
                {
                   case '[':
                      curSection = Parser.processSingleLineAsSectionStart(oneLine, fullLineComment, curLine, knownSections);
-                     fullLineComment = null;
+                     fullLineComment = "";
                      break;
 
                   case ';':
@@ -142,7 +142,7 @@ namespace ConfigRW.Parsing
 
                   default:
                      Parser.processSingleLineAsOption(oneLine, curLine, curSection, knownSections);
-                     fullLineComment = null;
+                     fullLineComment = "";
                      break;
                }
             }
@@ -229,7 +229,7 @@ namespace ConfigRW.Parsing
                output.WriteLine();
 
                // write comment if present
-               if (sect.Value.Comment != null)
+               if (!String.IsNullOrEmpty(sect.Value.Comment))
                {
                   output.WriteLine(";" + sect.Value.Comment);
                }
@@ -298,7 +298,7 @@ namespace ConfigRW.Parsing
             output.Write(escapeValue(optVal));
          }
 
-         if (opt.Value.Comment != null)
+         if (!String.IsNullOrEmpty(opt.Value.Comment))
          {
             output.Write("    ;");
             output.Write(opt.Value.Comment);
