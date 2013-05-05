@@ -1,7 +1,7 @@
 var NAVTREE =
 [
   [ "ConfigRW", "index.html", [
-    [ "My Personal Index Page", "index.html", [
+    [ "User Documentation", "index.html", [
       [ "ConfigRW", "index.html#sec_intro", null ],
       [ "Overview", "index.html#sec_overview", [
         [ "Structure hierarchy", "index.html#subsect_overview_hierarach", null ],

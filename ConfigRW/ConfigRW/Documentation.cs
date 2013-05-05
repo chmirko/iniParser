@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ConfigRW
 {
-   /*! \mainpage My Personal Index Page
+   /*! \mainpage User Documentation
     * \tableofcontents
     *
     * \section sec_intro ConfigRW
