@@ -229,7 +229,7 @@ namespace ConfigRW.ConfigCreation
         /// <summary>
         /// Check that ids produced by resolver are unique.
         /// </summary>
-        /// <param name="type">Type which properties are traversed.</param>
+        /// <param name="properties">Properties that will be checked.</param>
         /// <param name="resolver">Resolver which produce id from traversed properties.</param>
         private static void checkIDUniqueness(IEnumerable<PropertyInfo> properties, IDResolver resolver)
         {
@@ -252,7 +252,7 @@ namespace ConfigRW.ConfigCreation
         /// <summary>
         /// Check that ids produced by resolver has valid format.
         /// </summary>
-        /// <param name="type">Type which properties are traversed.</param>
+        /// <param name="properties">Properties that will be checked.</param>
         /// <param name="resolver">Resolver which produce id from traversed properties.</param>
         private static void checkIDsValidity(IEnumerable<PropertyInfo> properties, IDResolver resolver)
         {
@@ -291,13 +291,14 @@ namespace ConfigRW.ConfigCreation
         /// <summary>
         /// Check that type contains valid constructs only. For sections deep implemented interface search is proceeded.
         /// </summary>
+        /// <param name="isSection">Determine that structureType describes section.</param>
         /// <param name="structureType">Type which signature will be checked.</param>
         private static void checkSignature(Type structureType,bool isSection)
         {
             checkSignatureSingle(structureType);
 
             if (!isSection)
-            {
+            { 
                 //only sections has to inherit multiple interfaces
                 return;
             }

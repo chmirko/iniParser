@@ -109,12 +109,13 @@ namespace ConfigRW
         /// <param name="userMsg">Message designated for user</param>
         /// <param name="developerMsg">Generic exception message, desingated for application developer</param>        
         /// <param name="validatedOptionProperty">Property describing option with invalid containerType usage</param>
+        /// <param name="inner">Inner exception, for chained exceptions (null if no chained exception)</param>
         /// <param name="containerType">Type of container that usage was invalid</param>
-        internal ContainerBuildException(string userMsg, string developerMsg, PropertyInfo validatedOptionProperty, Type containerType, Exception innerException = null) :
+        internal ContainerBuildException(string userMsg, string developerMsg, PropertyInfo validatedOptionProperty, Type containerType, Exception inner = null) :
             base(
             string.Format(userMsg,validatedOptionProperty,containerType), 
             string.Format(developerMsg,validatedOptionProperty,containerType),
-            null, innerException)
+            null, inner)
         {
             ContainerType = containerType;
         }

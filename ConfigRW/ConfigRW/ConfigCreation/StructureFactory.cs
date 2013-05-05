@@ -280,7 +280,7 @@ namespace ConfigRW.ConfigCreation
                                     Possible due to incorrect option property description '{0}'",
                     validatedOptionProperty: optionProperty,
                     containerType: expectedType,
-                    innerException: ex
+                    inner: ex
                     );
             }
         }
