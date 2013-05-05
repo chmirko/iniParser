@@ -51,8 +51,8 @@ namespace ConfigRW.ConfigCreation
             catch (Exception exception)
             {
                 throw new CreateInstanceException(
-                    userMsg: "Cannot create config root object",
-                    developerMsg: "ConfigFactory::createConfigRoot failed due to problem while creating config root instance",
+                    userMsg: "Cannot create config root object, probably due to incorect structure type description",
+                    developerMsg: "ConfigFactory::createConfigRoot failed due to problem while creating config root instance, probably caused by incorect structure type description",
                     inner: exception
                     );
             }
@@ -81,8 +81,8 @@ namespace ConfigRW.ConfigCreation
             catch (Exception exception)
             {
                 throw new CreateInstanceException(
-                    userMsg: "Cannot create config section object",
-                    developerMsg: "ConfigFactory::createConfigSection failed due to problem while creating config section instance",
+                    userMsg: "Cannot create config section object, probably due to incorect structure type description",
+                    developerMsg: "ConfigFactory::createConfigSection failed due to problem while creating config section instance, probably caused by incorect structure type description",
                     inner: exception
                     );
             }

@@ -84,7 +84,10 @@ namespace ConfigRW
         /// <param name="inner">Inner exception, for chained exceptions (null if no chained exception)</param>
         /// <param name="validatedType">Type which validation failed</param>
         internal TypeValidationException(string userMsg, string developerMsg, Type validatedType, Exception inner = null)
-            : base(userMsg, developerMsg, inner: inner)
+            : base(
+            string.Format(userMsg, validatedType),
+            string.Format(developerMsg, validatedType),
+            inner: inner)
         {
             ValidatedType = validatedType;
         }
@@ -107,8 +110,11 @@ namespace ConfigRW
         /// <param name="developerMsg">Generic exception message, desingated for application developer</param>        
         /// <param name="validatedOptionProperty">Property describing option with invalid containerType usage</param>
         /// <param name="containerType">Type of container that usage was invalid</param>
-        internal ContainerBuildException(string userMsg, string developerMsg, PropertyInfo validatedOptionProperty, Type containerType) :
-            base(userMsg, developerMsg)
+        internal ContainerBuildException(string userMsg, string developerMsg, PropertyInfo validatedOptionProperty, Type containerType, Exception innerException = null) :
+            base(
+            string.Format(userMsg,validatedOptionProperty,containerType), 
+            string.Format(developerMsg,validatedOptionProperty,containerType),
+            null, innerException)
         {
             ContainerType = containerType;
         }
@@ -120,7 +126,6 @@ namespace ConfigRW
     /// </summary>
     public class CreateInstanceException : ConfigRWException
     {
-
         /// <summary>
         /// Exception constructor
         /// </summary>

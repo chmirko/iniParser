@@ -52,7 +52,7 @@ namespace ConfigRW.ConfigCreation
         internal static SectionInfo CreateSectionInfo(PropertyInfo sectionProperty)
         {
             var options = new List<OptionInfo>();
-                        
+
             var infoAttr = ReflectionUtils.GetAttribute<SectionInfoAttribute>(sectionProperty);
             var commentAttr = ReflectionUtils.GetAttribute<DefaultCommentAttribute>(sectionProperty);
 
@@ -76,7 +76,7 @@ namespace ConfigRW.ConfigCreation
         /// <returns>Option info.</returns>
         internal static OptionInfo CreateOptionInfo(QualifiedSectionName sectionName, PropertyInfo optionProperty)
         {
-          
+
             var infoAttr = ReflectionUtils.GetAttribute<OptionInfoAttribute>(optionProperty);
             var commentAttr = ReflectionUtils.GetAttribute<DefaultCommentAttribute>(optionProperty);
             var rangeAttr = ReflectionUtils.GetAttribute<RangeAttribute>(optionProperty);
@@ -87,7 +87,7 @@ namespace ConfigRW.ConfigCreation
 
             var expectedType = optionProperty.PropertyType;
 
-            var defaultValue = createDefaultObject(optionProperty,infoAttr.DefaultValue);
+            var defaultValue = createDefaultObject(optionProperty, infoAttr.DefaultValue);
 
             return new OptionInfo(
                 optionName, expectedType, optionProperty.Name,
@@ -177,7 +177,23 @@ namespace ConfigRW.ConfigCreation
         /// <returns>Option describing properties.</returns>
         internal static IEnumerable<PropertyInfo> GetOptionProperties(Type sectionType)
         {
-            return sectionType.GetProperties();
+            var optionProperties = new HashSet<PropertyInfo>();
+
+            foreach (var prop in sectionType.GetProperties())
+            {
+                optionProperties.Add(prop);
+            }
+            
+
+            foreach (var implementedInterace in sectionType.GetInterfaces())
+            {
+                foreach (var prop in GetOptionProperties(implementedInterace))
+                {
+                    optionProperties.Add(prop);
+                }
+            }
+
+            return optionProperties;
         }
 
         /// <summary>
@@ -243,16 +259,30 @@ namespace ConfigRW.ConfigCreation
             if (builder == null)
             {
                 throw new ContainerBuildException(
-                    userMsg: "Cannot create default object for container option",
-                    developerMsg: "StructureFactory::createDefaultObject missing builder for container type",
-                    validatedOptionProperty:optionProperty,
+                    userMsg: "Cannot create default object for container option, possible incorrect container type '{1}' on property '{0}'",
+                    developerMsg: "StructureFactory::createDefaultObject missing builder for container type '{1}' on property '{0}' ",
+                    validatedOptionProperty: optionProperty,
                     containerType: expectedType
-
                     );
             }
 
-            var defaultElements = (defaultValue as Array).Cast<object>();
-            return builder.CreateContainer(expectedType, defaultElements);
+
+            try
+            {
+                var defaultElements = (defaultValue as Array).Cast<object>();
+                return builder.CreateContainer(expectedType, defaultElements);
+            }
+            catch (Exception ex)
+            {
+                throw new ContainerBuildException(
+                    userMsg: "Creating container for option '{0}' failed with exception, possible due to incorrect container type '{1}'",
+                    developerMsg: @"StructureFactory::createDefaultObject creating container of type '{1}' failed with exception. 
+                                    Possible due to incorrect option property description '{0}'",
+                    validatedOptionProperty: optionProperty,
+                    containerType: expectedType,
+                    innerException: ex
+                    );
+            }
         }
 
     }

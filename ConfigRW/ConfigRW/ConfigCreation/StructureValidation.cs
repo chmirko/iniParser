@@ -29,24 +29,33 @@ namespace ConfigRW.ConfigCreation
         /// <param name="structureType">Type describing validated structure.</param>
         internal static void ThrowOnInvalid(Type structureType)
         {
-            checkSignature(structureType);
-            checkIDsValidity(structureType, StructureFactory.ResolveSectionID);
+            if (structureType.GetInterfaces().Count() != 1)
+            {
+                throw new TypeValidationException(
+                        userMsg: "Structure type '{0}' has incorrect format, only IConfiguration interface can be implemented",
+                        developerMsg: "StructureValidation::ThrowOnInvalid failed because on structure type '{0}' was found more than IConfiguration interface implemented",
+                        validatedType: structureType
+                    );
+            }
+
+            checkSignature(structureType,false);
+            checkIDsValidity(StructureFactory.GetSectionProperties(structureType), StructureFactory.ResolveSectionID);
             checkSectionUniqueness(structureType);
 
-            foreach (var property in structureType.GetProperties())
+            foreach (var sectionProperty in structureType.GetProperties())
             {
-                if (property.GetSetMethod() != null)
+                if (sectionProperty.GetSetMethod() != null)
                 {
                     throw new PropertyValidationException(
                         userMsg: "Setter detected on section property '{0}'. Section properties cannot have setters.",
                         developerMsg: "StructureValidation::ThrowOnInvalid failed because setter has been found on section property '{0}'",
-                        validatedProperty: property
+                        validatedProperty: sectionProperty
                         );
                 }
 
-                var sectionType = property.PropertyType;
-                checkSignature(sectionType);
-                checkIDsValidity(sectionType, StructureFactory.ResolveOptionID);
+                var sectionType = sectionProperty.PropertyType;
+                checkSignature(sectionType,true);
+                checkIDsValidity(StructureFactory.GetOptionProperties(sectionType), StructureFactory.ResolveOptionID);
                 checkOptionUniqueness(sectionType);
                 checkTypeMatching(sectionType);
             }
@@ -205,7 +214,7 @@ namespace ConfigRW.ConfigCreation
         /// <param name="structureType">Type describing structure.</param>
         private static void checkSectionUniqueness(Type structureType)
         {
-            checkIDUniqueness(structureType, StructureFactory.ResolveSectionID);
+            checkIDUniqueness(StructureFactory.GetSectionProperties(structureType), StructureFactory.ResolveSectionID);
         }
 
         /// <summary>
@@ -214,7 +223,7 @@ namespace ConfigRW.ConfigCreation
         /// <param name="sectionType">Type describing section.</param>
         private static void checkOptionUniqueness(Type sectionType)
         {
-            checkIDUniqueness(sectionType, StructureFactory.ResolveOptionID);
+            checkIDUniqueness(StructureFactory.GetOptionProperties( sectionType), StructureFactory.ResolveOptionID);
         }
 
         /// <summary>
@@ -222,10 +231,10 @@ namespace ConfigRW.ConfigCreation
         /// </summary>
         /// <param name="type">Type which properties are traversed.</param>
         /// <param name="resolver">Resolver which produce id from traversed properties.</param>
-        private static void checkIDUniqueness(Type type, IDResolver resolver)
+        private static void checkIDUniqueness(IEnumerable<PropertyInfo> properties, IDResolver resolver)
         {
             var ids = new HashSet<string>();
-            foreach (var property in type.GetProperties())
+            foreach (var property in properties)
             {
                 var id = resolver(property);
                 if (!ids.Add(id))
@@ -245,9 +254,9 @@ namespace ConfigRW.ConfigCreation
         /// </summary>
         /// <param name="type">Type which properties are traversed.</param>
         /// <param name="resolver">Resolver which produce id from traversed properties.</param>
-        private static void checkIDsValidity(Type type, IDResolver resolver)
+        private static void checkIDsValidity(IEnumerable<PropertyInfo> properties, IDResolver resolver)
         {
-            foreach (var property in type.GetProperties())
+            foreach (var property in properties)
             {
                 var id = resolver(property);
                 if (!isValidID(id))
@@ -280,11 +289,32 @@ namespace ConfigRW.ConfigCreation
         }
 
         /// <summary>
+        /// Check that type contains valid constructs only. For sections deep implemented interface search is proceeded.
+        /// </summary>
+        /// <param name="structureType">Type which signature will be checked.</param>
+        private static void checkSignature(Type structureType,bool isSection)
+        {
+            checkSignatureSingle(structureType);
+
+            if (!isSection)
+            {
+                //only sections has to inherit multiple interfaces
+                return;
+            }
+
+            foreach (var implementedType in structureType.GetInterfaces())
+            {
+                checkSignature(implementedType, isSection);
+            }
+        }
+
+        /// <summary>
         /// Check that type contains valid constructs only.
         /// </summary>
         /// <param name="structureType">Type which signature will be checked.</param>
-        private static void checkSignature(Type structureType)
+        private static void checkSignatureSingle(Type structureType)
         {
+
             if (!structureType.IsInterface)
             {
                 throw new TypeValidationException(
@@ -320,7 +350,7 @@ namespace ConfigRW.ConfigCreation
                 {
                     throw new TypeValidationException(
                      userMsg: "Type describing configuration structure can only have property methods (getters and setters)",
-                     developerMsg: "StructureValidation::checkSignature failed because method without assigned property has been found in structure type",
+                     developerMsg: string.Format("StructureValidation::checkSignature failed because method '{0}' without assigned property has been found in structure type",method),
                      validatedType: structureType
                      );
                 }
