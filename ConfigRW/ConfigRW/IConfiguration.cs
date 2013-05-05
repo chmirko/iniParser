@@ -25,7 +25,7 @@ namespace ConfigRW
         /// <summary>
         /// Write configuration into output.
         /// </summary>
-        /// <param name="output">Output stream where configuration will be written.<param>
+        /// <param name="output">Output stream where configuration will be written.</param>
         void WriteTo(StreamWriter output);
         /// <summary>
         /// Set comment to specified element.
