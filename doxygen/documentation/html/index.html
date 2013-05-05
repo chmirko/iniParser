@@ -236,6 +236,15 @@ Section</h2>
 <div class="line">   [Range(LowerBound = 1)]</div>
 <div class="line">   List&lt;int&gt; positiveNumbers {<span class="keyword">get</span>; <span class="keyword">set</span>;}</div>
 <div class="line">}</div>
+</div><!-- fragment --><p>It is also possible to use custom defined enumeration type as option type</p>
+<div class="fragment"><div class="line"><span class="comment">// Custom defined enumeration</span></div>
+<div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> myEnum {Sat=1, Sun, Mon, Tue, Wed, Thu, Fri};</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// Example: Simple section with one option type of custom defined Enum</span></div>
+<div class="line"><span class="keyword">public</span> <span class="keyword">interface </span>SectionWithEnum</div>
+<div class="line">{</div>
+<div class="line">    myEnum enumTypedOption {<span class="keyword">get</span>;}</div>
+<div class="line">}</div>
 </div><!-- fragment --><h1><a class="anchor" id="sec_compatibility"></a>
 Compatibility</h1>
 <pre class="fragment"> The tool is developed under C# .NET 3.5
@@ -252,14 +261,14 @@ Compatibility</h1>
 Container types as option</h1>
 <pre class="fragment"> ConfigRW supports among scalar types also container types. However for usage of container types, certain criteria needs to be met.
  Container type can be an array of scalar types. For example array of integers is perfectly valid scalar type.
- Container type can be any standard .NET type implementing IEnumerable or ICollection.
+ Container type can be generic type of  IEnumerable&lt;&gt; or ICollection&lt;&gt;.
  Container type can be any non-abstract type implementing ICollection interface meeting certain criteria.
      Type needs to have parameter-less accessible constructor.
      Method Add() is used to add new elements into a collection.
      IEnumerable.GetEnumerator() is used for elements extraction.
 
- When setting default values for containers, it is set as array of given type. For empty collection it should be empty 
- array of given type, as null means null (i.e. no collection =&gt; error)
+ When setting default values for containers, it is set as array of given type. For empty collection, decision needs to be made,
+ whether null or empty collection is desired.
 </pre><div class="fragment"><div class="line"><span class="comment">// Section structure with numerous container types</span></div>
 <div class="line"><span class="keyword">public</span> <span class="keyword">interface </span>Section</div>
 <div class="line">{</div>
@@ -415,7 +424,7 @@ More complex example demonstrating wider functionality</h2>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat May 4 2013 21:12:31 for ConfigRW by
+    <li class="footer">Generated on Sun May 5 2013 12:57:53 for ConfigRW by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

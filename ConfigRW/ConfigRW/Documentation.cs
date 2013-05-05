@@ -167,6 +167,19 @@ namespace ConfigRW
     * }
     * \endcode
     * 
+    * It is also possible to use custom defined enumeration type as option type
+    * 
+    * \code{.cs}
+    * // Custom defined enumeration
+    * public enum myEnum {Sat=1, Sun, Mon, Tue, Wed, Thu, Fri};
+    * 
+    * // Example: Simple section with one option type of custom defined Enum
+    * public interface SectionWithEnum
+    * {
+	 *    myEnum enumTypedOption {get;}
+    * }
+    * \endcode
+    * 
     * \section sec_compatibility Compatibility
     * 
     * The tool is developed under C# .NET 3.5
@@ -184,14 +197,14 @@ namespace ConfigRW
     * 
     * ConfigRW supports among scalar types also container types. However for usage of container types, certain criteria needs to be met.
     * Container type can be an array of scalar types. For example array of integers is perfectly valid scalar type.
-    * Container type can be any standard .NET type implementing IEnumerable or ICollection.
+    * Container type can be generic type of  IEnumerable<> or ICollection<>.
     * Container type can be any non-abstract type implementing ICollection interface meeting certain criteria.
     *     Type needs to have parameter-less accessible constructor.
     *     Method Add() is used to add new elements into a collection.
     *     IEnumerable.GetEnumerator() is used for elements extraction.
     *     
-    * When setting default values for containers, it is set as array of given type. For empty collection it should be empty 
-    * array of given type, as null means null (i.e. no collection => error)
+    * When setting default values for containers, it is set as array of given type. For empty collection, decision needs to be made,
+    * whether null or empty collection is desired.
     * 
     * \code{.cs}
     * 
