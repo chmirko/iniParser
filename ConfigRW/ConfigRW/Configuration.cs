@@ -37,12 +37,13 @@ namespace ConfigRW
     ///     of configuration file.
     ///  
     /// Configuration class provides three ways how to instantiate configuration object.
-    /// * Firstly we can create configuration object from default values that are available in structure description.
+    /// * Firstly, we can create configuration object from default values, that are available in structure description.
     ///     NOTE: when you don't specify default value for non-optional option, you can create configuration file, 
-    ///     with prepared required option lines, without any values. It's especially usefull when you want force config file user to fill some required values.
+    ///     with prepared required option lines, without any values. It's especially usefull when you need to force user to fill these required values.
     /// 
     /// * Next way how you can create configuration object is from configuration file.
-    ///     Library provides you Strict and Relaxed mode of parsing. They differ in need to exactly met structure description in configuration file.
+    ///     Library provides you with Strict and Relaxed mode of parsing. They differ in how they behave at abundant options 
+    ///     (not specified in the configuration object) in the configuration file.
     ///     
     /// * Last way how you can create configuration object is from specified StreamReader.
     ///     This is usefull when you need to work with configuration "file" in memory.
@@ -52,7 +53,7 @@ namespace ConfigRW
     ///     described by .NET interfaces. Those interfaces has to be public, because our library
     ///     needs to implement them at runtime. Structure description allows natural constructs how
     ///     to specify format of configuration file. For getting started with structure descriptions
-    ///     we recommend to see usage documentation of our library with examples.
+    ///     we recommend to see usage documentation of our library which contains with examples.
     /// </summary>
     public static class Configuration
     {

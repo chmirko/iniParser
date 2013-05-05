@@ -93,17 +93,17 @@ namespace ConfigRW
     }
 
     /// <summary>
-    /// Attribute for specifying range bounds on options with comparable types.
-    /// Boundaries has to be of same type as property decorated with this attribute.
-    /// This type also has to implement IComparable interface (numerical values, string, enums,..).
+    /// Attribute for specifying range bounds on options typed by comparable types.
+    /// Boundaries has to be of the same type as the type of the property decorated by this attribute.
+    /// The type also has to implement IComparable interface (numerical values, string, enums,..).
     /// 
-    /// If option is container, range values has to have it's element type. Range is than
-    /// applied on every element in container.
+    /// If option type is container type, range values are expected to be container's element type. Range is than
+    /// applied on every element in the container.
     /// 
     /// NOTE:
-    ///     Range is checked only when reading from config defaults/file/stream or saving to file/stream.
-    ///     So it's allowed for example fill container with out of range values and filter them according
-    ///     your application logic. This attribute only ensures that correct data are read/written from configuration 
+    ///     Range is checked only when reading from a config defaults/file/stream or saving to a file/stream.
+    ///     So it's allowed for example filling container with out of range values and filter them according to
+    ///     your application logic. This attribute only ensures that correct data are read/written from/to configuration 
     ///     storage.
     /// </summary>
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]

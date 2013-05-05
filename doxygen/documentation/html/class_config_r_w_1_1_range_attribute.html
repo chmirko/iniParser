@@ -112,7 +112,7 @@ $(document).ready(function(){initNavTree('class_config_r_w_1_1_range_attribute.h
 </div><!--header-->
 <div class="contents">
 
-<p>Attribute for specifying range bounds on numerical values.  
+<p>Attribute for specifying range bounds on options typed by comparable types. Boundaries has to be of the same type as the type of the property decorated by this attribute. The type also has to implement IComparable interface (numerical values, string, enums,..).  
  <a href="class_config_r_w_1_1_range_attribute.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for ConfigRW.RangeAttribute:</div>
@@ -126,14 +126,16 @@ Inheritance diagram for ConfigRW.RangeAttribute:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
 <tr class="memitem:aa5f15bd255090640835ea85530b18b28"><td class="memItemLeft" align="right" valign="top">object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_range_attribute.html#aa5f15bd255090640835ea85530b18b28">UpperBound</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:aa5f15bd255090640835ea85530b18b28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Upper bound of range.  <a href="#aa5f15bd255090640835ea85530b18b28">More...</a><br/></td></tr>
+<tr class="memdesc:aa5f15bd255090640835ea85530b18b28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Upper bound of range. Null means that there is no upper bound.  <a href="#aa5f15bd255090640835ea85530b18b28">More...</a><br/></td></tr>
 <tr class="separator:aa5f15bd255090640835ea85530b18b28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab726728406e46f9e50ffcaa204d69440"><td class="memItemLeft" align="right" valign="top">object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_range_attribute.html#ab726728406e46f9e50ffcaa204d69440">LowerBound</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:ab726728406e46f9e50ffcaa204d69440"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lower bound of range.  <a href="#ab726728406e46f9e50ffcaa204d69440">More...</a><br/></td></tr>
+<tr class="memdesc:ab726728406e46f9e50ffcaa204d69440"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lower bound of range. Null means that there is no lower bound.  <a href="#ab726728406e46f9e50ffcaa204d69440">More...</a><br/></td></tr>
 <tr class="separator:ab726728406e46f9e50ffcaa204d69440"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Attribute for specifying range bounds on numerical values. </p>
+<div class="textblock"><p>Attribute for specifying range bounds on options typed by comparable types. Boundaries has to be of the same type as the type of the property decorated by this attribute. The type also has to implement IComparable interface (numerical values, string, enums,..). </p>
+<p>If option type is container type, range values are expected to be container's element type. Range is than applied on every element in the container.</p>
+<p>NOTE: Range is checked only when reading from a config defaults/file/stream or saving to a file/stream. So it's allowed for example filling container with out of range values and filter them according to your application logic. This attribute only ensures that correct data are read/written from/to configuration storage. </p>
 </div><h2 class="groupheader">Property Documentation</h2>
 <a class="anchor" id="ab726728406e46f9e50ffcaa204d69440"></a>
 <div class="memitem">
@@ -153,7 +155,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Lower bound of range. </p>
+<p>Lower bound of range. Null means that there is no lower bound. </p>
 
 </div>
 </div>
@@ -175,7 +177,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Upper bound of range. </p>
+<p>Upper bound of range. Null means that there is no upper bound. </p>
 
 </div>
 </div>
@@ -188,7 +190,7 @@ Properties</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_config_r_w.html">ConfigRW</a></li><li class="navelem"><a class="el" href="class_config_r_w_1_1_range_attribute.html">RangeAttribute</a></li>
-    <li class="footer">Generated on Sun May 5 2013 12:57:52 for ConfigRW by
+    <li class="footer">Generated on Sun May 5 2013 13:24:11 for ConfigRW by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

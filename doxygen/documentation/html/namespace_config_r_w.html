@@ -127,10 +127,10 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attribute for specifying additional information on options.  <a href="class_config_r_w_1_1_option_info_attribute.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_default_comment_attribute.html">DefaultCommentAttribute</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attribute for specifiing default comments. Can be attached to option or section property.  <a href="class_config_r_w_1_1_default_comment_attribute.html#details">More...</a><br/></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attribute for specifiing default comments.  <a href="class_config_r_w_1_1_default_comment_attribute.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_range_attribute.html">RangeAttribute</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attribute for specifying range bounds on numerical values.  <a href="class_config_r_w_1_1_range_attribute.html#details">More...</a><br/></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attribute for specifying range bounds on options typed by comparable types. Boundaries has to be of the same type as the type of the property decorated by this attribute. The type also has to implement IComparable interface (numerical values, string, enums,..).  <a href="class_config_r_w_1_1_range_attribute.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_property_validation_exception.html">PropertyValidationException</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exception thrown on invalid usage of property in configuration structure definition.  <a href="class_config_r_w_1_1_property_validation_exception.html#details">More...</a><br/></td></tr>
@@ -151,10 +151,10 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exceptions thrown out of <a class="el" href="namespace_config_r_w.html">ConfigRW</a> library. Except really extraordynary conditions, this should be the only one exception thorwon out of the <a class="el" href="namespace_config_r_w.html">ConfigRW</a> library.  <a href="class_config_r_w_1_1_config_r_w_exception.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_configuration.html">Configuration</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factory class for configuration objects.  <a href="class_config_r_w_1_1_configuration.html#details">More...</a><br/></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">CONFIGURATION CLASS provides possibility of creating configuration objects. These objects let you manipulate with configuration file content. <a class="el" href="class_config_r_w_1_1_configuration.html" title="CONFIGURATION CLASS provides possibility of creating configuration objects. These objects let you man...">Configuration</a> object is specified by structure description in form of .NET public interface. <a class="el" href="class_config_r_w_1_1_configuration.html" title="CONFIGURATION CLASS provides possibility of creating configuration objects. These objects let you man...">Configuration</a> object than implements this interface and is mapped on content of configuration file.  <a href="class_config_r_w_1_1_configuration.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_config_r_w_1_1_i_configuration.html">IConfiguration</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Required interface for configuration structure. Provide access to configuration services.  <a href="interface_config_r_w_1_1_i_configuration.html#details">More...</a><br/></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Required interface for structure description. Provides access to configuration services. NOTE: Structure description interface has to be public, because our library needs to implement it at runtime.  <a href="interface_config_r_w_1_1_i_configuration.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_r_w_1_1_extensions.html">Extensions</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_config_r_w_1_1_extensions.html" title="Extensions for compatibility with .NET 4.0 ">Extensions</a> for compatibility with .NET 4.0  <a href="class_config_r_w_1_1_extensions.html#details">More...</a><br/></td></tr>
@@ -194,10 +194,10 @@ Enumerations</h2></td></tr>
 <p>Mode of configuration file parsing. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><em><a class="anchor" id="ad7a7c48e02463927bbb71dab3941c03aa2e979835dd62324f5bfe217449ba4974"></a>Strict</em>&nbsp;</td><td class="fielddoc">
-<p>Requires strict match with structure specification. </p>
+<p>Requires strict match with structure description. </p>
 </td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="ad7a7c48e02463927bbb71dab3941c03aa4160be5df3fc34c3b165f28616f1bd16"></a>Relaxed</em>&nbsp;</td><td class="fielddoc">
-<p>Allows additional elements to be present in file. </p>
+<p>Allows additional elements (those that wasn't specified in structure description) to be present in file. </p>
 </td></tr>
 </table>
 
@@ -209,7 +209,7 @@ Enumerations</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_config_r_w.html">ConfigRW</a></li>
-    <li class="footer">Generated on Sun May 5 2013 12:57:52 for ConfigRW by
+    <li class="footer">Generated on Sun May 5 2013 13:24:11 for ConfigRW by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>
